@@ -7,4 +7,6 @@ Information about various linux tools to aid day-to-day work.
 1. [shell shortcuts](Shell shortcuts)
 2. [redirects](redirects)
 3. [scripting](scripting)
+
+#Linux tools infographic
 ![](http://brendangregg.com/Perf/linux_perf_tools_full.png)
