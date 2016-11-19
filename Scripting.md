@@ -12,6 +12,29 @@ command output to be redirected into _stdin_ of another process).
 The process list is run with its input or output connected to a FIFO or some file in /dev/fd.
 The name of this file is passed as an argument to the current command as the result of the expansion.
 
+#AWK
+print the quote sign
+```
+awk 'BEGIN { print "Here is a single quote <'"'"'>" }' #this is concat of three strings '...' "'" '...'
+awk 'BEGIN { print "Here is a single quote <'\''>" }'
+```
+simple examples:
+```
+#longest line in data file
+awk '{ if (length($0) > max) max = length($0) }
+     END { print max }' data
+# Print every line that has at least one field
+awk 'NF > 0' data
+```
+you can have multiple rules in awk (first goes first rule, then second, if line contains both patterns then will be processed two times)
+```
+awk '/12/ { print $0 }
+     /21/ { print $0 }' data
+```
+awk env variables:
+ - `AWKPATH` - contains awk programs
+ - `AWKLIBPATH` - contains extensions (can be written in C/C++)
+
 #References
  1. https://google.github.io/styleguide/shell.xml
  2. https://github.com/robbyrussell/oh-my-zsh/wiki/Coding-style-guide
