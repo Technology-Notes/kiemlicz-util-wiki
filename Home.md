@@ -10,6 +10,7 @@ Information about various linux tools to aid day-to-day work.
  * [Scripting](Scripting)
 2. OS
  * [Package managment](Package management)
+ * [Monitoring](Monitoring)
 
 #Linux tools infographic
 ![](http://brendangregg.com/Perf/linux_perf_tools_full.png)
