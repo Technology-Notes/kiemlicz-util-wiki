@@ -11,6 +11,10 @@ Information about various linux tools to aid day-to-day work.
 2. OS
  * [Package managment](Package management)
  * [Monitoring](Monitoring)
+ * FS
+    * [BTRFS](btrfs)
+    * [CIFS](cifs)
+    * [SSHFS](sshfs)
 3. Virtualization
  * [VM](vm)
  * [Containers](containers)
