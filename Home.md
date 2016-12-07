@@ -11,7 +11,7 @@ Information about various linux tools to aid day-to-day work.
 2. OS
  * [Package managment](Package management)
  * [Monitoring](Monitoring)
- * [Certificates](Certificates)
+ * [Crypto](Crypto)
  * FS
     * [BTRFS](btrfs)
     * [CIFS](cifs)
