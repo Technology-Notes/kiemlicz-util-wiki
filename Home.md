@@ -5,23 +5,24 @@ Information about various linux tools to aid day-to-day work.
 
 #Table of contents
 1. General
- * [Shell shortcuts](Shell shortcuts)
- * [Redirects](Redirects)
- * [Scripting](Scripting)
+ * [shell shortcuts](shell shortcuts)
+ * [redirects](redirects)
+ * [scripting](scripting)
+ * [git] (git)
 2. OS
- * [Package managment](Package management)
- * [Monitoring](Monitoring)
- * [Crypto](Crypto)
+ * [package managment](package management)
+ * [monitoring](monitoring)
+ * [crypto](crypto)
  * FS
     * [BTRFS](btrfs)
     * [CIFS](cifs)
     * [SSHFS](sshfs)
 3. Virtualization
  * [VM](vm)
- * [Containers](containers)
+ * [containers](containers)
 4. Networks
- * [Configuration](Network configuration)
- * [Traffic dumping](Traffic dumping)
+ * [configuration](network configuration)
+ * [traffic dumping](traffic dumping)
 
 #Linux tools infographic
 ![](http://brendangregg.com/Perf/linux_perf_tools_full.png)
