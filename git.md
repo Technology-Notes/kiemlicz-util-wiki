@@ -1,5 +1,5 @@
 #Useful commands
-Compare file against branch:
+Compare file with branch:
 
 `git diff mybranch otherbranch -- somefile`
 
