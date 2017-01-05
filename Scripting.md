@@ -39,5 +39,5 @@ awk env variables:
  1. https://google.github.io/styleguide/shell.xml
  2. https://github.com/robbyrussell/oh-my-zsh/wiki/Coding-style-guide
  3. http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
- 4. https://www.kernel.org/doc/Documentation/CodingStyle
+ 4. https://www.kernel.org/doc/Documentation/process/coding-style.rst
  5. https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
