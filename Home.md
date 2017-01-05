@@ -5,7 +5,7 @@ Information about various linux tools to aid day-to-day work.
 
 #Table of contents
 1. General
- * [environmental variables](environmental variables)
+ * [terminal and shell](terminal and shell)
  * [shell shortcuts](shell shortcuts)
  * [redirects](redirects)
  * [scripting](scripting)
