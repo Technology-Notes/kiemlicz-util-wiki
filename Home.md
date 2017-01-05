@@ -23,6 +23,8 @@ Information about various linux tools to aid day-to-day work.
 4. Networks
  * [configuration](network configuration)
  * [traffic dumping](traffic dumping)
+5. Other
+ * [KDE](kde)
 
 #Linux tools infographic
 ![](http://brendangregg.com/Perf/linux_perf_tools_full.png)
