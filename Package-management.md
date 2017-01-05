@@ -38,3 +38,6 @@ It roughly specifies:
 Please mind that if you have configured package pinning and e.g. your stable is configured to have priority of 995 (or anything greater than 990) then `-t` will have **no effect**.
 
 You can always verify with `apt-cache policy -t target-release package` which exact version of package is going to be installed
+
+#References
+1. https://wiki.debian.org/AptPreferences
