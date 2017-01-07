@@ -12,6 +12,36 @@ command output to be redirected into _stdin_ of another process).
 The process list is run with its input or output connected to a FIFO or some file in /dev/fd.
 The name of this file is passed as an argument to the current command as the result of the expansion.
 
+#Bash
+Shell implementation
+##Built-in variables
+Positional parameters
+* `$#` number of command line arguments
+
+Special
+* `$?` last command's exit code
+
+##Test constructs
+`if` statement tests wheter exit status of command is equal to 0
+```
+if test command;then
+   #sth
+fi
+```
+bash has alias for `test` command and is called `[` so the statement becomes:
+```
+if [ command ]; then
+fi
+```
+With Bash 2.02 extended test statement was introduced:
+```
+if [[ command ]]; then
+fi
+```
+Extended test statement is **not** compliant with POSIX. 
+Features:
+* No need to quote variables
+
 #AWK
 print the quote sign
 ```
@@ -41,3 +71,4 @@ awk env variables:
  3. http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
  4. https://www.kernel.org/doc/Documentation/process/coding-style.rst
  5. https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+ 6. http://www.tldp.org/LDP/abs/html/internalvariables.html
