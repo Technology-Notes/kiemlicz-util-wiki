@@ -38,9 +38,7 @@ With Bash 2.02 extended test statement was introduced:
 if [[ command ]]; then
 fi
 ```
-Extended test statement is **not** compliant with POSIX.
-
-Features:
+Extended test statement is **not** compliant with POSIX. It features:
 * No need to quote variables (in `[` not quoted variables like "something with spaces" will yield error: _too many arguments_)
 * Regular expression matching with `=~` e.g. `[[ $variable =~ .*string ]]`
 * Wildcard matching e.g. `[[ $(lxc-ls) == *"desired_container"* ]]`
