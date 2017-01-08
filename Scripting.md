@@ -42,7 +42,11 @@ Extended test statement is **not** compliant with POSIX. It features:
 * No need to quote variables (in `[` not quoted variables like "something with spaces" will yield error: _too many arguments_)
 * Regular expression matching with `=~` e.g. `[[ $variable =~ .*string ]]`
 * Wildcard matching e.g. `[[ $(lxc-ls) == *"desired_container"* ]]`
+* Chaining tests with _and_ and _or_ like: `[[ ... && ... ]]` (otherwise: `[] && [])`
 
+###Negate
+To negate test condition:
+`if ! [ ... ]`
 #AWK
 print the quote sign
 ```
