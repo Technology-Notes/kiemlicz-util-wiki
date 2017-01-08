@@ -22,9 +22,9 @@ Special
 * `$?` last command's exit code
 
 ##Test constructs
-`if` statement tests wheter exit status of command is equal to 0
+`if` statement tests wheter exit status of _command_ is equal to 0
 ```
-if test command;then
+if test command; then
    #sth
 fi
 ```
@@ -38,9 +38,12 @@ With Bash 2.02 extended test statement was introduced:
 if [[ command ]]; then
 fi
 ```
-Extended test statement is **not** compliant with POSIX. 
+Extended test statement is **not** compliant with POSIX.
+
 Features:
-* No need to quote variables
+* No need to quote variables (in `[` not quoted variables like "something with spaces" will yield error: _too many arguments_)
+* Regular expression matching with `=~` e.g. `[[ $variable =~ .*string ]]`
+* Wildcard matching e.g. `[[ $(lxc-ls) == *"desired_container"* ]]`
 
 #AWK
 print the quote sign
@@ -72,3 +75,5 @@ awk env variables:
  4. https://www.kernel.org/doc/Documentation/process/coding-style.rst
  5. https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
  6. http://www.tldp.org/LDP/abs/html/internalvariables.html
+ 7. http://mywiki.wooledge.org/BashFAQ
+ 8. http://mywiki.wooledge.org/BashPitfalls
