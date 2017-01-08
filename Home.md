@@ -8,6 +8,7 @@ Information about various linux tools to aid day-to-day work.
  * [terminal and shell](terminal and shell)
  * [shell shortcuts](shell shortcuts)
  * [redirects](redirects)
+ * [editors](editors)
  * [scripting](scripting)
  * [git] (git)
 2. OS
