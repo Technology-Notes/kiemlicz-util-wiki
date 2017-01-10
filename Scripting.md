@@ -14,6 +14,12 @@ The name of this file is passed as an argument to the current command as the res
 
 #Bash
 Shell implementation
+##Variable expansion
+Introduced by `$` e.g. `$param_name`. Variable may be enclosed in braces in order to separate it from adjacent characters
+###Indirect expansion
+todo
+###Quotes
+Single quotes preserve everything. No expansion occurs
 ##Built-in variables
 Positional parameters
 * `$#` number of command line arguments
@@ -79,3 +85,4 @@ awk env variables:
  6. http://www.tldp.org/LDP/abs/html/internalvariables.html
  7. http://mywiki.wooledge.org/BashFAQ
  8. http://mywiki.wooledge.org/BashPitfalls
+ 9. https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
