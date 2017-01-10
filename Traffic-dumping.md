@@ -6,13 +6,7 @@ Exceptions:
 
 When does the traffic dumping actually take place:
 
-Incoming traffic:
-```
-wire -> NIC -> tcpdump -> netfilter/iptables -> application
-```
-Outgoing traffic:
-```
-application -> iptables -> tcpdump -> NIC -> wire 
-```
+* Incoming traffic: `wire -> NIC -> tcpdump -> netfilter/iptables -> application`
+* Outgoing traffic: `application -> iptables -> tcpdump -> NIC -> wire`
 
 ##Receiving any packet aka. sniffing
