@@ -5,10 +5,11 @@ Exceptions:
  2. Multicast destination: for IPv4 `0x01.....`, for IPv6 `0x3333....`
 
 #Tcpdump
-Tool based on _libpcap_ for packet capture
-When does the traffic dumping actually take place:
+Tool based on _libpcap_ for packet capture.
+Traffic dumping takes place in specific points:
 * Incoming traffic: `wire -> NIC -> tcpdump -> netfilter/iptables -> application`
 * Outgoing traffic: `application -> iptables -> tcpdump -> NIC -> wire`
+
 ##Dumping traffic with MAC of NIC
 
 ##Dumping any traffic aka. sniffing
