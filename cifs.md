@@ -1,5 +1,5 @@
 #Mount
-In order to mount cifs (samba) share on linux:
+In order to mount [CIFS](https://en.wikipedia.org/wiki/Server_Message_Block) share on linux, following options are possible:
 
 1. mount with explicit password
 2. mount with password in plaintext in file with chmod 600
