@@ -6,7 +6,7 @@ Exceptions:
 
 #Tcpdump
 Tool based on _libpcap_ for packet capture.
-Traffic dumping takes place in specific points:
+Traffic dumping takes place at specific points in time:
 * Incoming traffic: `wire -> NIC -> tcpdump -> netfilter/iptables -> application`
 * Outgoing traffic: `application -> iptables -> tcpdump -> NIC -> wire`
 
