@@ -1,8 +1,9 @@
 #Setup
 Preliminary:
-`apt-get install btrfs-tools`
+ 1. Kernel with btrfs support (located at `/lib/modules/$(uname -r)/kernel/fs/btrfs/btrfs.ko`)
+ 2. Userspace tools: `apt-get install btrfs-tools` (mainly for filesystem creation, conversion, etc.)
 
-In order to create filesystem on device (even not partitioned device):
+In order to create filesystem on device (even not partitioned one):
 `mkfs.btrfs /dev/sdb /dev/sdc /dev/sdd`
 
 #References
