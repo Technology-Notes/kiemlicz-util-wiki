@@ -1,6 +1,6 @@
 #Packages
 Typically packages are nothing more that some kind of archive.
-##DEB packages
+##DEB
 _AR_ archive with following files included:
  * debian-binary
  * control.tar.gz
