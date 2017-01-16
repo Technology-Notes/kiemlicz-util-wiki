@@ -1,7 +1,7 @@
 #Packages
 Typically packages are nothing more that some kind of archive.
 ##DEB
-_AR_ archive with following files included:
+_AR_ archive with following top-level files included:
  * debian-binary
  * control.tar.gz
  * data.tar.gz (since Debian 8: data.tar.xz)
