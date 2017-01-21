@@ -1,3 +1,15 @@
+#Basics
+| IP | Meaning | Usual name |
+|-----------|---------| --------|
+| 127.0.0.1 | Loopback address, primarly for debugging and connecting to local servers | localhost |
+| 127.0.1.1 | Mapping of hostname to IP in case network is not available. For systems with permanent IP, permanent IP should be used instead of 127.0.1.1 | `$(hostname)` |
+
+To get/set system name use: `hostname`
+
+To get DNS domain name use: `dnsdomainname`
+
+To set DNS domain name (or rather _FQDN_: Fully Qualified Domain Name, which consists of hostname concatenated with domain name) use fqdn aliases for 127.0.1.1 in `/etc/hosts` (e.g. `127.0.1.1 myhostname.my.domain.com myhostname`)
+
 #Debian-based OSes net config
 Static network configuration in `/etc/network/interfaces`:
 ```
