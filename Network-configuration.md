@@ -8,7 +8,7 @@ To get/set system name use: `hostname`
 
 To get DNS domain name use: `dnsdomainname`
 
-To set DNS domain name (or rather _FQDN_: Fully Qualified Domain Name, which consists of hostname concatenated with domain name) use fqdn aliases for 127.0.1.1 in `/etc/hosts` (e.g. `127.0.1.1 myhostname.my.domain.com myhostname`)
+To set DNS domain name (or rather _FQDN_: Fully Qualified Domain Name, which consists of hostname concatenated with domain name) use fqdn aliases for 127.0.1.1 in `/etc/hosts` (e.g. `127.0.1.1 myhostname.my.domain.com myhostname`). Setting DNS domain may cause troubles in case of multi-interface nodes.
 
 #Debian-based OSes net config
 Static network configuration in `/etc/network/interfaces`:
