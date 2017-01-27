@@ -16,19 +16,19 @@ TLS aggregates two sub-protocols (identified by _Content Type_ field).
 Consists of three:
 
  1. SSL handshake
-```
-Client sends ClientHello
-Server responds with ServerHello
-Server sends its Certificate and ServerKeyExchange
-Server may request client’s certificate (CertificateRequest)
-Server sends ServerHelloDone
-Client sends its Certificate and ClientKeyExchange 
-Client may send CertificateVerify if the certificate it has sent “had the signing ability” (all certificates besides ones containing fixed DH parameters). CertificateVerify message contains signature of all sent/received handshake messages so far by the client. Hash and signature used in computation must be the one of those present in supported_signature_algorithms (from CertificateRequest). Client creates signature using its private key, server verifies it using client’s public key.
-Client sends ChangeCipherSpec with cipher it had set as pending. This cipher becomes current.
-Client uses new ciphers to send Finished message
-Server sends its own ChangeCipherSpec
-Server sends Finished message (using new ciphers)
-```
+  ```
+  Client sends ClientHello
+  Server responds with ServerHello
+  Server sends its Certificate and ServerKeyExchange
+  Server may request client’s certificate (CertificateRequest)
+  Server sends ServerHelloDone
+  Client sends its Certificate and ClientKeyExchange 
+  Client may send CertificateVerify if the certificate it has sent “had the signing ability” (all certificates            besides ones containing fixed DH parameters). CertificateVerify message contains signature of all sent/received   handshake messages so far by the client. Hash and signature used in computation must be the one of those present   in supported_signature_algorithms (from CertificateRequest). Client creates signature using its private key,   server verifies it using client’s public key.
+  Client sends ChangeCipherSpec with cipher it had set as pending. This cipher becomes current.
+  Client uses new ciphers to send Finished message
+  Server sends its own ChangeCipherSpec
+  Server sends Finished message (using new ciphers)
+  ```
 
  2. SSL alert protocol - indicates failure, associated session identifier must be invalidated. May be used to indicate connection end (via Alert(close_notify)).
 
