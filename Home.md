@@ -21,7 +21,7 @@ Information about various linux tools to aid day-to-day work.
     * [SSHFS](sshfs)
 3. Virtualization
  * [VM](vm)
- * [containers](Lightweight VM)
+ * [Lightweight VM](Lightweight VM)
 4. Networks
  * [configuration](network configuration)
  * [traffic dumping](traffic dumping)
