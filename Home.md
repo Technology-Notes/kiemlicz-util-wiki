@@ -10,7 +10,7 @@ Information about various linux tools to aid day-to-day work.
  * [redirects](redirects)
  * [editors](editors)
  * [scripting](scripting)
- * [git] (git)
+ * [GIT] (git)
 2. OS
  * [package managment](package management)
  * [monitoring](monitoring)
