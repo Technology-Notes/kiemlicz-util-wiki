@@ -4,10 +4,12 @@ Compare file with branch:
 `git diff mybranch otherbranch -- somefile`
 
 #Submodules
-Project can depend on other projects. Root project is called **superproject**. Submodule is always a commit in other repostiory. In other words: submodule points to particular commit.
+Project can depend on other projects. Root project is called **superproject**.  
+Submodule is always a commit in other repostiory. In other words: submodule points to particular commit.
 
 ##Adding
-`git submodule add https://repo.url... [path]` add submodule to project at _path_. If no _path_ is given then repo name is used.
+`git submodule add https://repo.url... [path]` add submodule to project at _path_.  
+If no _path_ is given then repo name is used.
 
 ##Deleting
 1. `git submodule deinit <submodule>`
