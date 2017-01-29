@@ -6,14 +6,22 @@ Compare file with branch:
 #Submodules
 Project can depend on other projects. Root project is called **superproject**. Submodule is always a commit in other repostiory. In other words: submodule points to particular commit.
 
-`git submodule add https://repo.url... [path]` add submodule to project at /path. If no _path_ is given then repo name is used.
+##Adding
+`git submodule add https://repo.url... [path]` add submodule to project at _path_. If no _path_ is given then repo name is used.
 
+##Deleting
+1. `git submodule deinit <submodule>`
+2. `git rm <submodule>`
+3. `rm -rf .git/modules/asubmodule`
+
+##Cloning
 By default submodules are not cloned. In order to clone repository that contains submodules:
 
 1. `git clone <repo url>`
 2. `git submodule init`
 3. `git submodule update`
 
+##Upgrading
 In order to upgrade the submodule (actually submodule's commit):
 
 1. `cd submodule_dir`
