@@ -13,3 +13,6 @@ Traffic dumping takes place at specific points in time:
 ##Dumping traffic with MAC of NIC
 
 ##Dumping any traffic aka. sniffing
+
+#References
+1. https://www.wains.be/pub/networking/tcpdump_advanced_filters.txt
