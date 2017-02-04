@@ -28,7 +28,9 @@ Information about various linux tools to aid day-to-day work.
  * Protocols&Implementations
     * [SSH](ssh)
     * [SSL](ssl)
-5. Other
+5. Infrastructure as a code
+ * [SaltStack](saltstack)
+6. Other
  * [KDE](kde)
 
 #Linux tools infographic
