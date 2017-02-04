@@ -29,6 +29,7 @@ Information about various linux tools to aid day-to-day work.
     * [SSH](ssh)
     * [SSL](ssl)
 5. Infrastructure as a code
+ * [Foreman](Foreman)
  * [SaltStack](saltstack)
 6. Other
  * [KDE](kde)
