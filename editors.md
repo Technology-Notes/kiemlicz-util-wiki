@@ -8,3 +8,8 @@ highlighting
 
 line numbers
 * in-editor: `:set number` / `set nonumber`
+
+##Vi
+###General options
+compatibility mode (compatibility with very old plain _vi_), following command disables compatibility
+* in-editor `:set nocompatible`
