@@ -23,6 +23,7 @@ Single quotes preserve everything. No expansion occurs
 ##Built-in variables
 Positional parameters
 * `$#` number of command line arguments
+* `$*` all of positional arguments (single word)
 
 Special
 * `$?` last command's exit code
