@@ -12,24 +12,19 @@ todo
 #APT/Aptitude
 Highest priority number means highest priority of package.
  
-Show available/installed package version:
-
+Show available/installed package version:  
 `aptitude versions the_package` or `dpkg-query -l | grep the_package`
 
-Upgrade/downgrade only one specific package:
-
+Upgrade/downgrade only one specific package:  
 `apt-get install --only-upgrade the_package`
 
-Remove dangling packages:
-
+Remove dangling packages:  
 `apt-get autoremove --purge`
 
-Remove old cached packages:
-
+Remove old cached packages:  
 `aptitude autoclean`
 
-Remove cached packages:
-
+Remove cached packages:  
 `aptitude clean` 
 ##Preferences
 Mechanism that determines which version of the package will be installed (consult: `man apt_preferences`).
