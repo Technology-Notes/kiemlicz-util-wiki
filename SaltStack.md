@@ -39,4 +39,5 @@ Using curl to communicate with API: `curl -sSk https://salt.local:9191/login -H 
 2. https://docs.saltstack.com/en/getstarted/config/functions.html
 3. https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html
 4. https://docs.saltstack.com/en/latest/ref/states/highstate.html
-4. https://github.com/saltstack/salt-bootstrap
+5. https://github.com/saltstack/salt-bootstrap
+6. https://docs.saltstack.com/en/latest/ref/configuration/master.html
