@@ -84,6 +84,17 @@ Handshake protocol consists of three sub-protocols:
   Receiver of this message must instruct the _Record Layer_ (_Record Protocol_) to immediately copy the read pending state into current state. Sender of this message must immediately instruct the record layer to copy pending write state to current write state.
 
 ###Record Protocol
+Compression/decompression, division into blocks, reassembly.  
+Used by Handshake Protocol.  
+Receiving unexpected record type results in _Alert(UnexpectedMessage)_.  
+Contains information about compression, MAC and encryption for: 
+ - current read/write states 
+ - pending read/write states
+
+Current are used for record processing.  
+To become current:
+ 1. the pending is first agreed upon in Handshake Protocol
+ 2. the change cipher spec message makes it current
 
 #References
  1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
