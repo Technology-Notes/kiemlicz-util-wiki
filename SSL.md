@@ -6,14 +6,22 @@
 #TLS
 ##Properties
 * Identity exchange via use of public keys (certificates). They’re used to verify counterparts during initialization of communication. Then the session key (symmetric key) is agreed.
-* Privacy, data is encrypted via symmetric cryptography (key is negotiated)
+* Privacy, data is encrypted via **symmetric** cryptography (key is negotiated)
 * Reliability, uses integrity checks via secure hash functions
 
 **All** TLS messages are encrypted, even handshake (but with _NULL_ protocol - so they are plain text).
 ##Description
-TLS aggregates two sub-protocols (identified by _Content Type_ field).
-###SSL handshake protocol
-Consists of three:
+TLS is composed of two sub-protocols (layers), identified by _Content Type_ field.
+ 1. TLS Record Protocol
+ 2. TLS Handshake Protocol
+
+Privacy and reliability is ensured by lower layer - _TLS Record Protocol_  
+Authentication and encryption algorithm negotiation is ensured by upper layer - _TLS Handshake Protocol_
+###Handshake protocol
+Designed to authenticate peers with each other using asymmetric cryptography (one way authentication is required, mutual is optional)  
+Shared secret negotiation (for latter symmetric cryptography)  
+
+Handshake protocol consists of three sub-protocols:
 
  1. SSL handshake
   ```
