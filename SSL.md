@@ -23,23 +23,68 @@ Shared secret negotiation (for latter symmetric cryptography)
 
 Handshake protocol consists of three sub-protocols:
 
- 1. SSL handshake
+ 1. Handshake Protocol  
+  Creates the session (context of whole communication)
   ```
   Client sends ClientHello
+  ----------------------->
+  
   Server responds with ServerHello
+  <-----------------------
+  ```
+  At this point both sides have established following parameters:
+    - ProtocolVersion
+    - SessionID
+    - CipherSuite 
+    - CompressionMethod
+  ```
   Server sends its Certificate and ServerKeyExchange
+  <-----------------------
+  ```
+  Optional
+  ```
   Server may request client’s certificate (CertificateRequest)
+  <-----------------------
+  ```
+  Optional
+  ```
   Server sends ServerHelloDone
+  <-----------------------
+  ```
+  ```
   Client sends its Certificate and ClientKeyExchange 
-  Client may send CertificateVerify if the certificate it has sent “had the signing ability” (all certificates            besides ones containing fixed DH parameters). CertificateVerify message contains signature of all sent/received   handshake messages so far by the client. Hash and signature used in computation must be the one of those present   in supported_signature_algorithms (from CertificateRequest). Client creates signature using its private key,   server verifies it using client’s public key.
-  Client sends ChangeCipherSpec with cipher it had set as pending. This cipher becomes current.
-  Client uses new ciphers to send Finished message
+  ----------------------->
+  ```
+  ```
+  Client sends CertificateVerify 
+  ----------------------->
+  ```
+  Optional, send if the certificate that client has sent “had the signing ability” (all certificates besides ones containing fixed DH parameters). _CertificateVerify_ message contains signature of all sent/received handshake messages so far by the client. Hash and signature used in computation must be the one of those present in supported_signature_algorithms (from _CertificateRequest_). Client creates signature using its private key, server verifies it using client’s public key.
+  ```
+  Client sends ChangeCipherSpec 
+  ----------------------->
+  ```
+  With cipher it had set as pending. This cipher becomes current (explained in Change Cipher sub-section)
+  ```
+  Client sends Finished
+  ----------------------->
+  ```
+  Uses new ciphers to send _Finished_
+  ```
   Server sends its own ChangeCipherSpec
+  <-----------------------
   Server sends Finished message (using new ciphers)
+  <-----------------------
   ```
 
- 2. SSL alert protocol - indicates failure, associated session identifier must be invalidated. May be used to indicate connection end (via Alert(close_notify)).
+ 2. Alert Protocol  
+  Indicates failures, associated session identifier must be invalidated. May be used to indicate connection end (via _Alert(close_notify)_).
 
- 3. SSL change cipher - receiver of this message must instruct the record layer to immediately copy the read pending state into current state. Sender of this message must immediately instruct the record layer to copy pending write state to current write state.
+ 3. Change Cipher  
+  Receiver of this message must instruct the _Record Layer_ (_Record Protocol_) to immediately copy the read pending state into current state. Sender of this message must immediately instruct the record layer to copy pending write state to current write state.
 
-###SSL record protocol
+###Record Protocol
+
+#References
+ 1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
+ 2. [RFC CertificateVerify details](https://tools.ietf.org/html/rfc4492#section-5.8)
