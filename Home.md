@@ -12,8 +12,9 @@ Information about various linux tools to aid day-to-day work.
  * [scripting](scripting)
  * [GIT] (git)
 2. OS
+ * fundamentals
+    * [memory](memory)
  * [package managment](package management)
- * [monitoring](monitoring)
  * [crypto](crypto)
  * FS
     * [BTRFS](btrfs)
