@@ -14,6 +14,7 @@ Information about various linux tools to aid day-to-day work.
 2. OS
  * fundamentals
     * [memory](memory)
+    * [kernel](kernel)
  * [package managment](package management)
  * [crypto](crypto)
  * FS
