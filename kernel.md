@@ -18,3 +18,4 @@ Remove those that are no longer installed (old ones):
 
 # References
 1. https://forums.virtualbox.org/viewtopic.php?f=7&t=76493#
+2. https://wiki.debian.org/KernelDKMS
