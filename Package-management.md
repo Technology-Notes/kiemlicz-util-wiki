@@ -31,7 +31,7 @@ Mechanism that determines which version of the package will be installed (consul
 
 Used to pick **package version** when _apt list files_ (`/etc/apt/sources.list` or `/etc/apt/sources.list.d/*.list`) contains references to more than one distribution eg. contains both stable and testing repositories. 
  1. Normally without using apt_preferences the apt will pick the package coming from the first entry in `sources.list`.
- 2. If no preferences exists or contains no entry for given package then the package priority is the priority of distro.
+ 2. If no preferences exists or contains no entry for given package then the package priority is the priority of distro. If preference exists for given package then its value is used.
  3. To “force” usage of some other distro, use `-t` flag (specify target release), eg. 
 `apt-get install -t experimental some-package`. If `-t` is given then check man `apt_preferences` for algorithm that assign priority for package. 
 It roughly specifies:
@@ -44,6 +44,16 @@ It roughly specifies:
 Please mind that if you have configured package pinning and e.g. your stable is configured to have priority of 995 (or anything greater than 990) then `-t` will have **no effect**.
 
 You can always verify with `apt-cache policy -t target-release package` which exact version of package is going to be installed
+
+###Preferences files
+Located in `/etc/apt/preferences.d`  
+Parsed in alphanumeric ascending order  
+Need to obey convention: 
+ 1. No filename extension or `.pref`
+ 2. Filename chars allowed: alphanumeric, hyphen, underscore and period
+
+The file itself contains records separated by blank lines.  
+Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies). This is one of the reasons why this mechanism is kind of "discouraged".
 
 #References
 1. https://wiki.debian.org/AptPreferences
