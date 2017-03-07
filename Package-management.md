@@ -15,6 +15,9 @@ Highest priority number means highest priority of package.
 Show available/installed package version:  
 `aptitude versions the_package` or `dpkg-query -l | grep the_package`
 
+Show package dependencies:  
+`apt-cache depends the_package`
+
 Upgrade/downgrade only one specific package:  
 `apt-get install --only-upgrade the_package`
 
