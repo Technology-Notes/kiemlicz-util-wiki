@@ -26,6 +26,8 @@ ext_pillar:
       keep_newline:
         - files/testdir/*
 ```
+##Evaluation order
+Jinja -> YAML -> Highstate -> low state -> execution
 
 #Usage
 Execute states from given environment: `salt '*' state.highstate saltenv=base`  
