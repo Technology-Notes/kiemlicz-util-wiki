@@ -1,6 +1,6 @@
-#Basics
-#Implementations
-##OpenSSH
+# Basics
+# Implementations
+## OpenSSH
 Client configurations sourcing order (first obtained value is used):
 
 1. User options 
