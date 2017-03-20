@@ -1,13 +1,13 @@
-#RAM
+# RAM
 
-##Linux Memory Types
+## Linux Memory Types
  1. physical memory - resource containing code and data.
  2. swap file - optional. Keeps (dirty) modified memory for later use if too many demands are made on physical memory.
  3. virtual memory - "unlimited" (...)
 
 No matter the memory type - all are managed as **pages** (typically 4096 bytes)
 
-##Memory monitoring tools
+## Memory monitoring tools
 
  1. `free (-m to show in MB)`
 
