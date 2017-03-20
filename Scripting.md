@@ -1,26 +1,26 @@
-#Command substitution
+# Command substitution
 `` `some command` `` plugs the `some command` output into some other context.
 Currently backticks are deprecated in favour of `$(some command)` form which:
 
 1. permits nesting `$(some command $(some nested))`
 2. treats `\\` differently
 
-#Process substitution
+# Process substitution
 `<(command_list)` Feeds the output of processes into the _stdin_ of another process (piping allows only one
 command output to be redirected into _stdin_ of another process).
 
 The process list is run with its input or output connected to a FIFO or some file in /dev/fd.
 The name of this file is passed as an argument to the current command as the result of the expansion.
 
-#Bash
+# Bash
 Shell implementation
-##Variable expansion
+## Variable expansion
 Introduced by `$` e.g. `$param_name`. Variable may be enclosed in braces in order to separate it from adjacent characters
-###Indirect expansion
+### Indirect expansion
 todo
-###Quotes
+### Quotes
 Single quotes preserve everything. No expansion occurs
-##Built-in variables
+## Built-in variables
 Positional parameters
 * `$#` number of command line arguments
 * `$*` all of positional arguments (single word)
@@ -28,7 +28,7 @@ Positional parameters
 Special
 * `$?` last command's exit code
 
-##Test constructs
+## Test constructs
 `if` statement tests wheter exit status of _command_ is equal to 0
 ```
 if test command; then
@@ -51,10 +51,10 @@ Extended test statement is **not** compliant with POSIX. It features:
 * Wildcard matching e.g. `[[ $(lxc-ls) == *"desired_container"* ]]`
 * Chaining tests with _and_ and _or_ like: `[[ ... && ... ]]` (otherwise: `[] && []`)
 
-###Negate
+### Negate
 To negate test condition:
 `if ! [ ... ]`
-#AWK
+# AWK
 print the quote sign
 ```
 awk 'BEGIN { print "Here is a single quote <'"'"'>" }' #this is concat of three strings '...' "'" '...'
@@ -77,7 +77,7 @@ awk env variables:
  - `AWKPATH` - contains awk programs
  - `AWKLIBPATH` - contains extensions (can be written in C/C++)
 
-#References
+# References
  1. https://google.github.io/styleguide/shell.xml
  2. https://github.com/robbyrussell/oh-my-zsh/wiki/Coding-style-guide
  3. http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
