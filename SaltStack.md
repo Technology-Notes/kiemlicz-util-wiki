@@ -1,4 +1,4 @@
-#Basics
+# Basics
 | Term | meaning |
 |------|---------|
 | minion | slave, managed host |
@@ -6,14 +6,14 @@
 | pillar | sensitive data, tree like structure, targeted and securely send to selected minions |
 | grain | minion data, information for state to behave differently (minion os information) |
 
-##Architecture
-##Configuration
+## Architecture
+## Configuration
 Master configuration: `/etc/salt/master`  
 Master configuration overrides: `/etc/salt/master.d/myoverrides`  
 Minion configuration: `/etc/salt/minion`  
-###Pillar
+### Pillar
 Pillar subsystem can be extended to fetch data from various sources, use `ext-pillar` to achieve this.  
-####file_tree
+#### file_tree
 `ext pillar: file_tree`
 File becomes the value of key  
 Under the `root_dir` you must have either `hosts/minion_id` folder or `nodegroups/nodegroup` folder  
@@ -26,17 +26,17 @@ ext_pillar:
       keep_newline:
         - files/testdir/*
 ```
-##Evaluation order
+## Evaluation order
 Jinja -> YAML -> Highstate -> low state -> execution
 
-#Usage
+# Usage
 Execute states from given environment: `salt '*' state.highstate saltenv=base`  
 Execute state: `salt '*' state.apply <statename> [saltenv=<env>]`
 
-#salt-api
+# salt-api
 Using curl to communicate with API: `curl -sSk https://salt.local:9191/login -H 'Accept: application/x-yaml' -d username=saltuser -d password=saltpassword -d eauth=auto`
 
-#References:
+# References:
 1. https://repo.saltstack.com/
 2. https://docs.saltstack.com/en/getstarted/config/functions.html
 3. https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html
