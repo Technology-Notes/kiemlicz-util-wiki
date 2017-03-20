@@ -25,8 +25,8 @@ Information about various linux tools to aid day-to-day work.
    * [VM](vm)
    * [Lightweight VM](Containerization)
 4. Networks
-   * [configuration](network configuration)
-   * [traffic dumping](traffic dumping)
+   * [configuration](netcfg)
+   * [traffic dumping](traffic)
    * Protocols&Implementations
      * [SSH](ssh)
      * [SSL](ssl)
