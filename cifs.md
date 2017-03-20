@@ -1,4 +1,4 @@
-#Mount
+# Mount
 In order to mount [CIFS](https://en.wikipedia.org/wiki/Server_Message_Block) share on linux, following options are possible:
 
 1. mount with explicit password
