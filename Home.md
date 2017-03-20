@@ -4,8 +4,8 @@ Useful (I hope) supplementary to [util](https://github.com/kiemlicz/util) projec
 Information about various linux tools to aid day-to-day work.
 
 # Table of contents  
-1. General  
-  * [terminal and shell](terminal_and_shell)
+1. General
+  * [terminal and shell](terminal and shell)
   * [shell shortcuts](shell_shortcuts)
   * [redirects](redirects)
   * [editors](editors)
