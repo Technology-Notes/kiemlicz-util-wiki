@@ -15,7 +15,7 @@ Information about various linux tools to aid day-to-day work.
    * fundamentals
      * [memory](memory)
      * [kernel](kernel)
-   * [package managment](package management)
+   * [package managment](packages)
    * [crypto](crypto)
    * FS
      * [BTRFS](btrfs)
