@@ -1,3 +1,4 @@
+# Shortcuts  
  - `ctrl + k` cut/delete text from cursor position till the end of the line
  - `ctrl + u` cut line
  - `ctrl + y` paste line
