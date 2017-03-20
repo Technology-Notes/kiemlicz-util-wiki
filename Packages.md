@@ -1,15 +1,15 @@
-#Packages
+# Packages
 Typically packages are nothing more that some kind of archive.
-##DEB
+## DEB
 _AR_ archive with following top-level files included:
  * debian-binary
  * control.tar.gz
  * data.tar.gz (since Debian 8: data.tar.xz)
 
-##RPM
+## RPM
 todo
 
-#APT/Aptitude
+# APT/Aptitude
 Highest priority number means highest priority of package.
  
 Show available/installed package version:  
@@ -29,7 +29,7 @@ Remove old cached packages:
 
 Remove cached packages:  
 `aptitude clean` 
-##Preferences
+## Preferences
 Mechanism that determines which version of the package will be installed (consult: `man apt_preferences`).
 
 Used to pick **package version** when _apt list files_ (`/etc/apt/sources.list` or `/etc/apt/sources.list.d/*.list`) contains references to more than one distribution eg. contains both stable and testing repositories. 
@@ -48,7 +48,7 @@ Please mind that if you have configured package pinning and e.g. your stable is 
 
 You can always verify with `apt-cache policy -t target-release package` which exact version of package is going to be installed
 
-###Preferences files
+### Preferences files
 Located in `/etc/apt/preferences.d`  
 Parsed in alphanumeric ascending order  
 Need to obey convention: 
@@ -58,5 +58,5 @@ Need to obey convention:
 The file itself contains records separated by blank lines.  
 Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies). This is one of the reasons why this mechanism is kind of "discouraged".
 
-#References
+# References
 1. https://wiki.debian.org/AptPreferences
