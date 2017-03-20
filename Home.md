@@ -6,7 +6,7 @@ Information about various linux tools to aid day-to-day work.
 # Table of contents  
 1. General
   * [terminal and shell](terminal and shell)
-  * [shell shortcuts](shell_shortcuts)
+  * [shell shortcuts](shell shortcuts)
   * [redirects](redirects)
   * [editors](editors)
   * [scripting](scripting)
@@ -15,7 +15,7 @@ Information about various linux tools to aid day-to-day work.
  * fundamentals
     * [memory](memory)
     * [kernel](kernel)
- * [package managment](package_management)
+ * [package managment](package management)
  * [crypto](crypto)
  * FS
     * [BTRFS](btrfs)
@@ -23,10 +23,10 @@ Information about various linux tools to aid day-to-day work.
     * [SSHFS](sshfs)
 3. Virtualization
  * [VM](vm)
- * [Lightweight VM](Lightweight_VM)
+ * [Lightweight VM](Lightweight VM)
 4. Networks
- * [configuration](network_configuration)
- * [traffic dumping](traffic_dumping)
+ * [configuration](network configuration)
+ * [traffic dumping](traffic dumping)
  * Protocols&Implementations
     * [SSH](ssh)
     * [SSL](ssl)
