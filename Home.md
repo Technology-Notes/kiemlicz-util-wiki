@@ -11,6 +11,7 @@ Information about various linux tools to aid day-to-day work.
    * [editors](editors)
    * [scripting](scripting)
    * [GIT](git)
+   * [dotfiles](dotfiles)
 2. OS  
    * fundamentals
      * [memory](memory)
