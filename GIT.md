@@ -34,3 +34,5 @@ In order to upgrade the submodule (actually submodule's commit):
 
 # Useful infographic
 ![](http://blog.podrezo.com/wp-content/uploads/2014/09/git-operations.png)
+# References
+ 1. http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
