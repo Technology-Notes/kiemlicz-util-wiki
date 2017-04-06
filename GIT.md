@@ -36,3 +36,4 @@ In order to upgrade the submodule (actually submodule's commit):
 ![](http://blog.podrezo.com/wp-content/uploads/2014/09/git-operations.png)
 # References
  1. http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
+ 2. http://gitolite.com/gcs.html#%281%29
