@@ -1,7 +1,16 @@
 # Useful commands
-Compare file with branch:
-
+Compare file with branch:  
 `git diff mybranch otherbranch -- somefile`
+
+Transfer single commit between branches:  
+```
+git checkout desired_branch
+git cherry-pick commit_to_be_transferred_here_by_hash
+
+git checkout orig_branch
+#rollback commit
+git reset --hard HEAD^
+```
 
 # Submodules
 Project can depend on other projects. Root project is called **superproject**.  
@@ -24,7 +33,7 @@ By default submodules are not cloned. In order to clone repository that contains
 3. `git submodule update`
 
 ## Upgrading
-In order to upgrade the submodule (actually submodule's commit):
+In order to "upgrade" the submodule (actually submodule's commit):
 
 1. `cd submodule_dir`
 2. `git checkout desired_branch`
