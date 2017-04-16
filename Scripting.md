@@ -87,4 +87,4 @@ awk env variables:
  7. http://mywiki.wooledge.org/BashFAQ
  8. http://mywiki.wooledge.org/BashPitfalls
  9. https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
- 10. http://wiki.bash-hackers.org/syntax/pe
+ 10. http://wiki.bash-hackers.org/syntax/pe (http://wiki.bash-hackers.org/start)
