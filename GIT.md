@@ -41,6 +41,9 @@ In order to "upgrade" the submodule (actually submodule's commit):
 4. `cd ..`
 5. `git add submodule_dir && git commit -m "..."`
 
+## Other
+In order to change submodule's URL, edit _.gitmodules_ files and run `git submodule sync`
+
 # Useful infographic
 ![](http://blog.podrezo.com/wp-content/uploads/2014/09/git-operations.png)
 # References
