@@ -7,7 +7,8 @@ Unattended installation comprises two phases:
 Uses PXE boot, which can roughly be depicted as:  
 ![](https://icefyresan.files.wordpress.com/2014/12/pxe.jpg)
 
-As PXE booting relies on platform firmware, its configuration is different for BIOS and its successor UEFI
+As PXE booting relies on platform firmware, its configuration files are different for BIOS and its successor UEFI.
+
 ### Debian-based OS installation
 Called: preseeding  
 Example of preseed with custom partition setup
