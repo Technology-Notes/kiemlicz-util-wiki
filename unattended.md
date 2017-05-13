@@ -1,6 +1,14 @@
 # Unattended system installation
-## Debian-based OSes
-### Preseeding
+Unattended installation comprises two phases:
+1. installation of OS itself with automatic answers
+2. provisioning of installed OS (application installation etc.)
+
+## OS installation
+Uses PXE boot, which can roughly be depicted as:  
+![](https://icefyresan.files.wordpress.com/2014/12/pxe.jpg)
+As PXE booting relies on platform firmware, its configuration is different for BIOS and its successor UEFI
+### Debian-based OS installation
+Called: preseeding  
 Example of preseed with custom partition setup
 ```
 d-i partman-auto/choose_recipe select expert
