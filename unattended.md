@@ -41,3 +41,4 @@ boot-root :: \
  2. https://wikitech.wikimedia.org/wiki/PartMan
  3. https://wiki.debian.org/DebianInstaller/Preseed
  4. https://www.debian.org/releases/stable/amd64/ch03s06.html.en#UEFI
+ 5. http://fai-project.org/fai-guide/
