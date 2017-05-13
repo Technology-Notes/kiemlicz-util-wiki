@@ -40,3 +40,4 @@ boot-root :: \
  1. https://www.debian.org/releases/stretch/example-preseed.txt
  2. https://wikitech.wikimedia.org/wiki/PartMan
  3. https://wiki.debian.org/DebianInstaller/Preseed
+ 4. https://www.debian.org/releases/stable/amd64/ch03s06.html.en#UEFI
