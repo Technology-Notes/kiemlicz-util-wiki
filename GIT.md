@@ -1,4 +1,8 @@
-# Useful commands
+# Hands-on commands
+Multiple working trees sharing one repository:  
+`git worktree add ../some/path/ branch`  
+Checkouts `branch` under `../some/path/`
+
 Compare file with branch:  
 `git diff mybranch otherbranch -- somefile`
 
@@ -46,6 +50,7 @@ In order to change submodule's URL, edit _.gitmodules_ files and run `git submod
 
 # Useful infographic
 ![](http://blog.podrezo.com/wp-content/uploads/2014/09/git-operations.png)
+
 # References
  1. http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
  2. http://gitolite.com/gcs.html#%281%29
