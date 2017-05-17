@@ -99,3 +99,4 @@ To become current:
 # References
  1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
  2. [RFC CertificateVerify details](https://tools.ietf.org/html/rfc4492#section-5.8)
+ 3. [DTLS RFC](https://tools.ietf.org/html/rfc6347)
