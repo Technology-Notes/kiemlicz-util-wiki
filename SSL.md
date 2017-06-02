@@ -4,22 +4,26 @@
 | Connection | Is a transport providing suitable type of service, connection is transient, associated with **one** session |
 | Session | Association between client and server. Created by the handshake protocol. Contains security parameters that are shared between **multiple** connections. They are used to avoid **expensive** negotiation of new security parameters for each connection |
 # TLS
-## Properties
-* Identity exchange via use of public keys (certificates). They’re used to verify counterparts during initialization of communication. Then the session key (symmetric key) is agreed.
-* Privacy, data is encrypted via **symmetric** cryptography (key is negotiated)
+Protocol directly _above_ layer 4 ISO/OSI. Uses reliable transport **only** (TCP in general).  
+Main goal of TLS is to provide secure connection between parties.
+
+Properties:  
+* Identity exchange via use of public keys (certificates). They’re used to verify counterparts during initialization of communication. Then the session key (symmetric key) is agreed
+* Privacy: data is encrypted via **symmetric** cryptography (key is negotiated during [TLS Handshake Protocol](https://github.com/kiemlicz/util/wiki/SSL#handshake-protocol))
 * Reliability, uses integrity checks via secure hash functions
 
 **All** TLS messages are encrypted, even handshake (but with _NULL_ protocol - so they are plain text).
 ## Description
 TLS is composed of two sub-protocols (layers), identified by _Content Type_ field.
- 1. TLS Record Protocol
+ 1. TLS Record Protocol (encapsulates handshake protocol)  
  2. TLS Handshake Protocol
 
 Privacy and reliability is ensured by lower layer - _TLS Record Protocol_  
 Authentication and encryption algorithm negotiation is ensured by upper layer - _TLS Handshake Protocol_
+
 ### Handshake protocol
 Designed to authenticate peers with each other using asymmetric cryptography (one way authentication is required, mutual is optional)  
-Shared secret negotiation (for latter symmetric cryptography)  
+Shared secret negotiation (for latter symmetric cryptography) - in general: session negotiation  
 
 Handshake protocol consists of three sub-protocols:
 
@@ -86,12 +90,13 @@ Handshake protocol consists of three sub-protocols:
 ### Record Protocol
 Compression/decompression, division into blocks, reassembly.  
 Used by Handshake Protocol.  
+Maintains connection state - encryption algorithm, compression algorithm and MAC algorithm.  
 Receiving unexpected record type results in _Alert(UnexpectedMessage)_.  
 Contains information about compression, MAC and encryption for: 
  - current read/write states 
  - pending read/write states
 
-Current are used for record processing.  
+_Current_ are used for record processing.  
 To become current:
  1. the pending is first agreed upon in Handshake Protocol
  2. the change cipher spec message makes it current
