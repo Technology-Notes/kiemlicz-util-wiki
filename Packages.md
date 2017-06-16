@@ -58,5 +58,12 @@ Need to obey convention:
 The file itself contains records separated by blank lines.  
 Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies). This is one of the reasons why this mechanism is kind of "discouraged".
 
+## Package configuration
+To display package configuration files use:  
+`debconf-show the_package`
+
+To set package configuration option use (wireshark example, using here-string):  
+`debconf-set-selections <<< 'wireshark-common wireshark-common/install-setuid boolean false'`
+
 # References
 1. https://wiki.debian.org/AptPreferences
