@@ -13,6 +13,7 @@ Traffic dumping takes place at specific points in time:
 ## Dumping traffic with MAC of NIC
 Dump local traffic using tcpdump:  
 `tcpdump -i eth0 -w /tmp/outfile.pcap host 1.1.1.1`
+
 Dump traffic on remote (eth0) host and visualize it locally with wireshark:  
 ```
 mkfifo /tmp/dump
