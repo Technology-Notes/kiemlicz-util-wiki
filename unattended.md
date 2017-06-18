@@ -65,3 +65,4 @@ boot-root :: \
  5. http://fai-project.org/fai-guide/
  6. https://www.youtube.com/watch?v=bNL1pd-rwCU
  7. https://www.howtogeek.com/56958/htg-explains-how-uefi-will-replace-the-bios/
+ 8. https://superuser.com/questions/496026/what-is-the-difference-in-boot-with-bios-and-boot-with-uefi
