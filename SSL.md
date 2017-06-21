@@ -104,7 +104,7 @@ To become current:
  2. the change cipher spec message makes it current
 
 # DTLS
-TLS over datagram transport. TLS in its original form cannot be used on top of e.g. UDP as:  
+TLS in its original form cannot be used on top of datagram transport like UDP as:  
  - Decrypting of individual records could be impossible. If record `N` is not received, then integrity check for record `N+1` will fail as relies on previous sequence number
  - Handshake protocol could fail as requires all messages to be reliably delivered (no messages must be lost during handshake phase)
 
