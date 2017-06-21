@@ -3,6 +3,8 @@
 |------|-------------|
 | Connection | Is a transport providing suitable type of service, connection is transient, associated with **one** session |
 | Session | Association between client and server. Created by the handshake protocol. Contains security parameters that are shared between **multiple** connections. They are used to avoid **expensive** negotiation of new security parameters for each connection |
+| Record | Chunk of logically grouped data. Conveyed by Record protocol |
+
 # TLS
 Protocol directly _above_ layer 4 ISO/OSI. Uses reliable transport **only** (TCP in general).  
 Main goal of TLS is to provide secure connection between parties.
@@ -100,6 +102,12 @@ _Current_ are used for record processing.
 To become current:
  1. the pending is first agreed upon in Handshake Protocol
  2. the change cipher spec message makes it current
+
+# DTLS
+TLS over datagram transport. TLS in its original form cannot be used on top of e.g. UDP as:  
+ - Decrypting of individual records could be impossible. If record `N` is not received, then integrity check for record `N+1` will fail as relies on previous sequence number
+ - Handshake protocol could fail as requires all messages to be reliably delivered (no messages must be lost during handshake phase)
+
 
 # References
  1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
