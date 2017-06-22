@@ -128,6 +128,8 @@ DTLS record must fit in single datagram (in order to avoid IP fragmentation). As
  2. Message loss and reordering handling
  3. Retransmission timers added
 
+## Further considerations
+As DTLS can use UDP the client-server relation is changed to more peer-to-peer like. Meaning that it should be possible for both parties to act like client **and** server simultaneously. This is useful feature. DTLS sessions can be long-lived thus e.g. when one side (that acted like server) has lost DTLS state it should be able to establish new one by sending _ClientHello_ immediately after detecting failure
 
 # References
  1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
