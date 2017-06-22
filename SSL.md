@@ -104,12 +104,28 @@ To become current:
  2. the change cipher spec message makes it current
 
 # DTLS
+TLS over datagram protocols
+
 TLS in its original form cannot be used on top of datagram transport like UDP as:  
  - Decrypting of individual records could be impossible. If record `N` is not received, then integrity check for record `N+1` will fail as relies on previous sequence number
- - Handshake protocol could fail as requires all messages to be reliably delivered (no messages must be lost during handshake phase)
+ - Records depend on each other. Cryptographic context is retained between records (as _stream ciphers_ are used).
+ - Handshake protocol could fail as requires all messages to be reliably delivered (no messages must be lost during handshake phase) in defined order.
+
+## Mechanisms for fitting TLS into UDP
+
+Message loss protection:
+ - Retransmission, if expected other-side message (for handshake phase) doesn't arrive within given time then the message is retransmitted.
+ - Stream ciphers are prohibited as they are stateful and loosing packages breaks them (missing record disallows decryption of packets with next sequence number).
+
+Message reordering protection:
+ - Each message is assigned explicit sequence number. This way peer can determine if the message it receives is the next message it awaits.
+ - Each message is also assigned epoch number. Epoch is incremented with every _ChangeCipherSpec_ message. Usually message from previous epoch can be discarded.
+
+DTLS record must fit in single datagram (in order to avoid IP fragmentation)
 
 
 # References
  1. [RFC handshake flow](https://tools.ietf.org/html/rfc5246#section-7.3)
  2. [RFC CertificateVerify details](https://tools.ietf.org/html/rfc4492#section-5.8)
- 3. [DTLS RFC](https://tools.ietf.org/html/rfc6347)
+ 3. [DTLS RFC](https://tools.ietf.org/html/rfc6347). Mind that this RFC is presented as series of diffs from TLS RFC
+ 4. [Stream cipher](https://en.wikipedia.org/wiki/Stream_cipher)
