@@ -121,7 +121,12 @@ Message reordering protection:
  - Each message is assigned explicit sequence number. This way peer can determine if the message it receives is the next message it awaits.
  - Each message is also assigned epoch number. Epoch is incremented with every _ChangeCipherSpec_ message. Usually message from previous epoch can be discarded.
 
-DTLS record must fit in single datagram (in order to avoid IP fragmentation)
+DTLS record must fit in single datagram (in order to avoid IP fragmentation). As e.g. handshake messages are bigger than max record size they can be fragmented in multiple records.
+
+### Summary of TLS handshake changes for DTLS
+ 1. Stateless cookie exchange
+ 2. Message loss and reordering handling
+ 3. Retransmission timers added
 
 
 # References
