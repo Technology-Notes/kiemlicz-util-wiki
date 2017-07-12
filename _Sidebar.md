@@ -28,6 +28,6 @@
      * [SSL](https://github.com/kiemlicz/util/wiki/ssl)
 5. Infrastructure as a code
    * [Foreman](https://github.com/kiemlicz/util/wiki/Foreman)
-   * [SaltStack](https://github.com/kiemlicz/util/wiki/saltstack)
+   * [Salt](https://github.com/kiemlicz/util/wiki/salt)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
