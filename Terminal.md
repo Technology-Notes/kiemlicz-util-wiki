@@ -1,4 +1,4 @@
-# Terminal
+# Terminal/Console
 Execution environment for applications.
 
 Exposes text buffer. Only one application runs in foreground (this application "owns" keyboard/mouse).
