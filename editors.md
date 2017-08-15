@@ -18,3 +18,6 @@ In order to set options permanently, append them to `~/.vimrc`
 | option | shortcut |
 |-|-|
 |compatibility mode (compatibility with very old plain _vi_), following command disables compatibility|`:set nocompatible`|
+
+# References
+ 1. http://vim.wikia.com/wiki/Vim_Tips_Wiki
