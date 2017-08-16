@@ -19,5 +19,8 @@ In order to set options permanently, append them to `~/.vimrc`
 |-|-|
 |compatibility mode (compatibility with very old plain _vi_), following command disables compatibility|`:set nocompatible`|
 
+## Tmux
+
 # References
 1. http://vim.wikia.com/wiki/Vim_Tips_Wiki
+2. https://gist.github.com/MohamedAlaa/2961058
