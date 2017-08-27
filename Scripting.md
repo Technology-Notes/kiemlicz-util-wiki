@@ -59,6 +59,7 @@ To negate test condition:
 |-|-|
 | `-f file` | true if file exists and is regular file |
 | `-z string` | true if length of string is zero |
+| `-n string` | true if length of string is non-zero |
 
 # AWK
 print the quote sign
