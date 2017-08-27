@@ -54,6 +54,12 @@ Extended test statement is **not** compliant with POSIX. It features:
 ### Negate
 To negate test condition:
 `if ! [ ... ]`
+## Conditional expressions
+| condition | description |
+|-|-|
+| `-f file` | true if file exists and is regular file |
+| `-z string` | true if length of string is zero |
+
 # AWK
 print the quote sign
 ```
