@@ -6,6 +6,8 @@ In order to set options permanently, append them to `~/.vimrc`
 | operation | shortcut |
 |-|-|
 |cut/copy/paste|select with `v` (whole line with `V`, rectangular blocks with `ctrl + v`), use cursors, copy with `y`, cut with `d`, paste before cursor with `P`, after with `p`|
+| undo | `u` |
+| reformat code | `=`, e.g. `gg=G` |
 
 ### Syntax options
 | option | shortcut |
