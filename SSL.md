@@ -37,12 +37,16 @@ Handshake protocol consists of three sub-protocols:
   
   Server responds with ServerHello
   <-----------------------
+  [or server responds with Alert if version or algorithms(ciphers) contained in ClientHello doesn't match with server's]
+  <-----------------------
   ```
-  At this point both sides have established following parameters:
-    - ProtocolVersion
-    - SessionID
-    - CipherSuite 
-    - CompressionMethod
+  There are buggy implementations of server's that close connections without sending any alert messages  
+  At this point both sides have established following parameters:  
+   * ProtocolVersion
+   * SessionID
+   * CipherSuite
+   * CompressionMethod
+
   ```
   Server sends its Certificate and ServerKeyExchange
   <-----------------------
