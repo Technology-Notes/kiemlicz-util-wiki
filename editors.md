@@ -26,3 +26,4 @@ In order to set options permanently, append them to `~/.vimrc`
 # References
 1. http://vim.wikia.com/wiki/Vim_Tips_Wiki
 2. https://gist.github.com/MohamedAlaa/2961058
+3. https://gist.github.com/MohamedAlaa/2961058
