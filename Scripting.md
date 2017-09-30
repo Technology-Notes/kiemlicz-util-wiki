@@ -13,7 +13,7 @@ The process list is run with its input or output connected to a FIFO or some fil
 The name of this file is passed as an argument to the current command as the result of the expansion.
 
 # Bash
-Shell implementation
+Nothing more than shell implementation
 ## Variable expansion
 Introduced by `$` e.g. `$param_name`. Variable may be enclosed in braces in order to separate it from adjacent characters
 ### Indirect expansion
@@ -61,6 +61,21 @@ To negate test condition:
 | `-z string` | true if length of string is zero |
 | `-n string` | true if length of string is non-zero |
 
+## Exit codes
+Bash scripts can exit with error codes  
+Some codes have special meaning
+
+| code | meaning |
+|-|-|
+| 1 | general catch-all |
+| 2 | misuse of built-ins (e.g. syntax errors like missing keywords) |
+| 126 | cannot execute command (permission issue or not executable script) |
+| 127 | command not found (typo or command missing on `$PATH`) |
+| 128 | wrong `exit` argument |
+| 128+`n` | fatal signal `n` |
+| 130 | termination via signal (`ctrl+c`) |
+
+
 # AWK
 print the quote sign
 ```
@@ -95,3 +110,4 @@ awk env variables:
  8. http://mywiki.wooledge.org/BashPitfalls
  9. https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
  10. http://wiki.bash-hackers.org/syntax/pe (http://wiki.bash-hackers.org/start)
+ 11. http://tldp.org/LDP/abs/html/exitcodes.html
