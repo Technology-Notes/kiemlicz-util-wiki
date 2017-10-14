@@ -7,12 +7,21 @@
 | grain | minion data, information for state to behave differently (minion os information) |
 
 ## Architecture
+Each state is enforced on targeted minion.
+State during its execution uses modules. The difference between the two:
+
+| State | Module |
+|-|-|
+| Assert/enforce certain state on minion. They map to nice `sls` files | Executes a task |
+
 ## Configuration
 Master configuration: `/etc/salt/master`  
-Master configuration overrides: `/etc/salt/master.d/myoverrides`  
+Master configuration overrides: `/etc/salt/master.d/myoverrides.conf`  
 Minion configuration: `/etc/salt/minion`  
+
 ### Pillar
 Pillar subsystem can be extended to fetch data from various sources, use `ext-pillar` to achieve this.  
+
 #### file_tree
 `ext pillar: file_tree`
 File becomes the value of key  
@@ -26,8 +35,9 @@ ext_pillar:
       keep_newline:
         - files/testdir/*
 ```
-## Evaluation order
-Jinja -> YAML -> Highstate -> low state -> execution
+
+### Evaluation order during execution
+Jinja -> YAML -> highstate -> low state -> execution
 
 # Usage
 Execute states from given environment: `salt '*' state.highstate saltenv=base`  
