@@ -5,6 +5,9 @@ To send `ctrl + alt + f1` use `host key + f1`
 
 # libvirt
 ## Requirements
+Install with:
+`aptitude install qemu-kvm libvirt-clients libvirt-daemon-system`
+
 In order to permit user for vm management
 ```
 adduser <youruser> libvirt
