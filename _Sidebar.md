@@ -10,6 +10,7 @@
    * fundamentals
      * [Memory](https://github.com/kiemlicz/util/wiki/memory)
      * [Kernel](https://github.com/kiemlicz/util/wiki/kernel)
+   * [init](https://github.com/kiemlicz/util/wiki/init)
    * [Package managment](https://github.com/kiemlicz/util/wiki/packages)
    * [Crypto](https://github.com/kiemlicz/util/wiki/crypto)
    * File systems
