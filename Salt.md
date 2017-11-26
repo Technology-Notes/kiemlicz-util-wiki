@@ -6,7 +6,9 @@
 | pillar | sensitive data, tree like structure, targeted and securely send to selected minions |
 | grain | minion data, information for state to behave differently (minion os information) |
 
-## Architecture
+# Architecture
+
+
 Each state is enforced on targeted minion.
 State during its execution uses modules. The difference between the two:
 
