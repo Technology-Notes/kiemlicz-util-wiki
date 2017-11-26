@@ -7,24 +7,34 @@
 | grain | minion data, information for state to behave differently (minion os information) |
 
 # Architecture
+Highly [modular](https://docs.saltstack.com/en/latest/ref/index.html) and highly [customizable](https://docs.saltstack.com/en/latest/ref/modules/).
+Event-based, runs in multiple modes: 
+* master-slave
+* master-less
 
-
-Each state is enforced on targeted minion.
-State during its execution uses modules. The difference between the two:
+Each _state_ is enforced on targeted minion (slave).  
+State during its execution uses _modules_. The difference between the two:
 
 | State | Module |
 |-|-|
 | Assert/enforce certain state on minion. They map to nice `sls` files | Executes a task |
 
-## Configuration
+Salt (as a whole) architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html) (also called modules):
+ * runners: master-only command sequences
+ * tops: builds top-file structure
+ * pillar
+ * grains
+ * fileserver
+
+# Configuration
 Master configuration: `/etc/salt/master`  
 Master configuration overrides: `/etc/salt/master.d/myoverrides.conf`  
 Minion configuration: `/etc/salt/minion`  
 
-### Pillar
+## Pillar
 Pillar subsystem can be extended to fetch data from various sources, use `ext-pillar` to achieve this.  
 
-#### file_tree
+### file_tree
 `ext pillar: file_tree`
 File becomes the value of key  
 Under the `root_dir` you must have either `hosts/minion_id` folder or `nodegroups/nodegroup` folder  
@@ -38,7 +48,7 @@ ext_pillar:
         - files/testdir/*
 ```
 
-### Evaluation order during execution
+## Evaluation order during execution
 Jinja -> YAML -> highstate -> low state -> execution
 
 # Usage
