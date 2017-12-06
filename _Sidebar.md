@@ -2,7 +2,7 @@
    * [Terminal and shell](https://github.com/kiemlicz/util/wiki/terminal)
      * [Shell shortcuts](https://github.com/kiemlicz/util/wiki/shell)
      * [Redirects](https://github.com/kiemlicz/util/wiki/redirects)
-     * [Editors](https://github.com/kiemlicz/util/wiki/editors)
+     * [Editors](https://github.com/kiemlicz/util/wiki/editing)
      * [Scripting](https://github.com/kiemlicz/util/wiki/scripting)
    * [GIT](https://github.com/kiemlicz/util/wiki/git)
    * [Dotfiles](https://github.com/kiemlicz/util/wiki/dotfiles)
