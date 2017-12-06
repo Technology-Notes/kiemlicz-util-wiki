@@ -3,8 +3,8 @@ Legend
 
 |symbol|meaning|
 |-|-|
-|C|Control|
-|M|Alt|
+|`C`|Control key|
+|`M`|Alt key|
 
 # Vim
 In order to set options permanently, append them to `~/.vimrc`
@@ -29,10 +29,13 @@ In order to set options permanently, append them to `~/.vimrc`
 
 # Tmux
 ## Shortcuts
+Assuming `C-b` is the prefix
+
 | option | shortcut |
 |-|-|
-|synchronize panes| |
-|synchronize panes| |
+|bring tmux command line| `C-b` `:`|
+|synchronize panes| `C-b` `:setw synchronize-panes` |
+|align panes| vertical: `C-b` `M-2`, horizontal: `C-b` `M-1` |
 
 # References
 1. http://vim.wikia.com/wiki/Vim_Tips_Wiki
