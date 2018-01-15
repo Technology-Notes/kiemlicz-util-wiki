@@ -1,6 +1,6 @@
 # Packages
 Typically packages are nothing more that some kind of archive.
-## DEB
+## [DEB](https://github.com/kiemlicz/util/blob/master/core/deb_functions)
 _AR_ archive with following top-level files included:
  * debian-binary
  * control.tar.gz
