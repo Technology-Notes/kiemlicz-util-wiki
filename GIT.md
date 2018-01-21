@@ -1,4 +1,7 @@
 # Hands-on commands
+Checkout remote branch:  
+`git checkout -b <name> origin/<name>`
+
 Multiple working trees sharing one repository:  
 `git worktree add ../some/path/ branch`  
 Checkouts `branch` under `../some/path/`
