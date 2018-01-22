@@ -17,7 +17,19 @@ If output contains both `CONFIG_MEMCG=y` and `CONFIG_MEMCG_DISABLED=y` means tha
 Bridge network on host OS.
 
 ## Docker
-LXC-based
+LXC-based, widespread.
+### Vocabulary
+| term | meaning |
+|-|-|
+| image |  |
+| container |  |
+
+Push image:
+1. Tag image first with repository URL  
+`docker tag <image> <repourl>/<tag>` 
+2. Login to desired repository, `docker.io` is the default  
+`docker login <repourl>` 
+3. `docker push <repourl>/<tag>`
 
 # References
  1. Modern Linux Administration - Sam R. Alapati
