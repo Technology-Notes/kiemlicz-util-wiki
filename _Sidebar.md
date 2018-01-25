@@ -4,7 +4,7 @@
      * [Redirects](https://github.com/kiemlicz/util/wiki/redirects)
      * [Editing](https://github.com/kiemlicz/util/wiki/editing)
      * [Scripting](https://github.com/kiemlicz/util/wiki/scripting)
-   * [GIT](https://github.com/kiemlicz/util/wiki/git)
+   * [git](https://github.com/kiemlicz/util/wiki/git)
    * [Dotfiles](https://github.com/kiemlicz/util/wiki/dotfiles)
 2. OS  
    * fundamentals
