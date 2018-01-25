@@ -18,6 +18,17 @@ git checkout orig_branch
 #rollback commit
 git reset --hard HEAD^
 ```
+# Branches
+## Checkout
+Remote to local:  
+`git checkout -b <local_branch_name> <remote_name>/<remote_branch_name>`
+
+## Delete
+Remote:  
+`git push <remote_name> --delete <branch_name>`
+
+Locally:  
+`git branch -d <local_branch_name>`
 
 # Submodules
 Project can depend on other projects. Root project is called **superproject**.  
