@@ -17,13 +17,40 @@ If output contains both `CONFIG_MEMCG=y` and `CONFIG_MEMCG_DISABLED=y` means tha
 Bridge network on host OS.
 
 ## Docker
-LXC-based, widespread.
+Originally LXC-based, widespread.
 ### Vocabulary
 | term | meaning |
 |-|-|
 | image |  |
 | container |  |
 
+### Configuration
+`dockerd` uses following configuration files:
+
+`/etc/docker/daemon.json`
+
+`/etc/default/docker` (for Debian based OSes)
+
+#### Change storage-driver:
+```
+> cat /etc/docker/daemon.json
+{
+  "storage-driver": "btrfs"
+}
+```
+For full list of supported drivers refer to [storage drivers](https://docs.docker.com/engine/userguide/storagedriver/selectadriver/)
+
+#### Change dockerd sockets:
+```
+> cat /etc/docker/daemon.json
+{
+        "hosts": ["unix:///var/run/docker.sock", "tcp://0.0.0.0:2376"]
+}
+```
+It is possible that run init/upstart/service script specifies `-H` flag for startup command.  
+This must be removed from script itself, otherwise `dockerd` will fail to start
+
+### Usage
 Push image:
 1. Tag image first with repository URL  
 `docker tag <image> <repourl>/<tag>` 
