@@ -2,9 +2,9 @@
 Typically packages are nothing more that some kind of archive.
 ## [DEB](https://github.com/kiemlicz/util/blob/master/core/deb_functions)
 _AR_ archive with following top-level files included:
- * debian-binary
- * control.tar.gz
- * data.tar.gz (since Debian 8: data.tar.xz)
+ * _debian-binary_
+ * _control.tar.gz_
+ * _data.tar.gz_ (since Debian 8: _data.tar.xz_)
 
 ## RPM
 todo
