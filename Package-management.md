@@ -13,7 +13,9 @@ todo
 Highest priority number means highest priority of package.
  
 Show available/installed package version:  
-`aptitude versions the_package` or `dpkg-query -l | grep the_package`
+`aptitude versions the_package`  
+`apt-cache policy the_package`  
+`dpkg-query -l | grep the_package`
 
 Show package dependencies:  
 `apt-cache depends the_package`
