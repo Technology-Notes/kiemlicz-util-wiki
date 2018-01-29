@@ -43,7 +43,7 @@ Build image from `Dockerfile` (issue in directory containing `Dockerfile`):
 `docker build .`
 
 Start container (simplest form):  
-`docker run --name <some_name> <image tag or name>`
+`docker run --name <some_name> <image tag or name> [args]`
 
 Stop container:  
 `docker stop <container name or id>`
