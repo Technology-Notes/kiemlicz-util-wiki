@@ -3,26 +3,14 @@ Both the host and container share **the same kernel**.
 Engine responsible for providing the execution environment for application is called _virtualization container_. 
 
 # Solutions
-## LXC
-Container's filesystem root location: `/var/lib/lxc/<container name>`  
-Container creation scripts/templates for given distro: `/usr/share/lxc/templates`
-
-To verify if LXC is supported on current OS/kernel run: `lxc-checkconfig`
-
-Debian may have some issues with memory control via cgroups.  
-Check kernel support: `cat /boot/config-$(uname -r) | grep CONFIG_MEMCG`  
-If output contains both `CONFIG_MEMCG=y` and `CONFIG_MEMCG_DISABLED=y` means that memory cgroups must be explicitly enabled by kernel parameter (`cgroup_enable=memory`)
-
-### Networking
-Bridge network on host OS.
 
 ## Docker
 Originally LXC-based, widespread.
 ### Vocabulary
 | term | meaning |
 |-|-|
-| image |  |
-| container |  |
+| image | Product of `docker build` command. Snapshot of a container. Analogous to the concept from _Object Oriented Programming_: `class` |
+| container | Running instance of image. Analogous to the concept from _Object Oriented Programming_: `class` instance |
 
 ### Configuration
 `dockerd` uses following configuration files:
@@ -51,12 +39,41 @@ It is possible that run init/upstart/service script specifies `-H` flag for star
 This must be removed from script itself, otherwise `dockerd` will fail to start
 
 ### Usage
-Push image:
+Build image from `Dockerfile` (issue in directory containing `Dockerfile`):  
+`docker build .`
+
+Start container (simplest form):  
+`docker run --name <some_name> <image tag or name>`
+
+Stop container:  
+`docker stop <container name or id>`
+
+Remove container:  
+`docker rm <container name or id>`
+
+Remove image:  
+`docker rmi <image name or id>`
+
+Push image to registry:
 1. Tag image first with repository URL  
 `docker tag <image> <repourl>/<tag>` 
 2. Login to desired repository, `docker.io` is the default  
 `docker login <repourl>` 
 3. `docker push <repourl>/<tag>`
+
+## LXC
+Container's filesystem root location: `/var/lib/lxc/<container name>`  
+Container creation scripts/templates for given distro: `/usr/share/lxc/templates`
+
+To verify if LXC is supported on current OS/kernel run: `lxc-checkconfig`
+
+Debian may have some issues with memory control via cgroups.  
+Check kernel support: `cat /boot/config-$(uname -r) | grep CONFIG_MEMCG`  
+If output contains both `CONFIG_MEMCG=y` and `CONFIG_MEMCG_DISABLED=y` means that memory cgroups must be explicitly enabled by kernel parameter (`cgroup_enable=memory`)
+
+### Networking
+Bridge network on host OS.
+
 
 # References
  1. Modern Linux Administration - Sam R. Alapati
