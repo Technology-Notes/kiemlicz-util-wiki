@@ -61,6 +61,15 @@ Push image to registry:
 `docker login <repourl>` 
 3. `docker push <repourl>/<tag>`
 
+#### Debugging
+Failed container can be pretty easily debugged
+1. Grab exited container ID  
+`docker ps -a`
+2. Create image  
+`docker commit <container id>`
+3. Run image corresponding to failed container  
+`docker run -it --entrypoint /bin/bash <image id>`
+
 ## LXC
 Container's filesystem root location: `/var/lib/lxc/<container name>`  
 Container creation scripts/templates for given distro: `/usr/share/lxc/templates`
