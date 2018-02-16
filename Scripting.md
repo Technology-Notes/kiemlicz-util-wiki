@@ -27,6 +27,7 @@ Positional parameters
 
 Special
 * `$?` last command's exit code
+* `$!` most recently executed process ID
 
 ## Test constructs
 `if` statement tests wheter exit status of _command_ is equal to 0
