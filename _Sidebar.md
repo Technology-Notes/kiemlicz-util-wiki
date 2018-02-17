@@ -35,4 +35,4 @@
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
 7. Monitoring
    * Benchmarking
-      * IO(https://github.com/kiemlicz/util/wiki/bench_io)
+      * [IO](https://github.com/kiemlicz/util/wiki/bench_io)
