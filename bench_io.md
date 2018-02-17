@@ -1,0 +1,5 @@
+# Tools
+`dd`  
+`hdparm`
+`iotop`
+
