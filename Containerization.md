@@ -81,7 +81,21 @@ Check kernel support: `cat /boot/config-$(uname -r) | grep CONFIG_MEMCG`
 If output contains both `CONFIG_MEMCG=y` and `CONFIG_MEMCG_DISABLED=y` means that memory cgroups must be explicitly enabled by kernel parameter (`cgroup_enable=memory`)
 
 ### Networking
-Bridge network on host OS.
+Described in configuration file `lxc-create -f <config_file>`  
+Create bridge interface on host OS and link to container:
+```
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br0
+
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br1
+
+lxc.network.type = empty
+```
+For "isolated" bridge interface for containers, configure `lxc-net`.  
+Refer to [5](#References)
 
 
 # References
@@ -89,3 +103,5 @@ Bridge network on host OS.
  2. https://wiki.debian.org/LXC
  3. https://www.stgraber.org/2013/12/20/lxc-1-0-blog-post-series/
  4. https://www.flockport.com/guides/
+ 5. https://wiki.debian.org/LXC/SimpleBridge
+ 6. http://man7.org/linux/man-pages/man5/lxc.container.conf.5.html
