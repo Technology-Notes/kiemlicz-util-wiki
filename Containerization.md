@@ -105,3 +105,4 @@ Refer to [5](#References)
  4. https://www.flockport.com/guides/
  5. https://wiki.debian.org/LXC/SimpleBridge
  6. http://man7.org/linux/man-pages/man5/lxc.container.conf.5.html
+ 7. https://wiki.debian.org/BridgeNetworkConnections
