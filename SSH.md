@@ -8,6 +8,8 @@ Client configurations sourcing order (first obtained value is used):
 
 Debian-based OSes send `LANG` and `LC_*` variables over SSH (this is implemetation feature). If the server is configured to receive them (`AcceptEnv` option in _OpenSSH_) then locale must exist on the server-side (must be generated).
 
+If the session hangs e.g. server breaks in order to release client use sequence: `Enter`, `~`, `.`
+
 Execute local script on remote machine:  
 `ssh user@remote 'bash -s' < ./local.script.sh`
 
