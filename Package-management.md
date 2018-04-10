@@ -32,6 +32,9 @@ Remove old cached packages:
 Remove cached packages:  
 `aptitude clean` 
 
+Show to which package does the file belong to:  
+`dpkg -S /bin/ping`
+
 ## Configuration
 APT configuration can be dumped with:  
 `apt-config dump`
