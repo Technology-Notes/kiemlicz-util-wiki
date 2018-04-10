@@ -31,6 +31,11 @@ Remove old cached packages:
 
 Remove cached packages:  
 `aptitude clean` 
+
+## Configuration
+APT configuration can be dumped with:  
+`apt-config dump`
+
 ## Preferences
 Mechanism that determines which version of the package will be installed (consult: `man apt_preferences`).
 
@@ -69,3 +74,4 @@ To set package configuration option use (wireshark example, using here-string):
 
 # References
 1. https://wiki.debian.org/AptPreferences
+2. https://wiki.debian.org/UnattendedUpgrades
