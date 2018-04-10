@@ -39,6 +39,9 @@ Show to which package does the file belong to:
 APT configuration can be dumped with:  
 `apt-config dump`
 
+To reload configuration changes (either repositories changes or `apt.conf.d/*` changes use:  
+`apt-get update`
+
 ## Preferences
 Mechanism that determines which version of the package will be installed (consult: `man apt_preferences`).
 
