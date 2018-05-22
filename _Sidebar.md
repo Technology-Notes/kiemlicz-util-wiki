@@ -31,6 +31,7 @@
 5. Infrastructure as a code
    * [Foreman](https://github.com/kiemlicz/util/wiki/Foreman)
    * [Salt](https://github.com/kiemlicz/util/wiki/salt)
+   * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
 7. Monitoring
