@@ -15,11 +15,14 @@ By default no two sockets can be bound to same `(source address, source port)`, 
 |socket(domain, type, protocol)|returns socket file descriptor (fd)|
 |bind(fd, *addr, addrlen)|bind to address, returns error code|
 |listen(fd, backlog)|mark socket as passive (this is: as a socket accepting connections), backlog determines the maximum length to which the queue of pending connections for fd may grow|
+|send()|adds the data to the send buffer, it doesn't necessarily mean that the data has been sent out. In case of UDP it is possible that the data is send immediately, but for TCP it is unlikely |
 
 ## Socket options
 Socket behavior can be changed, moreover options meaning differ with every OS
 
 ### SO_REUSEADDR
+
+Theoretically `SO_REUSEADDR` has effect only on wildcard addresses.
 
 | SO_REUSEADDR | socketA | socketB | result |
 |-|-|-|-|
@@ -28,6 +31,11 @@ Socket behavior can be changed, moreover options meaning differ with every OS
 |false|`0.0.0.0:21`|`192.168.1.1:21`|EADDRINUSE|
 |true|`0.0.0.0:21`|`192.168.1.1:21`|OK|
 |true/false|`0.0.0.0:21`|`0.0.0.0:21`|EADDRINUSE|
+
+Impact:
+1. the TCP socket after closing transitions to `TIME_WAIT` (waiting till the data in socket buffers that was not yet sent will be send). The amount of time the socket stays in this state is determined by _linger time_ (OS and socket level configurable option). If `SO_REUSEADDR` is **not** set for such socket then closed TCP socket is still considered bound. However if `SO_REUSEADDR` is set, it is possible to bind to such (not-yet-fully) closed socket (without waiting _linger time_)
+
+
 
 # TCP socket states
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tcp_state_diagram_fixed.svg/796px-Tcp_state_diagram_fixed.svg.png)
