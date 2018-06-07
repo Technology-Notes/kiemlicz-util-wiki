@@ -1,9 +1,24 @@
-# Syscalls
+# Basics
+TCP/UDP connection is identified by so called 5-tuple:  
+`(protocol, source address, source port, destination address, destination port)`  
+Protocol is set when `socket()` is called  
+Source address and source port is set when `bind()` is called  
+Destination address and destination prot is set when `connect()` is called (even for UDP)  
+
+In order to bind to any address, user can specify address `0.0.0.0` or `::`. In practice it means: all IP addresses of all local interfaces. During the succeeding `connect()` call the OS will choose proper source IP based on destination address and contents of routing table.  
+In order to bind to any ephemeral port, user can specify `port = 0`, then the OS will choose the port  
+By default no two sockets can be bound to same `(source address, source port)`, e.g., if any socket is bound to `0.0.0.0:21`, then no other address can be bound to port 21
+
+## Syscalls
 | syscall | info |
 |-|-|
 |socket(domain, type, protocol)|returns socket file descriptor (fd)|
 |bind(fd, *addr, addrlen)|bind to address, returns error code|
 |listen(fd, backlog)|mark socket as passive (this is: as a socket accepting connections), backlog determines the maximum length to which the queue of pending connections for fd may grow|
+
+## Socket options
+
+### SO_REUSEADDR
 
 # TCP socket states
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tcp_state_diagram_fixed.svg/796px-Tcp_state_diagram_fixed.svg.png)
@@ -18,3 +33,4 @@ To set the max length of incomplete queue (first queue) use: `/proc/sys/net/ipv4
 # References
 1. http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html
 2. https://github.com/torvalds/linux/blob/master/net/ipv4/tcp_ipv4.c
+3. https://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t
