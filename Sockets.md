@@ -17,8 +17,17 @@ By default no two sockets can be bound to same `(source address, source port)`, 
 |listen(fd, backlog)|mark socket as passive (this is: as a socket accepting connections), backlog determines the maximum length to which the queue of pending connections for fd may grow|
 
 ## Socket options
+Socket behavior can be changed, moreover options meaning differ with every OS
 
 ### SO_REUSEADDR
+
+| SO_REUSEADDR | socketA | socketB | result |
+|-|-|-|-|
+|true/false|`192.168.1.1:21`|`192.168.1.1:21`|EADDRINUSE|
+|true/false|`192.168.1.1:21`|`10.0.0.1:21`|OK|
+|false|`0.0.0.0:21`|`192.168.1.1:21`|EADDRINUSE|
+|true|`0.0.0.0:21`|`192.168.1.1:21`|OK|
+|true/false|`0.0.0.0:21`|`0.0.0.0:21`|EADDRINUSE|
 
 # TCP socket states
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tcp_state_diagram_fixed.svg/796px-Tcp_state_diagram_fixed.svg.png)
