@@ -14,12 +14,22 @@ The name of this file is passed as an argument to the current command as the res
 
 # Bash
 Nothing more than shell implementation
-## Variable expansion
+
+## Expansions
+Controls how parameters/expressions are expanded
+
+### Variable expansion
 Introduced by `$` e.g. `$param_name`. Variable may be enclosed in braces in order to separate it from adjacent characters
-### Indirect expansion
+
+### Tilde expansion
+Begins with unquoted `~`, includes all following characters up to unquoted slash. Characters are treated as login name. Evaluation of `~login` yields `login` user home directory.
+
+#### Indirect expansion
 todo
+
 ### Quotes
 Single quotes preserve everything. No expansion occurs
+
 ## Built-in variables
 Positional parameters
 * `$#` number of command line arguments
