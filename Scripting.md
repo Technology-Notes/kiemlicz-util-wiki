@@ -122,3 +122,4 @@ awk env variables:
  9. https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
  10. http://wiki.bash-hackers.org/syntax/pe (http://wiki.bash-hackers.org/start)
  11. http://tldp.org/LDP/abs/html/exitcodes.html
+ 12. https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html
