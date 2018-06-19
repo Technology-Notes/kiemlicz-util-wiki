@@ -69,7 +69,21 @@ Need to obey convention:
  2. Filename chars allowed: alphanumeric, hyphen, underscore and period
 
 The file itself contains records separated by blank lines.  
-Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies). This is one of the reasons why this mechanism is kind of "discouraged".
+Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies).  
+This is one of the reasons why this mechanism is kind of "discouraged".  
+Typical `pref` file:
+```
+Package: *
+Pin: release o=Debian,a=testing
+Pin-Priority: 900
+```
+Configuration options:
+
+| Option | Meaning |
+|-|-|
+| Pin-Priority | The priority |
+| Package | To which package does the rule apply to. Can be regex |
+| Pin | More complex rule to match packages on. TODO list options |
 
 ## Package configuration
 To display package configuration files use:  
@@ -81,3 +95,4 @@ To set package configuration option use (wireshark example, using here-string):
 # References
 1. https://wiki.debian.org/AptPreferences
 2. https://wiki.debian.org/UnattendedUpgrades
+3. https://www.debian.org/doc/manuals/repository-howto/repository-howto
