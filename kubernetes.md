@@ -15,4 +15,5 @@ Kubernetes is a platform for automatic deployment, scaling, HA and orchestration
 
 
 # References
-1. 
+1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
+2. https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html
