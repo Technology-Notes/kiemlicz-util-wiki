@@ -4,15 +4,19 @@ Kubernetes is a platform for automatic deployment, scaling, HA and orchestration
 ## Vocabulary
 | Term | Meaning |
 | - | - |
-| Namespace |  |
-| Node | Worker machine, runs _Services_ capable of running _Pods_. Either VM or physical machine |
-| Service | |
-| Pod | Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) |
+| Namespace | Virtual cluster, scope for names |
+| Node | Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine |
+| Pod | Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) or shared resources for those containers |
 | Deployment | Configuration how to create/update instances of the application |
+| Service | Set of _Pods_ with policy how to access them (e.g. load balancing or service discovery for _pods_) |
+| Controller | _Pods_ manager (handles, e.g., pod replication) |
 
-# API
+Containers within one _Pod_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_. Services match a set of pods using labels and selectors.
+
+# Features
+
+## API
 `Kubectl` is used to interact with the cluster.
-
 
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
