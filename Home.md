@@ -13,3 +13,4 @@ Information about various linux tools to aid day-to-day work.
 4. http://zsh.sourceforge.net/Doc/Release/index.html
 5. http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
 6. https://wikimatze.de/writing-zsh-completion-for-padrino/
+7. http://brendangregg.com/linuxperf.html
