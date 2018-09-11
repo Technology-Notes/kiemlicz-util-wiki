@@ -5,6 +5,7 @@ Information about various linux tools to aid day-to-day work.
 
 ### Cheatsheet
 ![](http://brendangregg.com/Perf/linux_perf_tools_full.png)
+http://brendangregg.com/linuxperf.html
 
 #### Writing zsh completions references
 1. https://askql.wordpress.com/2011/01/11/zsh-writing-own-completion/
@@ -13,4 +14,3 @@ Information about various linux tools to aid day-to-day work.
 4. http://zsh.sourceforge.net/Doc/Release/index.html
 5. http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
 6. https://wikimatze.de/writing-zsh-completion-for-padrino/
-7. http://brendangregg.com/linuxperf.html
