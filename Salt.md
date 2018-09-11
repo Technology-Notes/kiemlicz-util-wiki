@@ -29,10 +29,6 @@ Salt (as a whole) architecture consists of [multiple components](https://docs.sa
 ## Evaluation order during execution
 Jinja -> YAML -> highstate -> low state -> execution
 
-# Usage
-Execute states from given environment: `salt '*' state.highstate saltenv=base`  
-Execute state: `salt '*' state.apply <statename> [saltenv=<env>]`
-
 # salt-api
 Using curl to communicate with API: `curl -sSk https://salt.local:9191/login -H 'Accept: application/x-yaml' -d username=saltuser -d password=saltpassword -d eauth=auto`
 
