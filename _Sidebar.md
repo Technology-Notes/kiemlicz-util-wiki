@@ -7,11 +7,11 @@
    * [Git](https://github.com/kiemlicz/util/wiki/git)
    * [Dotfiles](https://github.com/kiemlicz/util/wiki/dotfiles)
 2. OS  
-   * fundamentals
+   * Fundamentals
      * [Memory](https://github.com/kiemlicz/util/wiki/memory)
      * [Kernel](https://github.com/kiemlicz/util/wiki/kernel)
    * [init](https://github.com/kiemlicz/util/wiki/init)
-   * [packages](https://github.com/kiemlicz/util/wiki/package-management)
+   * [Packages](https://github.com/kiemlicz/util/wiki/package-management)
    * [Crypto](https://github.com/kiemlicz/util/wiki/crypto)
    * File systems
      * [BTRFS](https://github.com/kiemlicz/util/wiki/btrfs)
