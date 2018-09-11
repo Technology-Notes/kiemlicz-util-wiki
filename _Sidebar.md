@@ -32,6 +32,7 @@
    * [Foreman](https://github.com/kiemlicz/util/wiki/Foreman)
    * [Salt](https://github.com/kiemlicz/util/wiki/salt)
      * [Configuration](https://github.com/kiemlicz/util/wiki/Salt-configuration)
+     * [Usage](https://github.com/kiemlicz/util/wiki/Salt-usage)
    * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
