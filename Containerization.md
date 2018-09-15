@@ -5,7 +5,8 @@ Engine responsible for providing the execution environment for application is ca
 # Solutions
 
 ## Docker
-Originally LXC-based, widespread.
+Originally LXC-based, widespread. Created for shipping and running applications. Advocates running one process per container.
+
 ### Vocabulary
 | term | meaning |
 |-|-|
