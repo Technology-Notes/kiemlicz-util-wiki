@@ -3,9 +3,8 @@
 |------|-------------|
 | Connection | Is a transport providing suitable type of service, connection is transient, associated with **one** session |
 | Session | Association between client and server. Created by the handshake protocol. Contains security parameters that are shared between **multiple** connections. They are used to avoid **expensive** negotiation of new security parameters for each connection |
-| Record | Chunk of logically grouped data. Conveyed by Record protocol |
-| Flight | Group of messages exchanged during handshake. Messages from the same flight may be placed in same _Record_ |
-| Record | DTLS message fragment that must fit within single IP packet. Contains sequence number and epoch |
+| Flight | Chunk of logically grouped data. Exchanged during handshake. Messages from the same flight may be placed in same _Record_ |
+| Record | DTLS message fragment that must fit within single IP packet. Contains sequence number and epoch. Conveyed by Record protocol |
 
 # TLS
 Protocol directly _above_ layer 4 ISO/OSI. Uses reliable transport **only** (TCP in general).  
