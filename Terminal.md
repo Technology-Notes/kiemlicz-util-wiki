@@ -8,7 +8,7 @@ Application.
 Uses terminal, exposes OS functionality for user (via commands). Allows configuration of execution environment (via variables)
 # Environment variables
 Shell utilizes two types of variables:
- - local: accessible only via current shell. Not passed to child processes. Created: `a=some_value`.  
+ - _local_: accessible only via current shell. Not passed to child processes. Created: `a=some_value`.  
  Displayed with `set` command
- - exported: passed to every child process. Created: `export a=some_value`.  
+ - _exported_: passed to every child process. Created: `export a=some_value`.  
 Displayed with `env` command
