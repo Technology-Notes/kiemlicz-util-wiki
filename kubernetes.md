@@ -16,7 +16,8 @@ Containers within one _Pod_ share IP address. Tightly coupled containers should 
 # Features
 
 ## API
-`Kubectl` is used to interact with the cluster.
+`Kubectl` is used to interact with the cluster.  
+If you have multiple clusters, list them with: `kubectl config get-contexts`, switch between them with: `kubectl config use-context CONTEXT_NAME`
 
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
