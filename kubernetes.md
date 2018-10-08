@@ -13,9 +13,15 @@ Kubernetes is a platform for automatic deployment, scaling, HA and orchestration
 
 Containers within one _Pod_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_. Services match a set of pods using labels and selectors.
 
-# Features
+# Setup
+Setup depends on the number of nodes used for cluster
 
-## API
+## Local
+Use [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/).  
+It uses either KVM or VirtualBox as docker host.  
+In order to increase default limits of the VM, it must be destroyed first: `minikube delete; minikube start --memory 12288`
+
+# API
 `Kubectl` is used to interact with the cluster.  
 If you have multiple clusters, list them with: `kubectl config get-contexts`, switch between them with: `kubectl config use-context CONTEXT_NAME`
 
