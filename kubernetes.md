@@ -19,6 +19,10 @@ Containers within one _Pod_ share IP address. Tightly coupled containers should 
 `Kubectl` is used to interact with the cluster.  
 If you have multiple clusters, list them with: `kubectl config get-contexts`, switch between them with: `kubectl config use-context CONTEXT_NAME`
 
+### Overview
+In order to get detailed information about any part of your deployment use `kubectl describe <kind>`.  
+The term `kind` is defined in this [manual](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) (it can simply be a `pod`, `service` or `deployment`)
+
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
 2. https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html
