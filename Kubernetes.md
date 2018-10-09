@@ -1,5 +1,7 @@
-# Basics
-Kubernetes is a platform for automatic deployment, scaling, HA and orchestration of containerized applications
+Kubernetes is the **container** orchestration tool.  
+Its primary job it to ensure that given container is running with regards to given constraints (e.g container X requires N mb of memory or container X must be replicated N times on different physical nodes).
+
+Kubernetes covers more use-cases: it is a platform for automatic deployment, scaling, HA and orchestration of containerized applications
 
 ## Vocabulary
 | Term | Meaning |
