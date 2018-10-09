@@ -19,10 +19,13 @@ Containers within one _Pod_ share IP address. Tightly coupled containers should 
 # Setup
 Setup depends on the number of nodes used for cluster
 
-## Local
+## Single-node
 Use [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/).  
 It uses either KVM or VirtualBox as docker host.  
 In order to increase default limits of the VM, it must be destroyed first: `minikube delete; minikube start --memory 12288`
+
+## Multi-node
+
 
 # API
 `Kubectl` is used to interact with the cluster.  
