@@ -7,13 +7,14 @@ Kubernetes covers more use-cases: it is a platform for automatic deployment, sca
 | Term | Meaning |
 | - | - |
 | Namespace | Virtual cluster, scope for names |
+| Label | Key-value pair used to group set of objects |
 | Node | Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine |
 | Pod | Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) or shared resources for those containers |
 | Deployment | Configuration how to create/update instances of the application |
 | Service | Set of _Pods_ with policy how to access them (e.g. load balancing or service discovery for _pods_) |
 | Controller | _Pods_ manager (handles, e.g., pod replication) |
 
-Containers within one _Pod_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_. Services match a set of pods using labels and selectors.
+Containers within one _Pod_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_. Services match a set of pods using labels and selectors. Services are published or discovered either via DNS or environmental variables
 
 # Setup
 Setup depends on the number of nodes used for cluster
