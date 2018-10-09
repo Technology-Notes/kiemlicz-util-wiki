@@ -1,3 +1,6 @@
+Salt is primarily a configuration management solution and remote execution engine.  
+Thanks to the latter, many use-cases can (but not necessarily should) be covered using just this one tool.
+
 # Basics
 | Term | meaning |
 |------|---------|
