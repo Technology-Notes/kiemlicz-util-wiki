@@ -28,7 +28,7 @@
 4. Virtualization
    * [VM](https://github.com/kiemlicz/util/wiki/vm)
    * [Lightweight VM](https://github.com/kiemlicz/util/wiki/Containerization)
-5. [Infrastructure as a code](https://github.com/kiemlicz/util/wiki/iac)
+5. [Infrastructure as a code](https://github.com/kiemlicz/util/wiki/Infrastructure-as-a-Code)
    * [Foreman](https://github.com/kiemlicz/util/wiki/Foreman)
    * [Salt](https://github.com/kiemlicz/util/wiki/salt)
      * [Configuration](https://github.com/kiemlicz/util/wiki/Salt-configuration)
