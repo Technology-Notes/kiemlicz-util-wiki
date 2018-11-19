@@ -63,3 +63,6 @@ Failed container can be pretty easily debugged
 `docker commit <container id>`
 3. Run image corresponding to failed container  
 `docker run -it --entrypoint /bin/bash <image id>`
+
+# References
+ 1. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#label
