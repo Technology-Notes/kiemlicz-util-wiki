@@ -22,6 +22,12 @@ lxc.network.link = br1
 lxc.network.type = empty
 ```
 For "isolated" bridge interface for containers, configure `lxc-net`.  
-Refer to [5](#References)
+Refer to [4](#References)
 
 # References
+ 1. https://wiki.debian.org/LXC
+ 2. https://www.stgraber.org/2013/12/20/lxc-1-0-blog-post-series/
+ 3. https://www.flockport.com/guides/
+ 4. https://wiki.debian.org/LXC/SimpleBridge
+ 5. http://man7.org/linux/man-pages/man5/lxc.container.conf.5.html
+ 6. https://wiki.debian.org/BridgeNetworkConnections
