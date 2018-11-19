@@ -34,7 +34,7 @@ This must be removed from script itself, otherwise `dockerd` will fail to start
 
 ## Usage
 Build image from `Dockerfile` (issue in directory containing `Dockerfile`):  
-`docker build .`
+`docker build -t my-tag .`
 
 Start container (simplest form):  
 `docker run --name <some_name> <image tag or name> [args]`
