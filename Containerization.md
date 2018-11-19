@@ -10,5 +10,3 @@ Engine responsible for providing the execution environment for application is ca
 
 # References
  1. Modern Linux Administration - Sam R. Alapati
-
- 8. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#label
