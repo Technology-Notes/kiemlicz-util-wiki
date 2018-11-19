@@ -1,19 +1,19 @@
 Originally LXC-based, widespread. Created for shipping and running applications. Advocates running one process per container.
 
-### Vocabulary
+## Vocabulary
 | term | meaning |
 |-|-|
 | image | Product of `docker build` command. Snapshot of a container. Analogous to the concept from _Object Oriented Programming_: `class` |
 | container | Running instance of image. Analogous to the concept from _Object Oriented Programming_: `class` instance |
 
-### Configuration
+## Configuration
 `dockerd` uses following configuration files:
 
 `/etc/docker/daemon.json`
 
 `/etc/default/docker` (for Debian based OSes)
 
-#### Change storage-driver:
+### Change storage-driver:
 ```
 > cat /etc/docker/daemon.json
 {
@@ -22,7 +22,7 @@ Originally LXC-based, widespread. Created for shipping and running applications.
 ```
 For full list of supported drivers refer to [storage drivers](https://docs.docker.com/engine/userguide/storagedriver/selectadriver/)
 
-#### Change dockerd sockets:
+### Change dockerd sockets:
 ```
 > cat /etc/docker/daemon.json
 {
@@ -32,7 +32,7 @@ For full list of supported drivers refer to [storage drivers](https://docs.docke
 It is possible that run init/upstart/service script specifies `-H` flag for startup command.  
 This must be removed from script itself, otherwise `dockerd` will fail to start
 
-### Usage
+## Usage
 Build image from `Dockerfile` (issue in directory containing `Dockerfile`):  
 `docker build .`
 
@@ -55,7 +55,7 @@ Push image to registry:
 `docker login <repourl>` 
 3. `docker push <repourl>/<tag>`
 
-#### Debugging
+### Debugging
 Failed container can be pretty easily debugged
 1. Grab exited container ID  
 `docker ps -a`
