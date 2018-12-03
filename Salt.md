@@ -11,9 +11,17 @@ Thanks to the latter, many use-cases can (but not necessarily should) be covered
 
 # Architecture
 Highly [modular](https://docs.saltstack.com/en/latest/ref/index.html) and highly [customizable](https://docs.saltstack.com/en/latest/ref/modules/).
-Event-based, runs in multiple modes: 
+Event-based, runs: 
 * master-slave
 * master-less
+
+Supports both management modes:
+* push
+* pull
+
+Can operate:
+* with agents
+* [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/)
 
 Each _state_ is enforced on targeted minion (slave).  
 State during its execution uses _modules_. The difference between the two:
@@ -22,12 +30,12 @@ State during its execution uses _modules_. The difference between the two:
 |-|-|
 | Assert/enforce certain state on minion. They map to nice `sls` files | Executes a task |
 
-Salt (as a whole) architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html) (also called modules):
- * runners: master-only command sequences
- * tops: builds top-file structure
- * pillar
- * grains
- * fileserver
+Salt (as a whole) architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html) that are best decribed using layered approach:
+ - [minions](https://github.com/kiemlicz/util/wiki/Salt-Minion)
+ - [master](https://github.com/kiemlicz/util/wiki/Salt-Master)
+ - [transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
+ - [scripts](https://github.com/kiemlicz/util/wiki/Salt-Transport)
+ - [modules](https://github.com/kiemlicz/util/wiki/Salt-Transport)
 
 ## Evaluation order during execution
 Jinja -> YAML -> highstate -> low state -> execution
@@ -43,3 +51,4 @@ Using curl to communicate with API: `curl -sSk https://salt.local:9191/login -H 
 5. https://github.com/saltstack/salt-bootstrap
 6. https://docs.saltstack.com/en/latest/ref/configuration/master.html
 7. https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html
+8. https://vimeo.com/289106306/7fd5601ce6
