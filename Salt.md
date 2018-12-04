@@ -34,8 +34,8 @@ Salt (as a whole) architecture consists of [multiple components](https://docs.sa
  - [minions](https://github.com/kiemlicz/util/wiki/Salt-Minion)
  - [master](https://github.com/kiemlicz/util/wiki/Salt-Master)
  - [transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
- - [scripts](https://github.com/kiemlicz/util/wiki/Salt-Transport)
- - [modules](https://github.com/kiemlicz/util/wiki/Salt-Transport)
+ - [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts)
+ - [modules](https://github.com/kiemlicz/util/wiki/Salt-Modules)
 
 ## Evaluation order during execution
 Jinja -> YAML -> highstate -> low state -> execution
