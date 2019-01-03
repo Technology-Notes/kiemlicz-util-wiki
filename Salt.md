@@ -5,24 +5,25 @@ Thanks to the latter, many use-cases can (but not necessarily should) be covered
 | Term | meaning |
 |------|---------|
 | minion | slave, managed host |
-| sls | salt state file, representation of the state the system should end up in |
+| sls | _salt state file_, file that represents the state the system should end up in |
 | pillar | sensitive data, tree like structure, targeted and securely send to selected minions |
 | grain | minion data, information for state to behave differently (minion os information) |
 
 # Architecture
-Highly [modular](https://docs.saltstack.com/en/latest/ref/index.html) and highly [customizable](https://docs.saltstack.com/en/latest/ref/modules/).
-Event-based, runs: 
+Event-based, highly [modular](https://docs.saltstack.com/en/latest/ref/index.html) and highly [customizable](https://docs.saltstack.com/en/latest/ref/modules/).
+Runs: 
 * master-slave
 * master-less
 
 Supports both management modes:
-* push
-* pull
+* push (the config server sends the config updates to slaves)
+* pull (the slaves check server for config updates)
 
 Can operate:
 * with agents
 * [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/)
 
+States are matched to minions using [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html)
 Each _state_ is enforced on targeted minion (slave).  
 State during its execution uses _modules_. The difference between the two:
 
