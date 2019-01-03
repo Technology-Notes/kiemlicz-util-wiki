@@ -23,8 +23,8 @@ Can operate:
 * with agents
 * [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/)
 
-States are matched to minions using [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html)
-Each _state_ is enforced on targeted minion (slave).  
+States are matched to minions using (primarily) [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html).
+Each _state_ is then executed on targeted minion (slave).  
 State during its execution uses _modules_. The difference between the two:
 
 | State | Module |
