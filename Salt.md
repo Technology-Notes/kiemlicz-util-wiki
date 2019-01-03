@@ -23,26 +23,10 @@ Can operate:
 * with agents
 * [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/)
 
-States are matched to minions using (primarily) [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html).
+States are matched to minions using (primarily) [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html).  
 Each _state_ is then executed on targeted minion (slave).  
-State during its execution uses _modules_. The difference between the two:
 
-| State | Module |
-|-|-|
-| Assert/enforce certain state on minion. They map to nice `sls` files | Executes a task |
-
-Salt (as a whole) architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html) that are best decribed using layered approach:
- - [minions](https://github.com/kiemlicz/util/wiki/Salt-Minion)
- - [master](https://github.com/kiemlicz/util/wiki/Salt-Master)
- - [transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
- - [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts)
- - [modules](https://github.com/kiemlicz/util/wiki/Salt-Modules)
-
-## Evaluation order during execution
-Jinja -> YAML -> highstate -> low state -> execution
-
-# salt-api
-Using curl to communicate with API: `curl -sSk https://salt.local:9191/login -H 'Accept: application/x-yaml' -d username=saltuser -d password=saltpassword -d eauth=auto`
+Full state execution details on minion nodes is described in [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) section
 
 # References:
 1. https://repo.saltstack.com/

@@ -35,6 +35,12 @@
    * [Salt](https://github.com/kiemlicz/util/wiki/salt)
      * [Configuration](https://github.com/kiemlicz/util/wiki/Salt-configuration)
      * [Usage](https://github.com/kiemlicz/util/wiki/Salt-usage)
+     * [Components](https://github.com/kiemlicz/util/wiki/Salt-components)
+       * [Minions](https://github.com/kiemlicz/util/wiki/Salt-Minion)
+       * [Master](https://github.com/kiemlicz/util/wiki/Salt-Master)
+       * [Transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
+       * [Scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts)
+       * [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules)
    * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)

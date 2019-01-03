@@ -25,6 +25,8 @@ Doesn't use salt-minion process at all, requires only SSH daemon running and pyt
 
 Runs on the salt-master, exposes multiple connectors and ACL
 
+Using curl, access API like so: `curl -sSk https://salt.local:9191/login -H 'Accept: application/x-yaml' -d username=saltuser -d password=saltpassword -d eauth=auto`
+
 #### salt-proxy
 
 Pretends to be salt-minion, allows provisioning of the devices that cannot run salt-minion or cannot be connected via SSH
