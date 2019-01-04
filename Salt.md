@@ -45,9 +45,10 @@ it is best to describe them using layered approach:
 This section contains only brief description of how to interact with Salt using CLI.  
 For more complete overview refer to [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts).
 
-Dissection of the commands: `salt '*' execution_module_name.function_name [arguments_list] [kwargs]`  
+Dissection of the commands:  
+`salt '*' execution_module_name.function_name [arguments_list] [kwargs]`  
 `salt` is the python script that accepts user commands and passes them to _Salt Master_ process.  
-`'*'` selects minions which will execute user function. By default the shell-style globbing is used on minion id.
+`'*'` selects minions which will execute user function. By default the shell-style globbing is used on minion id.  
 Find [`execution_module_name`](https://docs.saltstack.com/en/latest/ref/modules/all/index.html) or within [Salt sources](https://github.com/saltstack/salt/tree/develop/salt/modules).  
 Example: `salt '*' test.ping`
 
