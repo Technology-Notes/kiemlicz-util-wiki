@@ -1,12 +1,13 @@
-Agent daemon that runs on the remote (managed) server  
-Receives commands from the Salt Master and responds with the results  
-Runs on top of the OS (Windows, Linux, Mac)  
+Agent daemon that runs on the remote (managed) node.    
+Receives commands from the _Salt Master_ and responds with the results, can operate autonomously as well.  
+Runs directly on top of the OS (Windows, Linux, Mac), requires python (2.7 or 3.5).  
 
-## Connection
-Minion generates keypair
-Sends public key
-Waits for Master to accept
-Master generates symmetric key, establishes secure connection
-Minion sends grains
+## Operation
+ - minion generates keypair
+ - sends public key to the _Salt Master_
+ - waits for _Salt Master_ to accept the key (there are multiple ways to accept the key, e.g., [salt-key](https://github.com/kiemlicz/util/wiki/Salt-Scripts#salt-key))
+ - _Salt Master_ generates symmetric key, encrypts it with _Salt Minion_ public key and sends back
+ - _Salt Minion_ has established secure connection
+ - _Salt Minion_ sends grains via secure channel
 
-## Targeting
+_Salt Minion_ is ready to accept master requests, all further state file rendering happens on minion

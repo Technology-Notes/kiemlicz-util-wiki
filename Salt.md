@@ -2,31 +2,59 @@ Salt is primarily a configuration management solution and remote execution engin
 Thanks to the latter, many use-cases can (but not necessarily should) be covered using just this one tool.
 
 # Basics
-| Term | meaning |
+| Term | Meaning |
 |------|---------|
 | minion | slave, managed host |
 | sls | _salt state file_, file that represents the state the system should end up in |
-| pillar | sensitive data, tree like structure, targeted and securely send to selected minions |
-| grain | minion data, information for state to behave differently (minion os information) |
+| pillar | sensitive data, tree like structure, targeted and securely send to matched minions |
+| grain | minion data, static information, rarely refreshed on master, contain minion specific data only (like OS name) |
+
+[Full glossary](https://docs.saltstack.com/en/latest/glossary.html)
 
 # Architecture
 Event-based, highly [modular](https://docs.saltstack.com/en/latest/ref/index.html) and highly [customizable](https://docs.saltstack.com/en/latest/ref/modules/).
+It is fairly easy to add your own state modules as well as alter existing ones.       
 Runs: 
-* master-slave
-* master-less
+* master-slave (separate master node that provisions minion nodes)
+* master-less (the node provisions itself)
 
 Supports both management modes:
-* push (the config server sends the config updates to slaves)
-* pull (the slaves check server for config updates)
+* push (the master sends the config updates to minions)
+* pull (the minions check with master for config updates)
 
 Can operate:
-* with agents
-* [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/)
+* with agents (application installed on minion)
+* [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/) (no application installed on minion)
 
 States are matched to minions using (primarily) [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html).  
-Each _state_ is then executed on targeted minion (slave).  
+Each _state_ is then executed on targeted minion (slave). By default minions are targeted using minion id - special generated grain (its default value is the minion hostname).  
+Detailed description how does the state execute on minion is provided in [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) section 
 
-Full state execution details on minion nodes is described in [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) section
+Details about how to interact with salt can be found in [usage](https://github.com/kiemlicz/util/wiki/Salt#usage) and in [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts) sections 
+
+## Details
+Salt architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html),
+it is best to describe them using layered approach:
+ - [minion](https://github.com/kiemlicz/util/wiki/Salt-Minion)
+ - [master](https://github.com/kiemlicz/util/wiki/Salt-Master)
+ - [transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
+ - [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts)
+ - [modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) 
+ 
+# Usage
+This section contains only brief description of how to interact with Salt using CLI.  
+For more complete overview refer to [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts).
+
+Dissection of the commands: `salt '*' execution_module_name.function_name [arguments_list] [kwargs]`  
+`salt` is the python script that accepts user commands and passes them to _Salt Master_ process.  
+`'*'` selects minions which will execute user function. By default the shell-style globbing is used on minion id.
+Find [`execution_module_name`](https://docs.saltstack.com/en/latest/ref/modules/all/index.html) or within [Salt sources](https://github.com/saltstack/salt/tree/develop/salt/modules).  
+Example: `salt '*' test.ping`
+
+State execution:    
+Execute all matching states from given environment: `salt '*' state.highstate saltenv=base`  
+Execute single state: `salt '*' state.apply <statename> [saltenv=<env>]`
+
 
 # References:
 1. https://repo.saltstack.com/
