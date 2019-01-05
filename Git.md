@@ -30,6 +30,14 @@ Remote:
 Locally:  
 `git branch -d <local_branch_name>`
 
+## Rename
+First rename locally, then delete old branch on remote, finally push "new"
+```
+git branch -m old_branch new_branch   
+git push origin :old_branch  
+git push --set-upstream origin new_branch 
+```
+
 # Submodules
 Project can depend on other projects. Root project is called **superproject**.  
 Submodule is always a commit in other repostiory. In other words: submodule points to particular commit.
