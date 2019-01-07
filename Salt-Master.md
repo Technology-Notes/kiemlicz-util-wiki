@@ -59,14 +59,34 @@ Allows to mix all of the options using slightly different syntax:
 `salt -C 'G@os:Debian and I@redis:setup_type:cluster' test.ping` 
 Find all of the available prefixes to be used [here](https://docs.saltstack.com/en/latest/topics/targeting/compound.html#targeting-compound)
 
+## States
+States can be defined using arbitrary syntax as long as proper [renderer](https://docs.saltstack.com/en/latest/ref/renderers/) is present. In order to specify different renderer, use shebang with renderer name.
+```
+#!py
+
+def run():
+  ...
+```
+Default renderer uses Jinja2+YAML (order matters).  
+States which are defined like in [example](https://github.com/kiemlicz/util/wiki/Salt-configuration#states) wouldn't be of much use,
+they are too static. States should use pillar and grain data to allow flexibility of configuration.
+
+
 ## Pillar
 Based on everything the _Salt Master_ knows about the minion and minion grain data the _Salt Master_ creates 
 the pillar data and sends it over to minion.
-Secrets can be placed in pillar data
-It is possible to include _Salt Master_ configuration files in the pillar data. 
-In `/etc/salt/master.d/custom.conf` setting: `pillar_opts: True` controls this.
+Pillar is created in the same way as state files. It contains its own `top.sls` with 
 
-### Environments aka. pillarenv
+What to store in pillar data:
+ - secrets
+ - minion configuration
+ - any data... this is the place where all of the variables, configs are stored
+
+It is possible to include _Salt Master_ configuration files in the pillar data. 
+In `/etc/salt/master.d/custom.conf` the setting: `pillar_opts: True` controls this.
+
+### Environments aka pillarenv
+
 
 ### CLI
 Inspect minion pillar data: `salt 'my_minion' pillar.items`
