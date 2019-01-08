@@ -30,7 +30,7 @@ States are matched to minions using (primarily) [`top.sls` file](https://docs.sa
 Each _state_ is then executed on targeted minion (slave). By default minions are targeted using minion id - special generated grain (its default value is the minion hostname).  
 Detailed description how does the state execute on minion is provided in [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) section 
 
-Details about how to interact with salt can be found in [usage](https://github.com/kiemlicz/util/wiki/Salt#usage) and in [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts) sections 
+Information about how to interact with salt can be found in [usage](https://github.com/kiemlicz/util/wiki/Salt#usage) and in [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts) sections 
 
 ## Details
 Salt architecture consists of [multiple components](https://docs.saltstack.com/en/latest/topics/development/modular_systems.html),

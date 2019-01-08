@@ -143,6 +143,8 @@ fileserver_backend:
 ```
 Allows to pull state and pillar definitions from git repositories.
 
+## Cloud
+
 # Extending Salt
 It is very easy to create your own _Salt_ modules or even alter existing ones. All of the module changes must be synchronized
 to minions prior to use (this happens automatically only for `state.highstate` call). By default, extensions must be placed in directories in _State Tree_
