@@ -19,7 +19,7 @@ base:              # environment
 
 ### Environments aka saltenv
 Most often used to isolate operations within different... environments, e.g., `dev`, `test`, `prod`.   
-Requires [additional configuration]()   
+Requires [additional configuration](https://github.com/kiemlicz/util/wiki/Salt-configuration#saltenv)  
 Helps to:
  - Group minions by their role
  ```
@@ -27,7 +27,7 @@ Helps to:
    'prod*':
      - some_state
  ```
- However it is possible to achieve this without multiple environments (by adding proper grains on minions):
+However it is possible to achieve this without multiple environments (by adding proper grains on minions):
  ```
  base:
    'role:prod':
@@ -71,22 +71,25 @@ Default renderer uses Jinja2+YAML (order matters).
 States which are defined like in [example](https://github.com/kiemlicz/util/wiki/Salt-configuration#states) wouldn't be of much use,
 they are too static. States should use pillar and grain data to allow flexibility of configuration.
 
-
 ## Pillar
 Based on everything the _Salt Master_ knows about the minion and minion grain data the _Salt Master_ creates 
 the pillar data and sends it over to minion.
-Pillar is created in the same way as state files. It contains its own `top.sls` with 
+Pillar is managed similarly to state files. It contains its own `top.sls` with data to minion matching and the actual pillar data
 
 What to store in pillar data:
  - secrets
  - minion configuration
- - any data... this is the place where all of the variables, configs are stored
+ - any data... this is the place where all of the variables and configs should be stored
 
-It is possible to include _Salt Master_ configuration files in the pillar data. 
+It is even possible to include _Salt Master_ configuration files in the pillar data. 
 In `/etc/salt/master.d/custom.conf` the setting: `pillar_opts: True` controls this.
 
 ### Environments aka pillarenv
+Similarly to `saltenv`, `pillarenv` exists. The purpose is almost the same: to group pillar files within environments.
 
+However... by default minion fetches pillar data from all matching environments, thus defeating the purpose of `pillarenv`.
+Setting `pillarenv` in the minion configuration changes this behavior to select only this one defined environment.
 
 ### CLI
-Inspect minion pillar data: `salt 'my_minion' pillar.items`
+Inspect whole minion pillar data: `salt 'my_minion' pillar.items`  
+Get pillar value: `salt 'my_minion' pillar.get my:nested:or_not_key`

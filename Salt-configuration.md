@@ -34,6 +34,29 @@ base:
 ```
 For more information about Top File structure and state definition refer to [Targeting and Top file](https://github.com/kiemlicz/util/wiki/Salt-Master#targeting-and-top-file)
 
+### saltenv
+`file_roots` configuration contains environment specification, in order to specify multiple environments list them with their directories containing states:
+```
+file_roots:
+  base:
+    - /srv/salt/base
+  dev:
+    - /srv/salt/dev
+```
+It is possible to specify directories multiple times in order to 'reuse' some states from other environments:
+```
+file_roots:
+  base:
+    - /srv/salt/base
+  dev:
+    - /srv/salt/dev
+    - /srv/salt/base
+```
+
+### Custom states
+In order to create your own states, put them in `_states` under _State Tree_ root. This directory is configured to be synchronized
+to minions upon `state.highstate` or `saltutil.sync_all` calls.
+
 ## Pillar
 Defined in similar way as state files, located in directories listed in `pillar_roots` configuration option.
 There is no enforced pillar data syntax, given default renderer the pillar must be just provided as YAML file.  
@@ -45,9 +68,17 @@ some_user_data:
   home_dir: /home/cool_guy
 ```
 
-### External pillar
-Pillar subsystem can be extended to fetch data from various sources, [use `ext_pillar` to achieve this](https://docs.saltstack.com/en/latest/topics/development/external_pillars.html).
+### Custom pillar
+Documentation refers to custom pillars as [external pillars](https://docs.saltstack.com/en/latest/topics/development/external_pillars.html).  
+It is possible to extend Pillar subsystem to fetch data from arbitrary sources all that is required is to implement: 
+```
+def ext_pillar( minion_id, pillar, *args, **kwargs ):
+    ...
+    
+    return pillar_dict 
+```
 The external pillar must be configured in master configuration first.
+Some already existing custom pillars deserve special mentions.
 
 #### git_pillar
 
@@ -94,8 +125,27 @@ apache:
 {% endfor %}
 ```
 
+## Fileserver
+All of the above configuration samples assumed filesystem to be used as primary `sls` storage. 
+Actually [fileserver is also a _Salt_ module](https://docs.saltstack.com/en/latest/ref/file_server/all/index.html).
+Thus it is possible to create your own (place it in `_fileserver` directory under _State Tree_ root).
+In order to enable different fileserver, switch them on in master configuration:
+```
+fileserver_backend:
+  - roots
+  ```
+
+### gitfs
+Enabled with:
+```
+fileserver_backend:
+  - gitfs
+```
+Allows to pull state and pillar definitions from git repositories.
+
 # Extending Salt
 It is very easy to create your own _Salt_ modules or even alter existing ones. All of the module changes must be synchronized
 to minions prior to use (this happens automatically only for `state.highstate` call). By default, extensions must be placed in directories in _State Tree_
 root, following naming convention: `_<module_type>`.  
 It is also possible to define custom extensions in different places, given proper `extension_modules` configuration.
+Anything from [salt module](https://docs.saltstack.com/en/latest/ref/index.html) can be customized.
