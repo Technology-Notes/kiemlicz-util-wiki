@@ -62,7 +62,5 @@ Execute single state: `salt '*' state.apply <statename> [saltenv=<env>]`
 2. https://docs.saltstack.com/en/getstarted/config/functions.html
 3. https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html
 4. https://docs.saltstack.com/en/latest/ref/states/highstate.html
-5. https://github.com/saltstack/salt-bootstrap
+5. [Great presentation](https://vimeo.com/289106306/7fd5601ce6) from [@carsonoid](https://github.com/carsonoid)
 6. https://docs.saltstack.com/en/latest/ref/configuration/master.html
-7. https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html
-8. [Great presentation](https://vimeo.com/289106306/7fd5601ce6) from [@carsonoid](https://github.com/carsonoid)
