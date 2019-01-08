@@ -19,6 +19,5 @@ For example, all of the following calls are insecure:
 On the other hand:
 `salt 'minion' saltutil.refresh_pillar` is secure.  
 Minion (and possibly all other minions) will receive the request to
-refresh the pillar data. However `minion` will establish private secure channel with master, which will use to fetch it's very
-own private pillar data.
+refresh the pillar data. However only `minion` will establish private secure channel with master, which will use to fetch it's very own private pillar data.
  
