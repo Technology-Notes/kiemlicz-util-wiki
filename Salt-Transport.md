@@ -11,7 +11,7 @@ Thus **every** minion receives the master requests (the filtering happens on the
 Master computes the number of expected replies (if using wildcards or computation is impossible, master will always assume all cached minions could reply)
 Minions sends their requests and replies via _Direct bus_, this channel is private for master-minion pair.
 
-For example, all of the following calls are insecure:
+For example, all of the following calls are insecure:  
 `salt '*' grains.set some:password 'afm4o'`,  
 `salt 'minion' grains.set some:password 'afm4o'`,  
 `salt 'minion' state.apply db.setup pillar='{"some": {"password": "afm4o"}}'`  
