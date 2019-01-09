@@ -133,7 +133,17 @@ In order to enable different fileserver, switch them on in master configuration:
 ```
 fileserver_backend:
   - roots
-  ```
+```
+It is possible to specify multiple backends, they are merged together. The `sls` files that are same within backends
+are taken in the order of their definition (`fileserver_backend` is a list after all).  
+
+Example:
+```
+fileserver_backend:
+  - roots
+  - gitfs
+```
+If the `top.sls` file exists in both _gitfs_ and _roots_ top directories then the `roots` one will be used.
 
 ### gitfs
 Enabled with:

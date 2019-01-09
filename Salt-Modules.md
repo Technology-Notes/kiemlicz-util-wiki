@@ -42,9 +42,10 @@ pkgs_pip:
 
 ### Ordering states
 Salt supports two ordering styles:
- 1. Lexicographic, states are sorted by their state ID, set `state_auto_order: False`
- 2. 
+ 1. In the order of appearance in top.sls file, thus it is the filename that determines order
+ 2. Lexicographic, states are sorted by their state ID, set `state_auto_order: False`
 
+Both options respect the [requisite statements](https://docs.saltstack.com/en/latest/ref/states/ordering.html#requisite-statements)
 
 ### Evaluation order during execution
 Jinja -> YAML -> highstate -> low state -> execution
