@@ -181,12 +181,38 @@ Check these two documents, they provide excellent details about how to create st
 # Data modules
 Contains runtime configuration, variables, secret data... data...
 
+| Data\Authority | _Salt Master_ | _Salt Minion_ | Other |
+|----------------|--------------|----------------|-------|
+| Secrets | Pillar | SDB | SDB |
+| Config | Pillar | Grains | SDB |
+
 ## Grains modules
+[salt/grains](https://github.com/saltstack/salt/tree/develop/salt/grains)  
+Custom: `salt://_grains`  
+Minion specific data, can be also specified in configuration file `grains: {}`, or set by master.  
+Grains are refreshed on a very limited basis and are largely static data. If there is some minion specific data that
+needs to be updated on the master then the _Salt Mine_ is the place to go.
+
 ## Pillar modules
+[salt/pillar](https://github.com/saltstack/salt/tree/develop/salt/pillar)  
+Custom: `salt://_pillar`  
+_Salt Master_ is authoritative over pillar data. Pushes pillar to minions that cache it. Minion may request pillar data
+on its own. 
+
 ## SDB modules
+[salt/sdb](https://github.com/saltstack/salt/tree/develop/salt/sdb)  
+Custom: `salt://_sdb`  
+Used when neither _Salt Master_ nor _Salt Minion_ is authoritative over data. It could be used to pull secrets
+from HashiCorp Vault or other keystore. If it is _Salt Minion_ that makes the call to _sdb_ it calls directly the third party
+entity.
 
 # Event 
+TODO
 # Result
+TODO
 # Admin
+TODO
 # Integration
+TODO
 # Utility
+TODO
