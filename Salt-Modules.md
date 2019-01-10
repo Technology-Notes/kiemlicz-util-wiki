@@ -45,8 +45,7 @@ pkgs_pip:
 ### Ordering states
 Salt supports two ordering modes:
  1. _Definition order_: in the order of appearance in `top.sls` file, thus it is the filename that determines order. Then the states are executed 
- by the order of appearance in the state file itself. The `include`d files that were defined later than including file are executed first, 
- `inculde` takes precedence. 
+ by the order of appearance in the state file itself. The `include`d files that were defined after **including** file are executed first. `inculde` takes precedence. 
  2. _Lexicographic order_: states are sorted by: their _name_, _function_ and then by _state ID_. Enable with configuration option: `state_auto_order: False`, the `include` statement in `sls` files
  doesn't affect the order at all.
 
