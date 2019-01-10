@@ -72,7 +72,7 @@ The full evaluation and execution order:
 
 It is very easy to misuse jinja. When the state starts to be unreadable, it is possible candidate to switch to different 
 renderer (usually `#!py`).  
-However user desired logic may still be too complex. Then writing custom _Execution Module_ or _State Module_ is a better idea.  
+However user desired logic may be too complex still. Then writing custom _Execution Module_ or _State Module_ is a better idea.  
 
 Additionally as the _State Tree_ grows, it is easy to fall into following trap:
 ```
