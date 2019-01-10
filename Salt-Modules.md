@@ -121,7 +121,7 @@ add_developer_/tmp/util/README.md:
 ```
 There are couple of options how to overcome such situation, most common involve:
  - writing custom _Execution Module_ or _State Module_
- - use [Slots](https://docs.saltstack.com/en/latest/topics/slots/index.html)
+ - using [Slots](https://docs.saltstack.com/en/latest/topics/slots/index.html)
 
 #### Slots
 Relatively new _Salt_ feature, allows to store the result of _Execution Module_ and use it in next _Modules_ (during same run).  
