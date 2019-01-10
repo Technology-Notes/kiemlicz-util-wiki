@@ -5,6 +5,7 @@ The `*.sls` files contains state definitions, this is just the data file (YAML b
 ## Execution Modules
 [salt/modules](https://github.com/saltstack/salt/tree/develop/salt/modules)  
 Custom: `salt://_modules`  
+
 The `salt` or `salt-call` command executes exactly the _Execution Modules_  
 Contrary to _State Modules_, _Execution Modules_ don't check any state, they just perform action.
 
@@ -21,6 +22,7 @@ Contrary to _State Modules_, _Execution Modules_ don't check any state, they jus
 ## State Modules
 [salt/states](https://github.com/saltstack/salt/tree/develop/salt/states)  
 Custom: `salt://_states`  
+
 Enforces desired states on the remote. Under the hood they usually use _Execution Modules_
 
 ```
@@ -189,6 +191,7 @@ Contains runtime configuration, variables, secret data... data...
 ## Grains modules
 [salt/grains](https://github.com/saltstack/salt/tree/develop/salt/grains)  
 Custom: `salt://_grains`  
+
 Minion specific data, can be also specified in configuration file `grains: {}`, or set by master.  
 Grains are refreshed on a very limited basis and are largely static data. If there is some minion specific data that
 needs to be updated on the master then the _Salt Mine_ is the place to go.
@@ -196,12 +199,14 @@ needs to be updated on the master then the _Salt Mine_ is the place to go.
 ## Pillar modules
 [salt/pillar](https://github.com/saltstack/salt/tree/develop/salt/pillar)  
 Custom: `salt://_pillar`  
+
 _Salt Master_ is authoritative over pillar data. Pushes pillar to minions that cache it. Minion may request pillar data
 on its own. 
 
 ## SDB modules
 [salt/sdb](https://github.com/saltstack/salt/tree/develop/salt/sdb)  
 Custom: `salt://_sdb`  
+
 Used when neither _Salt Master_ nor _Salt Minion_ is authoritative over data. It could be used to pull secrets
 from HashiCorp Vault or other keystore. If it is _Salt Minion_ that makes the call to _sdb_ it calls directly the third party
 entity.
