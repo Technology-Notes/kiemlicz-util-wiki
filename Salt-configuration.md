@@ -3,7 +3,7 @@ Written in YAML files, located in `/etc/salt/master` and `/etc/salt/master.d/`
 Master configuration: `/etc/salt/master`  
 Master configuration overrides: `/etc/salt/master.d/myoverrides.conf`  
 Minion configuration: `/etc/salt/minion`  
-Minion configuration overrides: `/etc/salt/minion.d/myoverrides.conf`
+Minion configuration overrides: `/etc/salt/minion.d/myoverrides.conf`  
 Overrides **require** `.conf` suffix, otherwise they are not included and nothing is logged.  
 
 ## States
