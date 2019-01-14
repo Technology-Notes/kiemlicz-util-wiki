@@ -153,6 +153,20 @@ fileserver_backend:
 ```
 Allows to pull state and pillar definitions from git repositories.
 
+## Reactor
+Part of the _Salt_, that starts different actions upon fired events. The configuration contains the list of handled events 
+with different `sls` files run as a reaction.
+```
+reactor:
+  - 'salt/job/*/ret/*':
+    - salt://do_something_after_job.sls
+    - /full/path/to/file.sls
+```
+By default this is configured in `/etc/salt/master` and `/etc/salt/master.d/reactor.conf`.  
+Reactions can be specified using `/full/path/notation` or relative to _State Tree_: `salt://`
+
+## Thorium
+
 ## Cloud
 
 # Extending Salt

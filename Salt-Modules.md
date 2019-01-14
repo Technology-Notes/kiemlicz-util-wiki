@@ -179,7 +179,7 @@ Check these two documents, they provide excellent details about how to create st
  - [best practices](https://docs.saltstack.com/en/latest/topics/best_practices.html)
  - [formulas best practices](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)
 
-# Data modules
+# Data Modules
 Contains runtime configuration, variables, secret data... data...
 
 | Data\Authority | _Salt Master_ | _Salt Minion_ | Other |
@@ -187,7 +187,7 @@ Contains runtime configuration, variables, secret data... data...
 | Secrets | Pillar | SDB | SDB |
 | Config | Pillar | Grains | SDB |
 
-## Grains modules
+## Grains Modules
 [salt/grains](https://github.com/saltstack/salt/tree/develop/salt/grains)  
 Custom: `salt://_grains`  
 
@@ -195,14 +195,14 @@ Minion specific data, can be also specified in configuration file `grains: {}`, 
 Grains are refreshed on a very limited basis and are largely static data. If there is some minion specific data that
 needs to be updated on the master then the _Salt Mine_ is the place to go.
 
-## Pillar modules
+## Pillar Modules
 [salt/pillar](https://github.com/saltstack/salt/tree/develop/salt/pillar)  
 Custom: `salt://_pillar`  
 
 _Salt Master_ is authoritative over pillar data. Pushes pillar to minions that cache it. Minion may request pillar data
 on its own. 
 
-## SDB modules
+## SDB Modules
 [salt/sdb](https://github.com/saltstack/salt/tree/develop/salt/sdb)  
 Custom: `salt://_sdb`  
 
@@ -210,13 +210,73 @@ Used when neither _Salt Master_ nor _Salt Minion_ is authoritative over data. It
 from HashiCorp Vault or other keystore. If it is _Salt Minion_ that makes the call to _sdb_ it calls directly the third party
 entity.
 
-# Event 
+# Event Modules and Reactor System
+_Salt Master_ and _Salt Minion_ have their own event buses. Depending on the Module's function used to fire event, event may or may not be propagated
+to other event buses (e.g. from Minion to Master and vice-versa).
+
+Event always comprises of two things:
+ 1. event tag
+ 2. data dictionary
+ 
+_Salt_ event system that uses _Event Modules_ is described in separate [section](https://github.com/kiemlicz/util/wiki/Salt-Events-and-Reactor) 
+
+## Beacon Modules
+[salt/beacons](https://github.com/saltstack/salt/tree/develop/salt/beacons)  
+Custom: `salt://_beacons`  
+Way to notify the master about anything. Works like a probe/sensor, e.g. disk is going full. 
+Notification uses the _Salt Minion_ event bus and are propagated to _Salt Master_. 
+
+## Queue Modules
+[salt/queues](https://github.com/saltstack/salt/tree/develop/salt/queues)  
+Custom: n/a  
+Helps to handle the events, sometimes it is desirable to enqueue incoming events and `pop` them sequentially instead of allowing asynchronous reactions to happen.
+
+## Engine Modules
+[salt/engines](https://github.com/saltstack/salt/tree/develop/salt/engines)  
+Custom: `salt://_engines`  
+Can be run on _Salt Master_ or _Salt Minion_, once started: runs forever in separate process. Commonly used to integrate
+with external systems (like sending the notifications to slack) or fetching the external systems data under the _Salt_ infrastructure.
+
+## Thorium Modules - experimental
+[salt/thorium](https://github.com/saltstack/salt/tree/develop/salt/thorium)  
+Custom: `salt://_thorium`  
+Primarily created to add event aggregation, requires [additional configuration](https://github.com/kiemlicz/util/wiki/Salt-configuration#thorium).
+Sometimes it is desirable to start a reaction once the set of `N` minions complete their `highstate` logic, not
+every time each of the minions completes. This can be achieved with Thorium. 
+Example of thorium state file that fires the event only when two `salt/custom/event` are received:
+```
+something:
+  reg.list:
+    - add: "some_field"
+    - match: 'salt/custom/event'
+  check.len_eq:
+    - value: 2
+send_when:
+  runner.cmd:
+  - func: event.send
+  - arg:
+    - thor/works
+  - require:
+      - check: something
+```
+
+# Result Modules
 TODO
-# Result
+## Output Modules
+## Result Modules
+
+# Admin Modules
+## Wheel Modules
+[salt/wheel](https://github.com/saltstack/salt/tree/develop/salt/wheel)  
+Custom: n/a  
+Dealing with _Salt_ infrastructure itself, e.g., accept _Salt Minion_ key.
+
+## Runner Modules
+[salt/runners](https://github.com/saltstack/salt/tree/develop/salt/runners)  
+Custom: `salt://_runners` (`runner_dirs` configuration option)  
+Used exclusively by `salt-run` command. They are pure _Salt Master_ Modules, designed to run on master only.
+
+# Integration Modules
 TODO
-# Admin
-TODO
-# Integration
-TODO
-# Utility
+# Utility Modules
 TODO

@@ -34,10 +34,13 @@ However it is possible to achieve this without multiple environments (by adding 
      - match: grain
      - some_state
  ```
+ The `role` grain on the minion has drawback. It is obvious by looking at such grain that it expresses membership. 
+ Thus when such minion is compromised it is trivial to change its value to something that may reveal too much data to attacker.
+ The first approach is free of this flaw, is attacker tinkers with `id` grain, the minion would have to be accepted on _Salt Master_
  - Group states by their purpose. Helps to organize the states
  
 ### Targeting
-By default the shell-style globbing on minion id is used, e.g.: `salt 'minion_id' test.ping` or
+By default the shell-style globbing on minion `id` (_id_ is a grain data) is used, e.g.: `salt 'minion_id' test.ping` or
 ```
 base:
   'minion_id':

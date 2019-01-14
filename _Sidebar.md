@@ -39,6 +39,7 @@
      * [Transport](https://github.com/kiemlicz/util/wiki/Salt-Transport)
      * [Scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts)
      * [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules)
+       * [Events and Reactor](https://github.com/kiemlicz/util/wiki/Salt-Events-and-Reactor) 
    * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
