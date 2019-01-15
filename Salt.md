@@ -46,7 +46,8 @@ it is best to describe them using layered approach:
 This section contains only brief description of how to interact with Salt using CLI.  
 For more complete overview refer to [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts).
 
-Execution module execution (dissection of the `salt` commands):  
+_Execution Module_ execution (dissection of the `salt` command):
+
 `salt '*' execution_module_name.function_name [arguments_list] [kwargs]`  
  - `salt` is the python script that accepts user commands and passes them to _Salt Master_ process.  
  - `'*'` selects minions which will execute user function. By default the shell-style globbing is used on minion id.  
@@ -55,7 +56,8 @@ Execution module execution (dissection of the `salt` commands):
 Example: `salt '*' test.ping`
 
 State execution (or rather state application):  
-Execute all matching states from given environment: `salt '*' state.highstate saltenv=base`  
+Check what states are going to be applied: `salt '*' state.show_top`  
+Execute all matching states from given environment: `salt '*' state.highstate [saltenv=base]`  
 Execute single state: `salt '*' state.apply <statename> [saltenv=<env>]`
 
 # References:

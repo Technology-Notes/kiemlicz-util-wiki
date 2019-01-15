@@ -35,7 +35,7 @@ base:
 For more information about Top File structure and state definition refer to [Targeting and Top file](https://github.com/kiemlicz/util/wiki/Salt-Master#targeting-and-top-file)
 
 ### saltenv
-`file_roots` configuration contains environment specification, in order to specify multiple environments list them with their directories containing states:
+`file_roots` configuration contains environment specification. In order to specify multiple environments list them along with their directories containing states:
 ```
 file_roots:
   base:
@@ -60,24 +60,24 @@ to minions upon `state.highstate` or `saltutil.sync_all` calls.
 ## Pillar
 Defined in similar way as state files, located in directories listed in `pillar_roots` configuration option.
 There is no enforced pillar data syntax, given default renderer the pillar must be just provided as YAML file.  
-The `top.sls` file is also expected to exist in `pillar_roots` top directory.
 Example pillar data file:
 ```
 some_user_data:
   mail: cool_guy@o2.io
   home_dir: /home/cool_guy
 ```
+The `top.sls` file is also expected to exist in `pillar_roots` top directory.
 
 ### Custom pillar
 Documentation refers to custom pillars as [external pillars](https://docs.saltstack.com/en/latest/topics/development/external_pillars.html).  
-It is possible to extend Pillar subsystem to fetch data from arbitrary sources all that is required is to implement: 
+It is possible to extend Pillar subsystem to fetch data from arbitrary sources. The requirement is to implement: 
 ```
 def ext_pillar( minion_id, pillar, *args, **kwargs ):
     ...
     
     return pillar_dict 
 ```
-The external pillar must be configured in master configuration first.
+The external pillar must be configured in _Salt Master_ configuration first.
 Some already existing custom pillars deserve special mentions.
 
 #### git_pillar
@@ -97,18 +97,19 @@ ext_pillar:
 ```
 
 ## Dunder dictionaries
-_Salt_ modules are 'wrapped' within special _dunder_ dictionaries. These special dictionaries provide access to _Salt_ **different** modules.
+Some of the _Salt_ modules are 'wrapped' within special _dunder_ dictionaries. 
+These special dictionaries provide access to _Salt_ **different** modules.
 
 | Dictionary name | Available in | Information |
 |-----------------|--------------|-------------|
-| \_\_OPTS\_\_ | Loader modules | configuration file contents |
-| \_\_SALT\_\_ | Execution, State, Returner, Runner, SDB modules | **execution** modules |
-| \_\_GRAINS\_\_ | Execution, State, Returner, External Pillar modules | minion grains data |
-| \_\_PILLAR\_\_ | Execution, State, Returner modules | pillar data |
-| \_\_CONTEXT\_\_ | Execution, State modules | all-purpose dict, that exists during all state runs |
+| \_\_opts\_\_ | Loader modules | configuration file contents |
+| \_\_salt\_\_ | Execution, State, Returner, Runner, SDB modules | **execution** modules |
+| \_\_grains\_\_ | Execution, State, Returner, External Pillar modules | minion grains data |
+| \_\_pillar\_\_ | Execution, State, Returner modules | pillar data |
+| \_\_context\_\_ | Execution, State modules | all-purpose dict, that exists during all state runs |
 
 ### Using dunder dictionaries
-Jinja2+YAML:
+#### Jinja2+YAML
 ```
 apache:
   pkg.installed:
@@ -124,6 +125,8 @@ apache:
     - mkmnt: True
 {% endfor %}
 ```
+#### py
+TODO
 
 ## Fileserver
 All of the above configuration samples assumed filesystem to be used as primary `sls` storage. 
