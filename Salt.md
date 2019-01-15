@@ -26,8 +26,9 @@ Can operate:
 * with agents (application installed on minion)
 * [agent-less](https://docs.saltstack.com/en/latest/topics/ssh/) (no application installed on minion)
 
+_Salt State Files_ express the desired... state on the provisioned minion.  
 States are matched to minions using (primarily) [`top.sls` file](https://docs.saltstack.com/en/latest/ref/states/top.html).  
-Each _state_ is then executed on targeted minion (slave). By default minions are targeted using minion id - special generated grain (its default value is the minion hostname).  
+Each _state_ is then executed on targeted minion (slave). By default minions are targeted using minion _id_ - special generated grain (its default value is the minion hostname).  
 Detailed description how does the state execute on minion is provided in [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules) section 
 
 Information about how to interact with salt can be found in [usage](https://github.com/kiemlicz/util/wiki/Salt#usage) and in [scripts](https://github.com/kiemlicz/util/wiki/Salt-Scripts) sections 
