@@ -54,8 +54,9 @@ Grains are uploaded upon first contact and in general should not change, thus th
 
 #### Targeting with pillar
 Pillar is actually cached not only on _Salt Minion_ but on _Salt Master_ too, in order to use pillar targeting, the
-pillar data must be refreshed on master: `salt '*' saltutil.pillar_refresh`  
-`salt -I 'some:pillar:value' test.ping`, or `salt -I 'some:pillar:value_prefix*' test.ping`
+pillar data must be refreshed on master:  
+ 1. `salt '*' saltutil.pillar_refresh`  
+ 2. `salt -I 'some:pillar:value' test.ping`, or `salt -I 'some:pillar:value_prefix*' test.ping`
 
 #### Compound targeting
 Allows to mix all of the options using slightly different syntax:  
