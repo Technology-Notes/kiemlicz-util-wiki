@@ -1,7 +1,7 @@
 Responsible for managing the minions.  
 Provides the states and the pillar data.
 States are send and rendered on minions, pillars are send and cached on minions.  
-In order to match which states and which pillar data should be send to given minions the [targeting](https://docs.saltstack.com/en/latest/topics/targeting/) is used. 
+In order to match states and pillar data that should be send to given minions the [targeting](https://docs.saltstack.com/en/latest/topics/targeting/) is used. 
 
 ## Targeting and Top file
 Targeting is specifying which minions should execute given state as well as contain given pillar data.
