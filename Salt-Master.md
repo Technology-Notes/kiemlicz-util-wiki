@@ -71,7 +71,8 @@ States can be defined using arbitrary syntax as long as proper [renderer](https:
 def run():
   ...
 ```
-Default renderer uses Jinja2+YAML (order matters).  
+Default renderer uses Jinja2+YAML (order matters). 
+
 States which are defined like in [example](https://github.com/kiemlicz/util/wiki/Salt-configuration#states) wouldn't be of much use,
 they are too static. States should use pillar and grain data to allow flexibility of configuration.
 
