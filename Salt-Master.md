@@ -50,7 +50,7 @@ base:
 
 #### Targeting with grains
 Grains are uploaded upon first contact and in general should not change, thus the grain targeting is safe.  
-`salt -G 'your:grain:path:value' test.ping`, .e.g.,: `salt -G 'os:Debian' test.ping`
+`salt -G 'your:grain:path:value' test.ping`, .e.g.: `salt -G 'os:Debian' test.ping`
 
 #### Targeting with pillar
 Pillar is actually cached not only on _Salt Minion_ but on _Salt Master_ too, in order to use pillar targeting, the
