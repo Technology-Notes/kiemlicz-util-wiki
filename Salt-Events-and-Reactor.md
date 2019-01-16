@@ -1,6 +1,6 @@
 # [Reactor System](https://docs.saltstack.com/en/latest/topics/reactor/index.html)
 **Not** a Module, [configured separately](https://github.com/kiemlicz/util/wiki/Salt-configuration#reactor), native part
-of _Salt_, used to... react to different events.  
+of _Salt_, used to react to different events.  
 Reactor is the go-to place to create 'self-healing' or 'fully-automated' solutions. Reactions are matched on the _Salt Master_.  
 The reaction `sls` files follow the same rules of compiling (they have default Jinja+YAML renderer), however they are limited in
 terms of available _Dunder Dictionaries_.  
