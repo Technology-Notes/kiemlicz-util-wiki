@@ -110,14 +110,15 @@ These special dictionaries provide access to _Salt_ **different** modules.
 
 ### Using dunder dictionaries
 #### Jinja2+YAML
+Double underscores are omitted.
 ```
 apache:
   pkg.installed:
-    - name: {{ __salt__['pillar.get']('pkgs:apache', 'httpd') }}
+    - name: {{ salt['pillar.get']('pkgs:apache', 'httpd') }}
 ```
   
 ```
-{% for mnt in __salt__['cmd.run']('ls /dev/data/moose*').split() %}
+{% for mnt in salt['cmd.run']('ls /dev/data/moose*').split() %}
 /mnt/moose{{ mnt[-1] }}:
   mount.mounted:
     - device: {{ mnt }}
@@ -126,7 +127,25 @@ apache:
 {% endfor %}
 ```
 #### py
-TODO
+```
+#!py
+
+def run():
+  states = {}
+  swaps = __salt__['mount.swaps']()
+  for swap, dev in swaps.items():
+    states["kubeadm_disable_swap_{}".format(swap)] = {
+      'module.run': [
+        { 'mount.swapoff': [
+          { 'name': swap },
+        ]},
+        { 'require_in': [
+          { 'pkg': "kubeadm" }
+          ]}
+      ]
+    }
+  return states
+```
 
 ## Fileserver
 All of the above configuration samples assumed filesystem to be used as primary `sls` storage. 
