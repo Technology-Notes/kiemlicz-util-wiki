@@ -73,11 +73,11 @@ def run():
 ```
 Default renderer uses Jinja2+YAML (order matters). 
 
-States which are defined like in [example](https://github.com/kiemlicz/util/wiki/Salt-configuration#states) wouldn't be of much use,
+States that are defined like in [example](https://github.com/kiemlicz/util/wiki/Salt-configuration#states) wouldn't be of much use,
 they are too static. States should use pillar and grain data to allow flexibility of configuration.
 
 ## Pillar
-Based on everything the _Salt Master_ knows about the minion and minion grain data the _Salt Master_ creates 
+Based on everything the _Salt Master_ already knows about the minion and minion grain data the _Salt Master_ creates 
 the pillar data and sends it over to minion.
 Pillar is managed similarly to state files. It contains its own `top.sls` with data to minion matching and the actual pillar data
 

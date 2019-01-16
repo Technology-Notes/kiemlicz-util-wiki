@@ -8,7 +8,7 @@ There is **no bi-directional** communication using one channel only
   
 Master communicates with minions via _Pub/Sub bus_ - this is broadcast type. Internally named `Publisher`, uses TCP port 4505   
 Thus **every** minion receives the master requests (the filtering happens on the minion).
-Master computes the number of expected replies (if using wildcards or computation is impossible, master will always assume all cached minions could reply)
+Master computes the number of expected replies (if using wildcards or computation is impossible, master will always assume all cached minions could reply).  
 Minions sends their requests and replies via _Direct bus_, this channel is private for master-minion pair. Internally named `ReqServer`, uses TCP port 4506 
 
 For example, all of the following calls are insecure:  
@@ -17,9 +17,9 @@ For example, all of the following calls are insecure:
 `salt 'minion' state.apply db.setup pillar='{"some": {"password": "afm4o"}}'`  
 
 On the other hand:
-`salt 'minion' saltutil.refresh_pillar` is secure.  
+`salt 'minionX' saltutil.refresh_pillar` is secure.  
 Minion (and possibly all other minions) will receive the request to
-refresh the pillar data. However only `minion` will establish private secure channel with master, which will use to fetch it's very own private pillar data.
+refresh the pillar data. However only `minionX` will establish private secure channel with master, which will use to fetch it's own private pillar data.
 
 ## Detailed job flow
  1. User issues command on the CLI, `salt 'minion' test.ping`
@@ -29,7 +29,7 @@ refresh the pillar data. However only `minion` will establish private secure cha
  5. Worker validates the job (e.g. is user allowed to perform it)
  6. Worker send the publish command to all minions. Publish command represents the job to be executed. 
  Worker does this by sending an event on _Salt Master_ event bus. In the form of: `salt/job/jid/new`, where `jid` is a generated job ID.
- 7. From _Salt Master_ event bus this event is encrypted and transferred to actual `Publisher` that sends the message to
+ 7. From _Salt Master_ event bus, event is encrypted and transferred to actual `Publisher` that sends the message to
  **all** connected minions
  8. Minions already have session established with _Salt Master's_ `Publisher` (port 4505), where they await commands.
  9. Minions decrypt the message

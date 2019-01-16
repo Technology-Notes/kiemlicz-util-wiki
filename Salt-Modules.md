@@ -74,7 +74,7 @@ It is very easy to misuse jinja. When the state starts to be unreadable, it is p
 renderer (usually `#!py`).  
 However user desired logic may be too complex still. Then writing custom _Execution Module_ or _State Module_ is a better idea.  
 
-Additionally as the _State Tree_ grows, it is easy to fall into following trap:
+Additionally as the _State Tree_ grows, it is easy to fall into following trap (depicted by example):
 ```
 clone_repo:
   git.latest:
@@ -96,7 +96,7 @@ add_developer_{{ f }}:
 {% endfor %}
 ```
 User assumed that the jinja will 'see' `clone_repo` changes. It is not true.  
-Jinja is evaluated first, thus if this sls file is applied first time, effectively the YAML looks like:
+Jinja is evaluated first, thus when this _sls_ file is applied first time, effectively the YAML looks like:
 ```
 clone_repo:
   git.latest:
@@ -104,7 +104,7 @@ clone_repo:
     - target: /tmp/util/
     - branch: master
 ```
-However during next runs, the jinja will 'see' the changes (as they are already applied). Thus the output YAML will become:
+However during next run, the jinja will 'see' the changes (as they are already applied). Thus the output YAML will become:
 ```
 clone_repo:
   git.latest:
@@ -121,7 +121,7 @@ add_developer_/tmp/util/README.md:
 ```
 There are couple of options how to overcome such situation, most common involve:
  - writing custom _Execution Module_ or _State Module_
- - using [Slots](https://docs.saltstack.com/en/latest/topics/slots/index.html)
+ - using [Slots](https://docs.saltstack.com/en/latest/topics/slots/index.html) (if you know what you are doing)
 
 #### Slots
 Relatively new _Salt_ feature, allows to store the result of _Execution Module_ and use it in next _Modules_ (during same run).  
