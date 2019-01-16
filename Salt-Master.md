@@ -60,7 +60,7 @@ pillar data must be refreshed on master:
 
 #### Compound targeting
 Allows to mix all of the options using slightly different syntax:  
-`salt -C 'G@os:Debian and I@redis:setup_type:cluster' test.ping` 
+`salt -C 'G@os:Debian and I@redis:setup_type:cluster' test.ping`  
 Find all of the available prefixes to be used [here](https://docs.saltstack.com/en/latest/topics/targeting/compound.html#targeting-compound)
 
 ## States
