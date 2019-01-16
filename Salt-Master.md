@@ -36,7 +36,7 @@ However it is possible to achieve this without multiple environments (by adding 
  ```
  The `role` grain on the minion has drawback. It is obvious by looking at such grain that it expresses membership. 
  Thus when such minion is compromised it is trivial to change its value to something that may reveal too much data to attacker.
- The first approach is free of this flaw, is attacker tinkers with `id` grain, the minion would have to be accepted on _Salt Master_
+ The first approach is free of this flaw, if attacker tinkers with `id` grain, the minion would have to be accepted on _Salt Master_
  - Group states by their purpose. Helps to organize the states
  
 ### Targeting
