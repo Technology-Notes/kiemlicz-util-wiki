@@ -2,6 +2,9 @@
 Checkout remote branch:  
 `git checkout -b <name> origin/<name>`
 
+Checkout directory to given changeset:  
+`git checkout 3257289075289037592abcde253 -- path/to/the/folder/`
+
 Multiple working trees sharing one repository:  
 `git worktree add ../some/path/ branch`  
 Checkouts `branch` under `../some/path/`
