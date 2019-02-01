@@ -1,10 +1,15 @@
 Originally LXC-based, widespread. Created for shipping and running applications. Advocates running one process per container.
 
-## Vocabulary
+## Basics
 | term | meaning |
 |-|-|
 | image | Product of `docker build` command. Snapshot of a container. Analogous to the concept from _Object Oriented Programming_: `class` |
 | container | Running instance of image. Analogous to the concept from _Object Oriented Programming_: `class` instance |
+| tag | Extra information appended to image name. Helpful for enclosing image version information, if omitted: `latest` is assumed |
+
+Each image is identified by ID, can contain different names and tags.  
+Image name contains of slash delimited name components, with optionally repository name prefixed. If the name doesn't contain 
+registry name, then the public `registry-1.docker.io` is assumed.
 
 ## Configuration
 `dockerd` uses following configuration files:
