@@ -67,6 +67,9 @@ To simplify:
  6. _Runner Orchestrate Module_ renders `mods` on the _Salt Master_
  7. _Runner Orchestrate Module_ executes functions on desired targets.
 
+The most typical orchestrate `sls` files will comprise mostly of [`salt.[function|state]`](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.saltmod.html) calls as they
+accept the `tgt` parameter and thus can delegate the call to minions.  
+
 ### Wheel reaction
 Runs [_Wheel Modules_](https://docs.saltstack.com/en/latest/ref/wheel/all/index.html#all-salt-wheel) on the _Salt Master_
 
