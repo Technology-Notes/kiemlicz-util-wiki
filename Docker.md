@@ -30,11 +30,12 @@ Remove image:
 `docker rmi <image name or id>`
 
 Push image to registry:
-1. Tag image first with repository URL  
-`docker tag <image> <repourl>/<tag>` 
+1. Tag image with repository URL first. Mind that repo may support the `v1` and/or `v2` 'naming' format. Briefly speaking:
+`v1` format doesn't support multiple path segments in image name, thus image: `rootName/subName` is invalid. For `v2` it is fine 
+`docker tag <image> <repourl>/<name>:<tag>` 
 2. Login to desired repository, `docker.io` is the default  
 `docker login <repourl>` 
-3. `docker push <repourl>/<tag>`
+3. `docker push <repourl>/<name>:<tag>`
 
 ### Building images
 `Dockerfile` contains all of the needed instructions to build the Image with your application.  
@@ -54,8 +55,12 @@ Failed container can be pretty easily debugged
 `docker ps -a`
 2. Create image  
 `docker commit <container id>`
-3. Run image corresponding to failed container  
+3. Run image corresponding to failed container, overriding its potential `ENTRYPOINT`  
 `docker run -it --entrypoint /bin/bash <image id>`
+
+Live container can be debugged as well:
+1. Grab the container name or ID: `docker ps`
+2. Attach to the container with: `docker exec -it /bin/bash`
 
 ## Configuration
 `dockerd` uses following configuration files:
