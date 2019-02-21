@@ -1,25 +1,19 @@
-# Virtualbox
-## GUI shortcuts
-In order to send ctrl+alt to guest vm use `host key` (`right ctrl` by default).
-To send `ctrl + alt + f1` use `host key + f1`
+# Virtualization
 
-# libvirt
-## Requirements
-Install with:
-`aptitude install qemu-kvm libvirt-clients libvirt-daemon-system`
+Requires running VM Monitor (Hypervisor) on the host, bare-metal machine. Coordinates host machine resource sharing.
 
-In order to permit user for vm management
-```
-adduser <youruser> libvirt
-adduser <youruser> libvirt-qemu
-```
-## Configuration
-Add storage pool
-```
-virsh -c qemu:///system pool-define-as $pool_name dir --target $location
-```
+## Types of Hypervisors
+### Type1
+### Type2
 
-# References
-1. https://wiki.debian.org/KVM
-2. https://libvirt.org/docs.html
-3. http://rabexc.org/posts/how-to-get-started-with-libvirt-on
+# Benefits
+ - cheaper than bare-metal
+ - isolation (guest OS is fully isolated from host and other guest OSes)
+ - 'easy' migration
+ - HA
+
+# Drawbacks
+ - performance overhead
+ - sometimes host performs overprovisioning, which can cause serious performance degradation
+ - Hypervisor is a single point of failure
+ - extra management

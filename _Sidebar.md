@@ -27,6 +27,8 @@
    * [Sockets](https://github.com/kiemlicz/util/wiki/sockets)
 4. Virtualization
    * [VM](https://github.com/kiemlicz/util/wiki/vm)
+     * [KVM](https://github.com/kiemlicz/util/wiki/KVM)
+     * [Virtualbox](https://github.com/kiemlicz/util/wiki/Virtualbox)
    * [Lightweight VM](https://github.com/kiemlicz/util/wiki/Containerization)
      * [Docker](https://github.com/kiemlicz/util/wiki/Docker)
      * [LXC](https://github.com/kiemlicz/util/wiki/LXC)
