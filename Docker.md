@@ -48,6 +48,10 @@ The main goal when building the image should be:
  The `ADD` and `COPY` will check if the underlying file has changed, the `RUN` commands will check only if the command string has not changed.
  Thus building the image with `RUN apt-get update` second time won't update the latest packages.
  - once the cache is invalidated (instruction that misses cache occurred), all subsequent instructions won't check the cache
+
+Design goals of building images:
+ - (try) to package one application in container
+ - mind process reaping when application spawn processes 
  
 ### Debugging
 Failed container can be pretty easily debugged
