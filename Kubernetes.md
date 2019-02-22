@@ -33,3 +33,4 @@ In order to debug what actually happens within Kubernetes cluster: `kubectl get 
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
 2. https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html
+3. https://vimeo.com/245778144/4d1d597c5e

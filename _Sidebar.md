@@ -44,6 +44,7 @@
        * [Events and Reactor](https://github.com/kiemlicz/util/wiki/Salt-Events-and-Reactor) 
    * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
      * [Setup](https://github.com/kiemlicz/util/wiki/Kubernetes-setup)
+     * [Admin](https://github.com/kiemlicz/util/wiki/Kubernetes-admin)
      * [Helm](https://github.com/kiemlicz/util/wiki/Helm)
 6. Desktop environments
    * [KDE](https://github.com/kiemlicz/util/wiki/kde)
