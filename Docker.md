@@ -70,7 +70,7 @@ FROM scratch
 ADD some_binary /
 CMD ["/some_binary"]
 ```
-Such image will be able to exec the specified binary only.
+Such image will be able to execute the specified binary only.
  
 ### Debugging
 Failed container can be pretty easily debugged
@@ -84,6 +84,33 @@ Failed container can be pretty easily debugged
 Live container can be debugged as well:
 1. Grab the container name or ID: `docker ps`
 2. Attach to the container with: `docker exec -it /bin/bash`
+
+## Networking
+Networking system in Docker is configurable. It is possible to set different networking driver for containers using:
+`docker run --network=host ...`
+
+### bridge
+Default driver, creates the bridge that connects all containers withing Docker host. Docker host manages IP addresses and `iptables` rules
+governing inbound/outbound traffic. From Docker host it should be possible to reach any port on the running container (host has routing configured for containers subnet: `ip r s`)
+However by default containers will be unreachable from outside (outside of Docker host). In order to tell Docker host, 
+that it should add `iptables` rules allows access to containers the port publish option must be used: `docker run... -p 8080:80 ...`.  
+The `-p hostPort:containerPort` maps (TCP by default) port 8080 on the host to the container port 80.   
+
+### host 
+Uses the host networking interfaces. No network isolation. The `ip a` output from within the container will print same
+entries as `ip a` on the Docker host
+
+### overlay
+Use when multiple containers need to communicate with each other and containers are scattered among different Docker hosts
+
+### macvlan
+TODO
+
+### none
+Disables networking
+
+### custom
+TODO
 
 ## Configuration
 `dockerd` uses following configuration files:
