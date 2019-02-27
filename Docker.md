@@ -38,6 +38,12 @@ Push image to registry:
 3. `docker push <repourl>/<name>:<tag>`
 
 ### Building images
+There are two types of images:
+ - _parent image_ - the image that is specified in `FROM` clause. Your image is based on _parent image_.
+ - _base image_ - the image that has no `FROM` or `FROM scratch`
+
+Most `Dockerfile`s use _parent images_ in their `FROM` clause.
+
 `Dockerfile` contains all of the needed instructions to build the Image with your application.  
 Each instruction corresponds to filesystem layer. Image is built within _build context_ (the current directory of `docker build` command - simply speaking).
 All `COPY`-kind instructions are relative to this _build context_.
@@ -52,6 +58,19 @@ The main goal when building the image should be:
 Design goals of building images:
  - (try) to package one application in container
  - mind process reaping when application spawn processes 
+ 
+#### Building base images
+In order to build base image:
+ - use debootstrap for Debian-based distributions (tool that installs Debian-based distributions into given filesystem) 
+ - archive it and `docker import image.tar name` 
+
+It is also possible to build base image from `Dockerfile`:  
+```
+FROM scratch
+ADD some_binary /
+CMD ["/some_binary"]
+```
+Such image will be able to exec the specified binary only.
  
 ### Debugging
 Failed container can be pretty easily debugged
