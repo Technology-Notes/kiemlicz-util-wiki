@@ -7,16 +7,22 @@ Kubernetes covers more use-cases: it is a platform for automatic deployment, sca
 | Term | Meaning |
 | - | - |
 | Namespace | Virtual cluster, scope for names |
-| Label | Key-value pair used to group set of objects |
 | Node | Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine |
 | Pod | The 'execution' unit of Kubernetes. Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) or shared resources for those containers |
 | Deployment | Configuration how to create/update instances of the application |
 | Service | Set of _Pods_ with policy how to access them (e.g. load balancing or service discovery for _pods_) |
+| Label | Key-value pair used to group set of objects |
 | Controller | _Pods_ manager (handles, e.g., pod replication) |
 
-Containers within one _Pod_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_.
+## Basics
+The PODs are the execution units submitted by the 'user', however creating, submitting PODs one by one would be tedious.
+This is solved by using e.g., deployment, statefulsets or daemonsets. They provide policies for scheduling multiple PODs.
 
-Services match a set of pods using labels and selectors. Services are published or discovered either via DNS or environmental variables
+Containers within one _POD_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_.
+
+Services match a set of pods using labels and selectors. Services are published or discovered either via DNS or environmental variables.
+
+Services by default are visible in the cluster only and there is no way to access them from the outside of the Kubernetes cluster.
 
 `Kubectl` is used to interact with the cluster.    
 If you have multiple clusters, list them with: `kubectl config get-contexts`, 
