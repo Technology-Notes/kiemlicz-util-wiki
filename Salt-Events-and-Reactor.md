@@ -41,7 +41,7 @@ Combined with _Salt_ event system allows to create multi minion-aware reactions.
 ```
 refresh_pillar:
     salt.function:
-    - name: saltutil.pillar_refresh
+    - name: saltutil.pillar_refresh_synchronous    # saltutil.pillar_refresh_synchronous doesn't exist, see below for explanation 
     - tgt: {{ salt['pillar.get']("redis:coordinator") }}
 
 cluster_met:
@@ -54,7 +54,7 @@ cluster_met:
       - salt: refresh_pillar
 
 # some more logic
-# ...      
+# ...
 ```
 _Orchestrate Runner_ accepts other `sls'es` evaluates them on _Salt Master_ and invokes them on desired targets. 
 These `sls'es` contain regular salt [states/functions or even _Runner Modules_](https://docs.saltstack.com/en/latest/topics/orchestrate/orchestrate_runner.html#examples).  
@@ -68,7 +68,13 @@ To simplify:
  7. _Runner Orchestrate Module_ executes functions on desired targets.
 
 The most typical orchestrate `sls` files will comprise mostly of [`salt.[function|state]`](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.saltmod.html) calls as they
-accept the `tgt` parameter and thus can delegate the call to minions.  
+accept the `tgt` parameter and thus can delegate the call to minions.
+
+Aforementioned example contains unfortunate 'gotcha' in Salt.  
+Typically _Salt Master_ may want _Minions_ to refresh the Pillar data prior to invoking desired states.
+Thus calling `saltutil.pillar_refresh` prior to the states execution seems like viable solution.  
+However it may (and usually will) not work, because `pillar_refresh` function actually doesn't refresh the Pillar on _Salt Minion_.
+This particular function is asynchronous by default - which is inconsistent with most of the states that are synchronous.
 
 ### Wheel reaction
 Runs [_Wheel Modules_](https://docs.saltstack.com/en/latest/ref/wheel/all/index.html#all-salt-wheel) on the _Salt Master_
