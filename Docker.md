@@ -55,9 +55,15 @@ The main goal when building the image should be:
  Thus building the image with `RUN apt-get update` second time won't update the latest packages.
  - once the cache is invalidated (instruction that misses cache occurred), all subsequent instructions won't check the cache
 
-Design goals of building images:
- - (try) to package one application in container
- - mind process reaping when application spawn processes 
+#### Design goals of building images:
+##### (try) to package one application in container
+ - management of the image that ships one application is easier: one log source, one application to monitor. Usage is easier too, 
+ as there is no need for `supervisord`-like tools that govern multiple applications inside one container.
+ - decoupled dependencies, easier to re-deploy
+
+##### process reaping
+When the (main) application spawns processes inside of container it's the application's responsibility to cleanup process after it completes.
+Usually it was done by `PID 1 init` process, but the docker lacks one (by default at least)  
  
 #### Building base images
 In order to build base image:

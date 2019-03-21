@@ -3,26 +3,60 @@ Its primary job it to ensure that given container is running with regards to giv
 
 Kubernetes covers more use-cases: it is a platform for automatic deployment, scaling, HA and orchestration of containerized applications
 
-## Vocabulary
-| Term | Meaning |
-| - | - |
-| Namespace | Virtual cluster, scope for names |
-| Node | Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine |
-| Pod | The 'execution' unit of Kubernetes. Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) or shared resources for those containers |
-| Deployment | Configuration how to create/update instances of the application |
-| Service | Set of _Pods_ with policy how to access them (e.g. load balancing or service discovery for _pods_) |
-| Label | Key-value pair used to group set of objects |
-| Controller | _Pods_ manager (handles, e.g., pod replication) |
+## Terminology
+Kubernetes introduces multiple concepts.
+
+The main one is: _the resource_ (aka. object)
+
+In order to list all of the Kubernetes resources use: `kubectl api-resources`
+
+### Kubernetes Resources
+
+#### Node 
+Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine
+
+#### Pod 
+Resource
+  
+The 'execution' unit of Kubernetes.
+Representation of one or more application containers (Docker or [rkt](https://github.com/rkt/rkt)) or shared resources for those containers.
+Shared resources are available for all containers in the POD.
+All containers within the POD share the same IP address and can communicate via loopback interface 
+PODs are ephemeral.
+
+#### Namespace 
+Virtual cluster, scope for names. 
+In order to find out if given _resource_ is affected by namespace use: `kubectl api-resources --namespaced=true`,
+all of the listed resources respect the namespace setting. 
+
+#### Deployment
+Configuration how to create/update instances of the application
+
+#### Service 
+Set of _Pods_ with policy how to access them (e.g. load balancing or service discovery for _pods_)
+
+#### Controller 
+_Pods_ manager (handles, e.g., pod replication). Given information about desired number of PODs ensures the desired number of them is running.
+
+#### Volume
+Local storage on the POD is ephemeral. When the POD is destroyed, the POD data is gone forever. In order to enable 'persistent' storage - use volumes.
+
+### Non-resource concepts
+
+### Labels
+Key-value pairs. Used to group together set of objects. Each object can have multiple labels, 'same' label can be attached
+to multiple objects
 
 ## Basics
 The PODs are the execution units submitted by the 'user', however creating, submitting PODs one by one would be tedious.
 This is solved by using e.g., deployment, statefulsets or daemonsets. They provide policies for scheduling multiple PODs.
 
-Containers within one _POD_ share IP address. Tightly coupled containers should run within one Pod. Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_.
+Containers within one _POD_ share IP address. Tightly coupled containers should run within one Pod.
+Pod provides two kinds of shared (by pod's containers) resources: _networking_ and _storage_.
 
 Services match a set of pods using labels and selectors. Services are published or discovered either via DNS or environmental variables.
 
-Services by default are visible in the cluster only and there is no way to access them from the outside of the Kubernetes cluster.
+Services by default are visible within the cluster only and there is no way to access them from the outside of the Kubernetes cluster.
 
 `Kubectl` is used to interact with the cluster.    
 If you have multiple clusters, list them with: `kubectl config get-contexts`, 
@@ -35,6 +69,16 @@ switch between them with: `kubectl config use-context CONTEXT_NAME`
 In order to get detailed information about any part of your deployment use `kubectl describe <kind>`.  
 The term `kind` is defined in this [manual](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) (it can simply be a `pod`, `service` or `deployment`)
 In order to debug what actually happens within Kubernetes cluster: `kubectl get events --sort-by='{.lastTimestamp}'` 
+
+### POD
+Main execution unit.  
+`kubectl get pods` will inform about status, number of restarts, and readiness.  
+The status:
+Pending -> Running -> Succeeded/Failed -> Completed -> CrashLoopBackOff (if policy says so)
+
+The POD by default restartPolicy is `Always`
+
+Specifying container command and/or args: `command`, `args`. If the Docker runtime is used then the `command` will override `ENTRYPOINT` and `args` will override `CMD`
 
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
