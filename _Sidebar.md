@@ -43,7 +43,7 @@
      * [Modules](https://github.com/kiemlicz/util/wiki/Salt-Modules)
        * [Events and Reactor](https://github.com/kiemlicz/util/wiki/Salt-Events-and-Reactor) 
    * [Kubernetes](https://github.com/kiemlicz/util/wiki/kubernetes)
-     * [Setup](https://github.com/kiemlicz/util/wiki/Kubernetes-setup)
+     * [PODs](https://github.com/kiemlicz/util/wiki/Kubernetes-POD)
      * [Admin](https://github.com/kiemlicz/util/wiki/Kubernetes-admin)
      * [Helm](https://github.com/kiemlicz/util/wiki/Helm)
 6. Desktop environments

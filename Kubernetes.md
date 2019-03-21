@@ -70,15 +70,16 @@ In order to get detailed information about any part of your deployment use `kube
 The term `kind` is defined in this [manual](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) (it can simply be a `pod`, `service` or `deployment`)
 In order to debug what actually happens within Kubernetes cluster: `kubectl get events --sort-by='{.lastTimestamp}'` 
 
-### POD
-Main execution unit.  
-`kubectl get pods` will inform about status, number of restarts, and readiness.  
-The status:
-Pending -> Running -> Succeeded/Failed -> Completed -> CrashLoopBackOff (if policy says so)
+## Setup
+Setup depends on the number of nodes used for cluster
 
-The POD by default restartPolicy is `Always`
+### Single-node
+Use [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/).  
+It uses either KVM or VirtualBox as docker host.  
+In order to increase default limits of the VM, it must be destroyed first: `minikube delete; minikube start --memory 12288`
 
-Specifying container command and/or args: `command`, `args`. If the Docker runtime is used then the `command` will override `ENTRYPOINT` and `args` will override `CMD`
+### Multi-node
+TODO
 
 # References
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
