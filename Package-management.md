@@ -1,5 +1,6 @@
 # Packages
 Typically packages are nothing more that some kind of archive.
+
 ## [DEB](https://github.com/kiemlicz/util/blob/master/core/deb_functions)
 _AR_ archive with following top-level files included:
  * _debian-binary_
@@ -11,29 +12,18 @@ todo
 
 # APT/Aptitude
 Highest priority number means highest priority of package.
+
+## Cheat sheet
  
-Show available/installed package version:  
-`aptitude versions the_package`  
-`apt-cache policy the_package`  
-`dpkg-query -l | grep the_package`
-
-Show package dependencies:  
-`apt-cache depends the_package`
-
-Upgrade/downgrade only one specific package:  
-`apt-get install --only-upgrade the_package`
-
-Remove dangling packages:  
-`apt-get autoremove --purge`
-
-Remove old cached packages:  
-`aptitude autoclean`
-
-Remove cached packages:  
-`aptitude clean` 
-
-Show to which package does the file belong to:  
-`dpkg -S /bin/ping`
+| command | description |
+|-|-|
+| `aptitude versions the_package`, `apt-cache policy the_package`, `dpkg-query -l | grep the_package` | show available/installed package version |
+| `apt-cache depends the_package`| show package dependencies | 
+| `apt-get install --only-upgrade the_package` | upgrade/downgrade only one specific package |
+| `apt-get autoremove --purge` | Remove dangling packages |
+| `aptitude autoclean` | remove old cached packages |
+| `aptitude clean` | remove cached packages |
+| `dpkg -S /bin/ping` | show to which package does the file belong to |
 
 ## Configuration
 APT configuration can be dumped with:  
@@ -43,7 +33,8 @@ To reload configuration changes (either repositories changes or `apt.conf.d/*` c
 `apt-get update`
 
 ## Preferences
-Mechanism that determines which version of the package will be installed (consult: `man apt_preferences`).
+In general, same package may be defined in multiple repositories with different versions (or not).   
+The mechanism that determines which package version will be installed is called _preferences_ (consult: `man apt_preferences`).  
 
 Used to pick **package version** when _apt list files_ (`/etc/apt/sources.list` or `/etc/apt/sources.list.d/*.list`) contains references to more than one distribution eg. contains both stable and testing repositories. 
  1. Normally without using apt_preferences the apt will pick the package coming from the first entry in `sources.list`.
@@ -64,12 +55,13 @@ You can always verify with `apt-cache policy -t target-release package` which ex
 ### Preferences files
 Located in `/etc/apt/preferences.d`  
 Parsed in alphanumeric ascending order  
+
 Need to obey convention: 
  1. No filename extension or `.pref`
  2. Filename chars allowed: alphanumeric, hyphen, underscore and period
 
 The file itself contains records separated by blank lines.  
-Preference refers to the mentioned package and the mentioned package only (doesn't affect its dependencies).  
+Preference refers to the mentioned package(s) and the mentioned package(s) only (doesn't affect its dependencies).  
 This is one of the reasons why this mechanism is kind of "discouraged".  
 Typical `pref` file:
 ```
@@ -81,9 +73,66 @@ Configuration options:
 
 | Option | Meaning |
 |-|-|
-| Pin-Priority | The priority |
-| Package | To which package does the rule apply to. Can be regex |
-| Pin | More complex rule to match packages on. TODO list options |
+| `Pin-Priority` | The priority |
+| `Package` | To which package does the rule apply to. Can be regex |
+| `Pin` | More complex rule to match packages on. Using `Pin` it is possible to point the desired repository that will be used to fetch package |
+
+#### Pin
+Possible `Pin` options (and they should be defined) are rather poorly documented.  
+Using `Pin` it is possible to point the exact repository to be used for given package(s).  
+
+##### Pin to version
+Without regards to repository holding the `perl` package, this `Pin` will assign 1001 priority to every `perl` package version matching `5.8*` 
+```
+Package: perl
+Pin: version 5.8*
+Pin-Priority: 1001
+```
+
+##### Pin to origin
+Assiging the priority by the repository URL only.
+```
+Package: *
+Pin: origin ftp.de.debian.org
+Pin-Priority: 980
+```
+
+##### Pin to Release file
+To get the values that it is possible **to pin to**, download the desired repository's `Release` file, e.g.:
+```
+Archive: Debian_9.0
+Codename: Debian_9.0
+Origin: obs://build.opensuse.org/isv:ownCloud:desktop/Debian_9.0
+Label: isv:ownCloud:desktop
+Architectures: amd64
+Date: Thu Mar 21 19:36:06 2019
+Description: qt depenendencies for client 2.5.x (Debian_9.0)
+MD5Sum:
+...
+SHA1:
+...
+SHA256:
+...
+```
+In order to use `Origin` field:
+```
+Package: *
+Pin: release o=obs://build.opensuse.org/isv:ownCloud:desktop/Debian_9.0
+Pin-Priority: 995
+```
+The fields:
+| Release file field | Pin option |
+|-|-|
+| `Archive`, `Suite` | `a` |
+| `Codename` | `n` |
+| `Version` | `v` |
+| `Component` | `c` |
+| `Origin` | `o` |
+| `Label` | `l` |
+
+Entries can be concatenated with `,` e.g.: `Pin: release o=Debian Mozilla Team,c=iceweasel-aurora`
+
+In order to debug what package version is going to be installed use: `apt-cache policy the_package`
 
 ## Package configuration
 To display package configuration files use:  
@@ -96,3 +145,4 @@ To set package configuration option use (wireshark example, using here-string):
 1. https://wiki.debian.org/AptPreferences
 2. https://wiki.debian.org/UnattendedUpgrades
 3. https://www.debian.org/doc/manuals/repository-howto/repository-howto
+4. https://dug.net.pl/tekst/163/priorytety_pakietow_(apt_pinning__pin_priority)/
