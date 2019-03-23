@@ -17,7 +17,7 @@ Highest priority number means highest priority of package.
  
 | command | description |
 |-|-|
-| `aptitude versions the_package`, `apt-cache policy the_package`, `dpkg-query -l | grep the_package` | show available/installed package version |
+| `aptitude versions the_package`, `apt-cache policy the_package`, `dpkg-query -l \| grep the_package` | show available/installed package version |
 | `apt-cache depends the_package`| show package dependencies | 
 | `apt-get install --only-upgrade the_package` | upgrade/downgrade only one specific package |
 | `apt-get autoremove --purge` | Remove dangling packages |
@@ -121,6 +121,7 @@ Pin: release o=obs://build.opensuse.org/isv:ownCloud:desktop/Debian_9.0
 Pin-Priority: 995
 ```
 The fields:
+
 | Release file field | Pin option |
 |-|-|
 | `Archive`, `Suite` | `a` |
