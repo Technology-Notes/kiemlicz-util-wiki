@@ -166,4 +166,4 @@ Run certain scripts/procedures etc during POD startup
 # Tricks
 
 Throw-away debug container:
-`kubectl run -i --tty busybox --image=busybox --restart=Never -- sh `
+`kubectl run -it --rm busybox --image=busybox --restart=Never -- sh `
