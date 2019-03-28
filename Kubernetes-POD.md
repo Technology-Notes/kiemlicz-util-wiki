@@ -93,9 +93,15 @@ It is possible to mount `ConfigMap` as a volume.
 
 Typically you have `PersistentVolume` (PV) _resource_ (or have some Cloud provider prepare that for you) and you just mount it to the PODs.
 The `persistentVolumeClaim` (PVC) is used as that glue. The PVC represents the request for storage.
-The PV can represent different parameters, typically the `StorageClass` represents that information.
 
-Example POD with `PersistentVolume`
+There are two main types of Persistent Volumes provisioning:
+1. Static
+It is the administrator that prepares volumes. Use `selector` in PVC, without providing `storageClassName` to use static provisioning
+
+2. Dynamic 
+Based on `StorageClass` the `PersistentVolume` will be automatically created for given PVC. Use `storageClassName`.
+
+Example POD with `PersistentVolume` Statically provisioned (`StorageClass` is not used at all)
 ```
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -108,6 +114,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: example-pv
+  labels:
+    name: example-pv
 spec:
   capacity:
     storage: 1Mi  
@@ -115,7 +123,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
+  ##storageClassName: local-storage
   #hostPath:
   #  path: /mnt/testing
   local:
@@ -134,7 +142,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: example-pvc
 spec:
-  storageClassName: local-storage
+  ##storageClassName: local-storage
+  selector:
+    matchLabels:
+        name: example-pv
   accessModes:
     - ReadWriteOnce
   resources:
