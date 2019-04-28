@@ -224,8 +224,12 @@ _Salt_ event system that uses _Event Modules_ is described in separate [section]
 [salt/beacons](https://github.com/saltstack/salt/tree/develop/salt/beacons)  
 Custom: `salt://_beacons`  
 Way to notify the master about anything. Works like a probe/sensor, e.g. disk is going full. 
-Notification uses the _Salt Minion_ event bus and are propagated to _Salt Master_. 
-
+Notifications use the _Salt Minion_'s event bus and are propagated to _Salt Master_.  
+Internally beacons work in the following way:
+ - minion's scheduler starts the beacon module's `beacon` function
+ - the function fetches desired data in the most lightweight way possible
+ - data is forwarded to _Salt Minion_ event bus
+ 
 ## Queue Modules
 [salt/queues](https://github.com/saltstack/salt/tree/develop/salt/queues)  
 Custom: n/a  
