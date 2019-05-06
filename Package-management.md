@@ -50,6 +50,10 @@ It roughly specifies:
 
 Please mind that if you have configured package pinning and e.g. your stable is configured to have priority of 995 (or anything greater than 990) then `-t` will have **no effect**.
 
+However it is possible to provide package version (or target repository) then the package is **always installed**.  
+To provide version use `=` e.g. `apt-get install firefox-esr=60.6.1esr-1~deb9u1`  
+To provide target repository use forward slash `\ ` e.g. `apt-get install firefox-esr/stretch-updates`
+
 You can always verify with `apt-cache policy -t target-release package` which exact version of package is going to be installed
 
 ### Preferences files
