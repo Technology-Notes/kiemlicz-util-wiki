@@ -14,6 +14,7 @@ registry name, then the public `registry-1.docker.io` is assumed.
 
 ## Usage
 Common commands:
+
 | operation | command |
 |-|-|
 | Build image from `Dockerfile` (invoke in directory containing `Dockerfile`) | `docker build -t my-tag .` [Read more](#Building-images) |  
@@ -21,9 +22,7 @@ Common commands:
 | Stop container | `docker stop <container name or id>` |
 | Remove container | `docker rm <container name or id>` |
 | Remove image | `docker rmi <image name or id>` |
-| Push image to registry | <ol><li>Tag image with repository URL first. Mind that repo may support the `v1` and/or `v2` 'naming' format. Briefly speaking:
-`v1` format doesn't support multiple path segments in image name, thus image: `rootName/subName` is invalid. For `v2` it is fine 
-`docker tag <image> <repourl>/<name>:<tag>`</li><li>Login to desired repository, `docker.io` is the default `docker login <repourl>` <li> `docker push <repourl>/<name>:<tag>` </li> </ol> |
+| Push image to registry | <ol><li>Tag image with repository URL first. Mind that repo may support the `v1` and/or `v2` 'naming' format. Briefly speaking: `v1` format doesn't support multiple path segments in image name, thus image: `rootName/subName` is invalid. For `v2` it is fine: `docker tag <image> <repourl>/<name>:<tag>`</li><li>Login to desired repository, `docker.io` is the default `docker login <repourl>` <li> `docker push <repourl>/<name>:<tag>` </li> </ol> |
 
 ### Building images
 There are two types of images:
