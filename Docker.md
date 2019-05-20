@@ -1,4 +1,4 @@
-Originally LXC-based, widespread. Created for shipping and running applications. Advocates running one process per container.
+Originally LXC-based, widespread. Created for shipping and running applications. Encourages running **one process per container**.
 
 ## Basics
 | term | meaning |
@@ -48,6 +48,22 @@ Most `Dockerfile`s use _parent images_ in their `FROM` clause.
 Each instruction corresponds to filesystem layer. Image is built within _build context_ (the current directory of `docker build` command - simply speaking).
 All `COPY`-kind instructions are relative to this _build context_.
 
+#### Design goals when building images
+There is a lot of things to keep in mind when building images. 
+Many of them will be containerized-application specific: different set of guidelies for JVM application, python application, etc.
+
+However there are some fundamental, containerized-application agnostic set of rules:
+
+##### image size
+The image is never downloaded once and there is a difference when downloading over 1GB image vs 100MB. 
+
+Storage is also limited especially when images doesn't re-use the layers.
+
+Huge images impact the downtime of your application, the bigger the image, the longer it takes to download it, the longer the downtime.
+When the Kubernetes reschedules the POD to another Node which doesn't contain the image (or the image has changed), the time user waits for application is also longer 
+
+Security the fewer the libraries in container the better,
+
 The main goal when building the image should be: 
  - minimize the number of layers, the new layer is created only with: `COPY`, `RUN` and `ADD` commands.
  - use cache as much as possible. When the `Dockerfile` processed, each instruction is examined if its outcome is present in the cache already. 
@@ -55,8 +71,7 @@ The main goal when building the image should be:
  Thus building the image with `RUN apt-get update` second time won't update the latest packages.
  - once the cache is invalidated (instruction that misses cache occurred), all subsequent instructions won't check the cache
 
-#### Design goals of building images:
-##### (try) to package one application in container
+##### one application in container
  - management of the image that ships one application is easier: one log source, one application to monitor. Usage is easier too, 
  as there is no need for `supervisord`-like tools that govern multiple applications inside one container.
  - decoupled dependencies, easier to re-deploy
@@ -118,6 +133,53 @@ Disables networking
 ### custom
 TODO
 
+## Concepts
+Following **linux kernel** concepts are the building blocks of Docker
+
+### Namespaces
+Wrapper over global system resources.  
+For all processes within the namespace makes the system resources appear like isolated (dedicated) instance.  
+Changes to the global resource are visible to other processes that are members of the namespace, but are invisible to other processes.
+
+By default linux provides following namespaces
+
+| namespace | isolates |
+|-|-|
+| `Cgroup` | Cgroup root directory. Processes inside this namespace are only able to view paths relative to their namespace root |
+| `IPC` | System V IPC, POSIX message queues |
+| `Network` | Network devices, **ports**, etc. |
+| `Mount` | Mount points |
+| `PID` | Process IDs |
+| `User` | User and group IDs |
+| `UTS` | Hostname and [NIS](https://en.wikipedia.org/wiki/Network_Information_Service) domain |
+
+Each namespace is assigned unique _inode_ number:
+```
+> ls /proc/7320/ns -al
+dr-x--x--x 2 thedude thedude 0 May 20 20:19 .
+dr-xr-xr-x 9 thedude thedude 0 May 20 19:29 ..
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 cgroup -> cgroup:[4076531835]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 ipc -> ipc:[4026537839]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 mnt -> mnt:[4026537840]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 net -> net:[4026537969]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 pid -> pid:[4026537836]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 user -> user:[4026731837]
+lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 uts -> uts:[4026571838]
+```
+
+#### userspace tools
+`lsns`
+
+### Control groups
+Usually referred to as cgroups. Linux feature that organises processes into hierarchical groups whose usage of various types of resources
+can be limited and monitored 
+
+### Union file systems
+TODO
+
+### Container format
+TODO
+
 ## Configuration
 `dockerd` uses following configuration files:
 
@@ -146,3 +208,6 @@ This must be removed from script itself, otherwise `dockerd` will fail to start
 
 # References
  1. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#label
+ 2. https://lwn.net/Articles/621006/
+ 3. https://www.slideshare.net/kerneltlv/namespaces-and-cgroups-the-basis-of-linux-containers
+ 4. https://codefresh.io/docker-tutorial/java_docker_pipeline/
