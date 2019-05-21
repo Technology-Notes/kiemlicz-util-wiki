@@ -7,31 +7,30 @@ Originally LXC-based, widespread. Created for shipping and running applications.
 | container | Running instance of image. Analogous to the concept from _Object Oriented Programming_: `class` instance |
 | tag | Extra information appended to image name. Helpful for enclosing image version information, if omitted: `latest` is assumed |
 | registry | Repository that stores Docker Images, can be public or private |
+| Dockerfile | Text file, contains commands that assemble image |
 
 Each image is identified by ID, can contain different names and tags.  
 Image name contains of slash delimited name components, with optionally repository name prefixed. If the name doesn't contain 
 registry name, then the public `registry-1.docker.io` is assumed.
+
+The process specified as `ENTRYPOINT` in Dockerfile becomes PID 1 process, it means that it will not handle SIGKILL signal.
 
 ## Usage
 Common commands:
 
 | operation | command |
 |-|-|
-| Build image from `Dockerfile` (invoke in directory containing `Dockerfile`) | `docker build -t my-tag .` [Read more](#Building-images) |  
+| Build image from `Dockerfile` (invoke in directory containing `Dockerfile` or pass the dockerfile with `-f`. The mandatory argument is called _build context_ - all dockerfile instructions are relative to that path | `docker build -t my-tag .` [Read more](#Building-images) |  
 | Create and start container (simplest form) | `docker run --name <some_name> <image tag or name> [args]` |
 | Stop container | `docker stop <container name or id>` |
 | Remove container | `docker rm <container name or id>` |
 | Remove image | `docker rmi <image name or id>` |
 | Push image to registry | <ol><li>Tag image with repository URL first. Mind that repo may support the `v1` and/or `v2` 'naming' format. Briefly speaking: `v1` format doesn't support multiple path segments in image name, thus image: `rootName/subName` is invalid. For `v2` it is fine: `docker tag <image> <repourl>/<name>:<tag>`</li><li>Login to desired repository, `docker.io` is the default `docker login <repourl>` <li> `docker push <repourl>/<name>:<tag>` </li> </ol> |
+| Show running containers | `docker ps` |
+| Show container/image details | `docker inspect container_or_image_name` |
 
 ### Building images
-There are two types of images:
- - _parent image_ - the image that is specified in `FROM` clause. Your image is based on _parent image_.
- - _base image_ - the image that has no `FROM` or `FROM scratch`
-
-Most `Dockerfile`s use _parent images_ in their `FROM` clause.
-
-`Dockerfile` contains all of the needed instructions to build the Image with your application.  
+[`Dockerfile`](https://docs.docker.com/engine/reference/builder/) contains all of the needed instructions to build the image with given application.  
 Each instruction corresponds to filesystem layer. Image is built within _build context_ (the current directory of `docker build` command - simply speaking).
 All `COPY`-kind instructions are relative to this _build context_.
 
@@ -67,7 +66,14 @@ The main goal when building the image should be:
 When the (main) application spawns processes inside of container it's the application's responsibility to cleanup process after it completes.
 Usually it was done by `PID 1 init` process, but the docker lacks one (by default at least)  
  
-#### Building base images
+#### Image types
+There are two types of images in docker terminology:
+ - _parent image_ - the image that is specified in `FROM` clause. Your image is based on _parent image_. Your image after build becomes parent image.  
+ - _base image_ - the image that has no `FROM` or `FROM scratch`
+
+Most `Dockerfile`s use _parent images_ in their `FROM` clause.
+
+##### [Building base images](https://docs.docker.com/develop/develop-images/baseimages/)
 In order to build base image:
  - use debootstrap for Debian-based distributions (tool that installs Debian-based distributions into given filesystem) 
  - archive it and `docker import image.tar name` 
@@ -120,51 +126,7 @@ Disables networking
 ### custom
 TODO
 
-## Concepts
-Following **linux kernel** concepts are the building blocks of Docker
-
-### Namespaces
-Wrapper over global system resources.  
-For all processes within the namespace makes the system resources appear like isolated (dedicated) instance.  
-Changes to the global resource are visible to other processes that are members of the namespace, but are invisible to other processes.
-
-By default linux provides following namespaces
-
-| namespace | isolates |
-|-|-|
-| `Cgroup` | Cgroup root directory. Processes inside this namespace are only able to view paths relative to their namespace root |
-| `IPC` | System V IPC, POSIX message queues |
-| `Network` | Network devices, **ports**, etc. |
-| `Mount` | Mount points |
-| `PID` | Process IDs |
-| `User` | User and group IDs |
-| `UTS` | Hostname and [NIS](https://en.wikipedia.org/wiki/Network_Information_Service) domain |
-
-Each namespace is assigned unique _inode_ number:
-```
-> ls /proc/7320/ns -al
-dr-x--x--x 2 thedude thedude 0 May 20 20:19 .
-dr-xr-xr-x 9 thedude thedude 0 May 20 19:29 ..
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 cgroup -> cgroup:[4076531835]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 ipc -> ipc:[4026537839]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 mnt -> mnt:[4026537840]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 net -> net:[4026537969]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 pid -> pid:[4026537836]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 user -> user:[4026731837]
-lrwxrwxrwx 1 thedude thedude 0 May 20 20:19 uts -> uts:[4026571838]
-```
-
-#### userspace tools
-`lsns`
-
-### Control groups
-Usually referred to as cgroups. Linux feature that organises processes into hierarchical groups whose usage of various types of resources
-can be limited and monitored 
-
-### Union file systems
-TODO
-
-### Container format
+## Volumes
 TODO
 
 ## Configuration
