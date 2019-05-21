@@ -1,7 +1,7 @@
 1. General
    * [Terminal and shell](terminal)
      * [Shell shortcuts](shell)
-     * [Redirects](redirects)
+     * [Redirects](Redirections)
      * [Editing](editing)
      * [Scripting](scripting)
    * [Git](git)
