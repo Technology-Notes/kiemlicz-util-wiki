@@ -11,7 +11,7 @@ Originally LXC-based, widespread. Created for shipping and running applications.
 
 Each image is identified by ID, can contain different names and tags.  
 Image name contains of slash delimited name components, with optionally repository name prefixed. If the name doesn't contain 
-registry name, then the public `registry-1.docker.io` is assumed.
+registry name, then the public `docker.io` is assumed.
 
 The process specified as `ENTRYPOINT` in Dockerfile becomes PID 1 process, it means that it will not handle SIGKILL signal.
 
