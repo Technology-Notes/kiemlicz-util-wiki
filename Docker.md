@@ -15,6 +15,8 @@ registry name, then the public `docker.io` is assumed.
 
 The process specified as `ENTRYPOINT` in Dockerfile becomes PID 1 process, it means that it will not handle SIGKILL signal.
 
+The container lifetime is equal to the encapsulating (`ENTRYPOINT`s) process lifetime. The process dies, the container dies too.
+
 ## Usage
 Common commands:
 
