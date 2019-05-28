@@ -176,5 +176,8 @@ Run certain scripts/procedures etc during POD startup
 
 # Tricks
 
-Throw-away debug container:
-`kubectl run -it --rm busybox --image=busybox --restart=Never -- sh `
+Throw-away debug container:  
+`kubectl run -it --rm name --image=the_image --restart=Never -- sh `
+
+busybox: `kubectl run -it --rm busybox --image=busybox --restart=Never -- sh`    
+debian: `kubectl run -it --rm debian --image=debian --restart=Never -- bash`

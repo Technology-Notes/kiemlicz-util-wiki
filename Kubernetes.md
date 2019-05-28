@@ -48,7 +48,7 @@ Key-value pairs. Used to group together set of objects. Each object can have mul
 to multiple objects
 
 ## Basics
-The PODs are the execution units submitted by the 'user', however creating, submitting PODs one by one would be tedious.
+The PODs are the execution units submitted by the 'user', however creating, submitting PODs one by one would be tedious.  
 This is solved by using e.g., deployment, statefulsets or daemonsets. They provide policies for scheduling multiple PODs.
 
 Containers within one _POD_ share IP address. Tightly coupled containers should run within one Pod.
@@ -65,7 +65,6 @@ switch between them with: `kubectl config use-context CONTEXT_NAME`
  - `kubectl create -f your.yaml` - imperative  
  - `kubectl apply -f your.yaml` - declarative
 
-## Overview
 In order to get detailed information about any part of your deployment use `kubectl describe <kind>`.  
 The term `kind` is defined in this [manual](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) (it can simply be a `pod`, `service` or `deployment`)
 In order to debug what actually happens within Kubernetes cluster: `kubectl get events --sort-by='{.lastTimestamp}'` 
