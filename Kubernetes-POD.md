@@ -88,7 +88,7 @@ spec:
     hostPath:
       path: /mnt/testing 
 ```
-There are [numerous volume types](https://kubernetes.io/docs/concepts/storage/volumes/) that can be used, `hostPath` is actually the most test-purposes only.
+There are [numerous volume types](https://kubernetes.io/docs/concepts/storage/volumes/) that can be used, `hostPath` is actually the most test-purpose only.  
 It is possible to mount `ConfigMap` as a volume.  
 
 Typically you have `PersistentVolume` (PV) _resource_ (or have some Cloud provider prepare that for you) and you just mount it to the PODs.
