@@ -99,7 +99,7 @@ Failed container can be pretty easily debugged
 
 Live container can be debugged as well:
 1. Grab the container name or ID: `docker ps`
-2. Attach to the container with: `docker exec -it /bin/bash`
+2. Attach to the container with: `docker exec -it <container id> /bin/bash`
 
 ## Networking
 Networking system in Docker is configurable. It is possible to set different networking driver for containers using:
