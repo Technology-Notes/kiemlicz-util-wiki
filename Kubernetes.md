@@ -11,6 +11,7 @@ The main one is: _the resource_ (aka. object)
 In order to list all of the Kubernetes resources use: `kubectl api-resources`
 
 ### Kubernetes Resources
+The handy command: `kubectl explain <resource>`, for nested fields: `kubectl explain <resource>.<field>`
 
 #### Node 
 Worker machine, runs _Services_, capable of running _Pods_. Either VM or physical machine

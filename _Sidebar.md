@@ -44,8 +44,11 @@
        * [Events and Reactor](Salt-Events-and-Reactor) 
    * [Kubernetes](kubernetes)
      * [PODs](Kubernetes-POD)
+     * [Service](Kubernetes-Service)
+     * [Volumes](Kubernetes-Volumes)
+     * [Controllers](Kubernetes-Controllers)
      * [Admin](Kubernetes-admin)
-     * [Helm](Helm)
+   * [Helm](Helm)
 6. Desktop environments
    * [KDE](kde)
 7. Monitoring
