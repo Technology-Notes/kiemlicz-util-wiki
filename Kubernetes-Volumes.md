@@ -101,3 +101,11 @@ spec:
     persistentVolumeClaim:
       claimName: example-pvc
 ```
+
+The `persistentVolumeReclaimPolicy` tells what happens to `PersistentVolume` after released from claim. Defaults:  
+
+`Retain` for statically provisioned `PersistentVolume`  
+
+`Delete` for dynamically provisioned `PersistentVolume`
+
+The `PersistentVolume` must support different (than default) policy setting.
