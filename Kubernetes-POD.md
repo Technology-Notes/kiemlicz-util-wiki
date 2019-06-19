@@ -67,7 +67,29 @@ Both probes accept different thresholds, periods and inital delays.
 Using `port-forward` for accessing non-ready PODs bypasses the non-routing restriction.
 
 # Init containers
-Run certain scripts/procedures etc during POD startup
+Run certain scripts/procedures during POD startup. 
+Affects the POD status change path:  
+Pending -> Init -> PodInitializing -> Running -> Succeeded/Failed -> Completed -> CrashLoopBackOff (if policy says so)  
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: pod
+  name: example1
+spec:
+  containers:
+    - image: httpd
+      name: example1
+  initContainers:
+    - image: debian:stretch-slim
+      name: ini
+      command:
+        - "sh"
+        - "-c"
+        - "sleep 5"
+```
+Debug with `kubectl logs example1 -c ini`
 
 # Tricks
 
