@@ -1,11 +1,28 @@
 # Packages
-Typically packages are nothing more that some kind of archive.
+Typically packages are nothing more that some kind of archive. However this archive besides the actual files to be copied to the underlying system
+contains a lot of additional configuration scripts. 
 
 ## [DEB](https://github.com/kiemlicz/util/blob/master/core/deb_functions)
-_AR_ archive with following top-level files included:
- * _debian-binary_
- * _control.tar.gz_
- * _data.tar.gz_ (since Debian 8: _data.tar.xz_)
+_AR_ archive with following 3 top-level files included:
+ 1. _control.tar.gz_ - control files. Theoretically it must contain following files:
+  - _control_ kind of key-value file. Contains information about packaged data (like: author, some description, dependencies)  
+    Fields (some of them):  
+    `Source` - name of the source package  
+    `Package` - name of the binary package  
+    `Section` - mainly for front-ends that display packages grouped into categories  
+    `Priority` - how important for the user the package is. For front-ends use (mainly when the `apt`-like software selects default packages for user or solves conflicts)  
+    `Architecture` - if this package is architecture dependent (`any`) or not (`all` - e.g. Java applications)  
+    `Depends` - the package will not be installed unless the packages it depends on are installed  
+  - _changelog_ `dpkg` uses this files to obtain version information, distribution, urgency etc of the package 
+  - _copyright_ copyright and license  
+  Some of optional files:  
+  - `conffiles` list of packaged application configuration files. When **upgrading** package you'll be asked what to do with any file listed here
+  that changed on the filesystem  
+  - `package.cron.*` e.g. `my_app.cron.hourly` will be installed as `/etc/cron.hourly/my_app` and will run every hour
+  - `dirs` specifies any directories which we need but which are not created by the normal installation procedure
+  - `md5sums` used to verify if installed files have been modified
+ 2. _data.tar.gz_ (since Debian 8: _data.tar.xz_) - actual files 
+ 3. _debian-binary_
 
 ## RPM
 todo
@@ -152,3 +169,5 @@ To set package configuration option use (wireshark example, using here-string):
 2. https://wiki.debian.org/UnattendedUpgrades
 3. https://www.debian.org/doc/manuals/repository-howto/repository-howto
 4. https://dug.net.pl/tekst/163/priorytety_pakietow_(apt_pinning__pin_priority)/
+5. https://www.debian.org/doc/manuals/maint-guide/index.en.html
+6. https://www.debian.org/doc/debian-policy/index.html
