@@ -22,9 +22,7 @@ Common commands:
 
 | operation | command |
 |-|-|
-| Build image from `Dockerfile`. Invoke passing directory containing `Dockerfile` or pass the dockerfile with `-f`. 
-The mandatory argument is called _build context_ - all dockerfile instructions are relative to that path 
-and all non-ignored files from that directory are send to Docker engine | `docker build -t my-tag .` [Read more](#Building-images) |  
+| Build image from `Dockerfile`. Invoke passing directory containing `Dockerfile` or pass the dockerfile with `-f`. The mandatory argument is called _build context_ - all dockerfile instructions are relative to that path and all non-ignored files from that directory are send to Docker engine | `docker build -t my-tag .` [Read more](#Building-images) |  
 | Create and start container (simplest form) | `docker run --name <some_name> <image tag or name> [args]` |
 | Stop container | `docker stop <container name or id>` |
 | Remove container | `docker rm <container name or id>` |
