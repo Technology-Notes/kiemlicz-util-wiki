@@ -7,7 +7,7 @@ Originally LXC-based, widespread. Created for shipping and running applications.
 | container | Running instance of image. Analogous to the concept from _Object Oriented Programming_: `class` instance |
 | tag | Extra information appended to image name. Helpful for enclosing image version information, if omitted: `latest` is assumed |
 | registry | Repository that stores Docker Images, can be public or private |
-| Dockerfile | Text file, contains commands that assemble image |
+| Dockerfile | Text file, contains [commands](https://docs.docker.com/engine/reference/builder/) that assemble image |
 
 Each image is identified by ID, can contain different names and tags.  
 Image name contains of slash delimited name components, with optionally repository name prefixed. If the name doesn't contain 
@@ -22,7 +22,9 @@ Common commands:
 
 | operation | command |
 |-|-|
-| Build image from `Dockerfile` (invoke in directory containing `Dockerfile` or pass the dockerfile with `-f`. The mandatory argument is called _build context_ - all dockerfile instructions are relative to that path | `docker build -t my-tag .` [Read more](#Building-images) |  
+| Build image from `Dockerfile`. Invoke passing directory containing `Dockerfile` or pass the dockerfile with `-f`. 
+The mandatory argument is called _build context_ - all dockerfile instructions are relative to that path 
+and all non-ignored files from that directory are send to Docker engine | `docker build -t my-tag .` [Read more](#Building-images) |  
 | Create and start container (simplest form) | `docker run --name <some_name> <image tag or name> [args]` |
 | Stop container | `docker stop <container name or id>` |
 | Remove container | `docker rm <container name or id>` |
@@ -33,8 +35,10 @@ Common commands:
 
 ### Building images
 [`Dockerfile`](https://docs.docker.com/engine/reference/builder/) contains all of the needed instructions to build the image with given application.  
-Each instruction corresponds to filesystem layer. Image is built within _build context_ (the current directory of `docker build` command - simply speaking).
-All `COPY`-kind instructions are relative to this _build context_.
+Each instruction corresponds to filesystem layer. 
+Image is built within _build context_ (the directory passed to `docker build` command - simply speaking).
+All `COPY`-kind instructions are relative to that _build context_.  
+The bigger the _build context_ (directory contents and size) the longer it takes to send them to Docker engine. 
 
 #### Design goals when building images
 There is a lot of things to keep in mind when building images. 
@@ -58,6 +62,8 @@ The main goal when building the image should be:
  The `ADD` and `COPY` will check if the underlying file has changed, the `RUN` commands will check only if the command string has not changed.
  Thus building the image with `RUN apt-get update` second time won't update the latest packages.
  - once the cache is invalidated (instruction that misses cache occurred), all subsequent instructions won't check the cache
+
+The verify layer re-use: `docker system df -v`
 
 ##### one application in container
  - management of the image that ships one application is easier: one log source, one application to monitor. Usage is easier too, 
