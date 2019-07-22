@@ -59,6 +59,11 @@ Services match a set of pods using labels and selectors. Services are published 
 
 Services by default are visible within the cluster only and there is no way to access them from the outside of the Kubernetes cluster.
 
+In Kubernetes following networking rules hold true:
+ 1. All containers/pods can communicate with all other containers/pods without NAT
+ 2. All Nodes can communicate with all containers/pods (and vice-versa) without NAT
+ 3. The IP that a container sees itself as is the same IP that others see it as
+
 `Kubectl` is used to interact with the cluster.    
 If you have multiple clusters, list them with: `kubectl config get-contexts`, 
 switch between them with: `kubectl config use-context CONTEXT_NAME`  
@@ -85,3 +90,4 @@ TODO
 1. https://kubernetes.io/docs/user-journeys/users/application-developer/foundational/
 2. https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html
 3. https://vimeo.com/245778144/4d1d597c5e
+4. https://www.magalix.com/blog/kubernetes-cluster-networking-101
