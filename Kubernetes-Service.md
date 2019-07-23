@@ -40,7 +40,8 @@ Using headless service it is possible to expose pods hostname for cluster availa
 # ClusterIP
 `type: ClusterIP`
 
-Default Service type, guarantees unique IP across the cluster. This IP 'lives' only in iptables and is maintained by `kube-proxy`
+Default Service type, guarantees unique IP across the cluster. This IP 'lives' only in iptables and is maintained by `kube-proxy`.  
+By default uses round-robin to pick pods.
 
 # NodePort
 `type: NodePort`
