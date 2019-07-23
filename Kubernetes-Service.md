@@ -1,7 +1,8 @@
 Services create rules for accessing Pods  
 Services route traffic to the ready Pods only  
 Services matches Pods using selectors  
-Services expose DNS name that is available across the cluster. The full service name: `name.namespace.svc.cluster.local`
+Services expose DNS name that is available across the cluster.  
+The full service name: `name.namespace.svc.cluster.local`  
 Default resolution policy in Kubernetes is `ClusterFirst`:
  - DNS query is routed to `dnsmasq` (running in `kube-dns` pod)
  - `dnsmasq` routes the request to:
