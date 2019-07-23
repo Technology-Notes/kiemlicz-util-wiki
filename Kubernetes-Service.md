@@ -34,6 +34,8 @@ No IP is allocated. DNS is configured:
 - if selectors are not configured then:
    - DNS returns `CNAME` records for ExternalName -type Services
    - DNS returns records for and Endpoints that share a name with this Service, for all other types
+
+Using headless service it is possible to expose pods hostname for cluster availability (required: `hostname` and `subdomain` on the pod)
    
 # ClusterIP
 `type: ClusterIP`  
