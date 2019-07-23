@@ -38,14 +38,17 @@ No IP is allocated. DNS is configured:
 Using headless service it is possible to expose pods hostname for cluster availability (required: `hostname` and `subdomain` on the pod)
    
 # ClusterIP
-`type: ClusterIP`  
+`type: ClusterIP`
+
 Default Service type, guarantees unique IP across the cluster. This IP 'lives' only in iptables and is maintained by `kube-proxy`
 
 # NodePort
 `type: NodePort`
+
 Gives access from outside of the cluster. Opens socket with high port on every node thus allowing to access the service 
 from outside of the cluster using node IP (with that high port)
 
 # LoadBalancer
 `type: LoadBalancer`
+
 Gives access from outside of the cluster. This is cloud-specific. Creates the load-balancer-type resource in cloud provider
