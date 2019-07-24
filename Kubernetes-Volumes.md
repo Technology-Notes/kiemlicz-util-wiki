@@ -23,7 +23,7 @@ There are [numerous volume types](https://kubernetes.io/docs/concepts/storage/vo
 It is possible to mount `ConfigMap` as a volume.  
 
 Typically you have `PersistentVolume` (PV) _resource_ (or have some Cloud provider prepare that for you) and you just mount it to the PODs.
-The `persistentVolumeClaim` (PVC) is used as that glue. The PVC represents the request for storage.
+The `persistentVolumeClaim` (PVC) is used to represent the request for the storage (PV).
 
 There are two main types of Persistent Volumes provisioning:
 1. Static  
