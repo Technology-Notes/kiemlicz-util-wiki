@@ -27,9 +27,9 @@ Common method to create the groups of PODs with regards to number of instances r
 # StatefulSet
 
 1. No POD location guarantees by default
-2. Started one by one (previous one must be 'READY')
+2. By default started one by one (previous one must be 'READY'). It is possible to start all at once
 3. PODs have stable network identifier
-4. Updated in order (hi -> low)
+4. Updated in order (hi -> low), regardless of `podManagementPolicy` setting
 
 # DaemonSet
 
