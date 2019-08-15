@@ -22,9 +22,10 @@ Socket behavior can be changed, moreover options meaning differ with every OS
 
 ### SO_REUSEADDR
 
-Theoretically `SO_REUSEADDR` has effect only on wildcard addresses.
+Enabled prior to binding.
+Theoretically `SO_REUSEADDR` has effect only on wildcard addresses and affects possibility of binding to 'taken' address.  
 
-| SO_REUSEADDR | socketA | socketB | result |
+| SO_REUSEADDR | socketA | socketB | result (of socketB `bind()`) |
 |-|-|-|-|
 |true/false|`192.168.1.1:21`|`192.168.1.1:21`|EADDRINUSE|
 |true/false|`192.168.1.1:21`|`10.0.0.1:21`|OK|
@@ -33,9 +34,17 @@ Theoretically `SO_REUSEADDR` has effect only on wildcard addresses.
 |true/false|`0.0.0.0:21`|`0.0.0.0:21`|EADDRINUSE|
 
 Impact:
-1. the TCP socket after closing transitions to `TIME_WAIT` (waiting till the data in socket buffers that was not yet sent will be send). The amount of time the socket stays in this state is determined by _linger time_ (OS and socket level configurable option). If `SO_REUSEADDR` is **not** set for such socket then closed TCP socket is still considered bound. However if `SO_REUSEADDR` is set, it is possible to bind to such (not-yet-fully) closed socket (without waiting _linger time_)
+ 1. For TCP sockets: the TCP socket after `close()` call, finally transitions to the `TIME_WAIT` (waiting for the data in socket buffers to be send). 
+The amount of time the socket stays in this state is determined by _linger time_ (OS and socket level - `SO_LINGER` - configurable option). 
+If `SO_REUSEADDR` is **not** set for such socket then closed TCP socket is still considered bound (up to _linger time_). 
+However if `SO_REUSEADDR` is set, it is possible to bind to such (not-yet-fully) closed socket (without waiting _linger time_)
+ 2. For TCP sockets: it is possible that socket reusing address connects to the same destination address and port. Thus the 5-tuple is duplicated and `connect()` will fail with `EADDRINUSE`
+ 3. For UDP sockets: multiple multicast (one-to-many) sockets with `SO_REUSEADDR` may be bound to same combination of multicast address and port (same behavior like `SO_REUSEPORT`)
+ 
+### SO_REUSEPORT
 
-
+Allows arbitrary number of sockets to bind to exactly the same source address and port as long as all prior bound sockets also had `SO_REUSEPORT` set.
+For Linux (>= 3.9): all sockets that want to share the same combination of address and port must belong to processes that share the same effective user ID. 
 
 # TCP socket states
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tcp_state_diagram_fixed.svg/796px-Tcp_state_diagram_fixed.svg.png)
