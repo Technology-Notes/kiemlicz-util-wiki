@@ -91,6 +91,17 @@ spec:
 ```
 Debug with `kubectl logs example1 -c ini`
 
+# Termination
+POD may be terminated not only upon user request but also:  
+ - the scheduler may decide to move the POD to other node
+ - some auto-scaling mechanisms
+ - upgrades
+
+Termination:  
+1. for all containers in POD: `SIGTERM` sent to the PID 1
+2. `terminationGracePeriodSeconds` countdown starts
+3. if the timeout occurs and container(s) is still alive the `SIGKILL` is send
+
 # Tricks
 
 Throw-away debug container:  

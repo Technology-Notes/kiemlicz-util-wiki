@@ -91,3 +91,4 @@ TODO
 2. https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html
 3. https://vimeo.com/245778144/4d1d597c5e
 4. https://www.magalix.com/blog/kubernetes-cluster-networking-101
+5. https://pracucci.com/graceful-shutdown-of-kubernetes-pods.html
