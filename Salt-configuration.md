@@ -197,3 +197,20 @@ to minions prior to use (this happens automatically only for `state.highstate` c
 root, following naming convention: `_<module_type>`.  
 It is also possible to define custom extensions in different places, given proper `extension_modules` configuration.
 Anything from [salt module](https://docs.saltstack.com/en/latest/ref/index.html) can be customized.
+
+# [Salt SSH](https://docs.saltstack.com/en/latest/topics/ssh/)
+No software needs to be installed on managed host, on the Salt Master side: `salt-ssh` package is required.  
+Configure `/etc/salt/roster` file with remote host details, the working roster file:
+```
+minion:
+  host: minion.local
+  user: dev
+  passwd: password  # required even if keys are used 
+  sudo: true  
+  tty: true
+  minion_opts:
+    log_level: debug
+    log_level_logfile: debug
+    log_file: ../../salt-ssh.log  # nice trick from https://twitter.com/SaltTips/status/1146306964026253312
+```
+The remote host must have at least `python-minimal` installed, the `passwd` is always mandatory (since on the remote the `sudo` is required)
