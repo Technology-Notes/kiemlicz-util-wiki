@@ -49,6 +49,7 @@
      * [Controllers](Kubernetes-Controllers)
      * [Admin](Kubernetes-admin)
    * [Helm](Helm)
+   * [Vagrant](Vagrant)
 6. Desktop environments
    * [KDE](kde)
 7. Monitoring
