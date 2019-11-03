@@ -96,6 +96,12 @@ ext_pillar:
         - files/testdir/*
 ```
 
+#### gpg renderer
+The pillar values can be encrypted using GPG.  
+The keypair (without passphrase) must be either [setup](https://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html#setup) or [imported](https://github.com/kiemlicz/util/blob/master/sec/gpg_functions#L23) beforehand on the master node (or on masterless node).
+It is possible to change default location of gpgkeys using: `gpg_keydir` configuration option.  
+To create encrypted secret: `cat secret_file | gpg --armor --trust-model always -r pillargpg --encrypt --homedir ~/somewhere/the/keys`
+
 ## Dunder dictionaries
 Some of the _Salt_ modules are 'wrapped' within special _dunder_ dictionaries. 
 These special dictionaries provide access to _Salt_ **different** modules.
