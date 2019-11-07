@@ -207,8 +207,15 @@ on its own.
 Custom: `salt://_sdb`  
 
 Used when neither _Salt Master_ nor _Salt Minion_ is authoritative over data. It could be used to pull secrets
-from HashiCorp Vault or other keystore. If it is _Salt Minion_ that makes the call to _sdb_ it calls directly the third party
+from HashiCorp Vault or other keystores. If it is _Salt Minion_ that makes the call to _sdb_ it calls directly the third party
 entity.
+It is possible to use SDB modules in the _Salt Master/Minion_ config files:
+```
+client_id: sdb://module_name/secret_client_id
+```
+However it's impossible to bootstrap _Salt_ with custom SDB modules used in config already. 
+During the _Salt Minion/Master_ startup the full config is read and parsed, thus any `sdb://<profile>/key` are evaluated
+Use of custom SDB modules requires preceding: `sync_sdb`, which doesn't happen during initial bootstrap
 
 # Event Modules and Reactor System
 _Salt Master_ and _Salt Minion_ have their own event buses. Depending on the Module's function used to fire event, event may or may not be propagated
