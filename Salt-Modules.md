@@ -287,6 +287,10 @@ Dealing with _Salt_ infrastructure itself, e.g., accept _Salt Minion_ key.
 Custom: `salt://_runners` (`runner_dirs` configuration option)  
 Used exclusively by `salt-run` command. They are pure _Salt Master_ Modules, designed to run on master only.
 
+## Cache Modules
+[salt/cache](https://github.com/saltstack/salt/tree/develop/salt/cache)
+Custom: `salt://_cache`
+
 # Integration Modules
 TODO
 # Utility Modules
