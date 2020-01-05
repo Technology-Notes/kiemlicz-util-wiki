@@ -3,17 +3,29 @@ Unattended installation comprises of two phases:
 1. Installation of OS itself with automatic answers
 2. Provisioning of installed OS (application installation, configuration etc.)
 
-It is tightly coupled with [Infrastructure as a Code](https://en.wikipedia.org/wiki/Infrastructure_as_Code) concept.
-
 ## OS installation
-Uses PXE boot, which can roughly be depicted as (BIOS example):  
+Automated OS installation process utilizes PXE boot.
+1. The UEFI/BIOS sends DHCP discover request
+2. The DHCP offer must contain `TFTP Server Name` (option 66) and `Filename` (option 67)
+3. BIOS/UEFI downloads the loader from TFTP server and runs it
+
+The process looks like (BIOS example) this:  
 ![](https://icefyresan.files.wordpress.com/2014/12/pxe.jpg)
 
 PXE booting relies on platform firmware, its configuration files are different for BIOS and its successor UEFI.
 
+The available UEFI loaders (for BIOS just send the `pxelinux.0` file):
+1. Syslinux. Can download images via TFTP, contains many bugs, e.g. the TFTP download of linux image may take long time and syslinux will
+terminate the download process with timeout. This breaks the whole process
+2. GRUB. This must be pre-build grub image with PXE support that will continue to download the initrd/image from servers.
+3. iPXE. The de-facto standard, open-source and most robust solution. Can download initrd/image from the HTTP servers thus 
+making it the most reliable.
+
 ### [BIOS](https://en.wikipedia.org/wiki/BIOS)
 Hardware initialization in not exactly standarized manner (as reverse engineered from IBM first implementation).  
-After POST boots by reading and executing first sector on hard disk. Booting runs in 16-bit processor mode and has only 1MB of space to execute in. Has problems with parallel device initialization. Can boot only from hard disks of size less than 2.1TB  
+After POST boots by reading and executing first sector on hard disk. 
+Booting runs in 16-bit processor mode and has only 1MB of space to execute in. Has problems with parallel device initialization. 
+Can boot only from hard disks of size less than 2.1TB  
 Uses MBR partitioning scheme
 
 ### UEFI
@@ -30,33 +42,6 @@ Specifies following servies available for OS and OS loader:
 Boots by loading EFI program files.  
 Uses GPT partitioning scheme
 
-### Debian-based OS installation
-Named as: _preseeding_  
-Example of preseed with custom partition setup
-```
-d-i partman-auto/choose_recipe select expert
-d-i partman-auto/expert_recipe string \
-boot-root :: \
-                2048 2200 4096 ext4 \
-                        $primary{ } $bootable{ } \
-                        method{ format } format{ } \
-                        use_filesystem{ } filesystem{ ext4 } \
-                        mountpoint{ / } \
-                . \
-                1024 1100 1500 ext4 \
-                        method{ format } format{ } \
-                        use_filesystem{ } filesystem{ ext4 } \
-                        mountpoint{ /home }  \
-                 . \
-                1024 1100 1500 ext4 \
-                        method{ format } format{ } \
-                        use_filesystem{ } filesystem{ ext4 } \
-                        mountpoint{ /var }  \
-              .  \
-              1024 1030 1056 linux-swap \
-                        method{ swap } format{ } \
-                .
-```
 # References
  1. https://www.debian.org/releases/stretch/example-preseed.txt
  2. https://wikitech.wikimedia.org/wiki/PartMan
