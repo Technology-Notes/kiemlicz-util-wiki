@@ -25,7 +25,7 @@ In order to fix this the `user` must belong to `sudo` group and have `NOPASSWD` 
 It contains `salt-call` along with packaged custom modules, lowstate and grains.
 
 # Log
-Using `-l <log level>` doesn't provide logs from remote host, thus if some modules are missing on remote, user won't know it
+Using `-l <log level>` doesn't provide logs from remote host, thus if some modules are missing on remote, user won't know it.  
 This is somewhat consistent with Salt Master - Minion deployments where Salt Minion logs provide more details about issues during state execution
 
 In oder to gather logs from remote:
