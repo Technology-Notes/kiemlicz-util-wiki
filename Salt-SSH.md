@@ -15,7 +15,7 @@ Permission denied for host the.hostname.com, do you want to deploy the salt-ssh 
 Password for user@the.hostname.com:   
 ```
 
-Previous `roster` file is very limited, such user won't allow to execute any state that requires elevated privileges.
+Previous `roster` file is very limited, such config won't allow to execute any state that requires elevated privileges.
 
 In order to fix this the `user` must belong to `sudo` group and have `NOPASSWD` setting in `sudoers` file. As of current:
 `2019.2.2` version both settings are **required** 
