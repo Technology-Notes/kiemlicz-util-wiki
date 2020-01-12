@@ -220,3 +220,4 @@ minion:
     log_file: ../../salt-ssh.log  # nice trick from https://twitter.com/SaltTips/status/1146306964026253312
 ```
 The remote host must have at least `python-minimal` installed, the `passwd` is always mandatory (since on the remote the `sudo` is required)
+Read more in [Salt-SSH](Salt-SSH)

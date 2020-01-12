@@ -18,8 +18,10 @@ salt-run runs on the master, talks to the salt-master process, allows to run `ru
 orchestrate multi-minion installations
 
 #### salt-ssh
-Doesn't use salt-minion process at all, requires only SSH daemon running and python binaries on the remote minion. 
+Doesn't use Salt Minion process at all, requires only SSH daemon running.
+Installs python binaries on the remote minion.  
 It is much slower than using salt-minion
+More detailed description of `salt-ssh` can be found [here](Salt-SSH)
 
 #### salt-cloud
 Runs on the master. Requires additional configuration of:  
