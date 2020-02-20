@@ -1,20 +1,4 @@
-Typically PODs are scheduled in groups
-
-For interaction with selected controller kind the `kubectl rollout` command is used.
-
-Check status with:  
-`kubectl rollout status <kind, e.g.: deployment, statefulset> <name>`
-
-Check deployment (for `deployment` kind) history with:  
-`kubectl rollout history deployment <name>` 
-The `CHANGE-CAUSE` is copied from annotation `kubernetes.io/change-cause`
-
-To get more information about specific deployment, provide `--revision`, e.g.: `kubectl rollout history deployment <name> --revision=2`
-
-Rollback revision:
-`kubectl rollout undo deployment <name>`
-
-The deplyment **yaml** file changes are not 'rollbackable', only `image` changes.
+Typically PODs are scheduled via higher-level abstraction that relies on `controller`s
 
 # Deployment
 Common method to create the groups of PODs with regards to number of instances running.  
@@ -38,3 +22,22 @@ Common method to create the groups of PODs with regards to number of instances r
 
 # ReplicaSet
 In general replaced by `kind: Deployment`. Can 'capture' other manually created PODs if they match labels
+
+# Job
+
+# Usage
+For interaction with selected controller kind the `kubectl rollout` command is used.
+
+Check status with:  
+`kubectl rollout status <kind, e.g.: deployment, statefulset> <name>`
+
+Check deployment (for `deployment` kind) history with:  
+`kubectl rollout history deployment <name>` 
+The `CHANGE-CAUSE` is copied from annotation `kubernetes.io/change-cause`
+
+To get more information about specific deployment, provide `--revision`, e.g.: `kubectl rollout history deployment <name> --revision=2`
+
+Rollback revision:
+`kubectl rollout undo deployment <name>`
+
+The deplyment **yaml** file changes are not 'rollbackable', only `image` changes.
