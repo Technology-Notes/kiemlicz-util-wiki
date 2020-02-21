@@ -28,6 +28,7 @@ Don't use if 3. is not required
 Mind:
 https://github.com/kubernetes/kubernetes/issues/82612 (change cause message doesn't work for `StatefulSet`)  
 https://github.com/kubernetes/kubernetes/issues/67250 (cannot `rollout undo statefulset` from broken `StatefulSet` replica)
+https://github.com/kubernetes/website/issues/17842 (headless `Service` requirement clarification)
 
 # DaemonSet
 The only allowed POD `RestartPolicy` is `always` 
