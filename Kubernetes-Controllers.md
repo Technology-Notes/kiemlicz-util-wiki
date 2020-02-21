@@ -16,7 +16,7 @@ Common method to create the groups of PODs with regards to number of instances r
 Don't use if 3. is not required
 
 1. No POD location guarantees by default
-2. By default started one by one (previous one must be `READY` in order to continue). It is possible to start all at once. Order of deletion is not specified.
+2. By default started one by one (previous one must be `READY` in order to continue). It is possible to start all at once (see `podManagementPolicy`). Order of deletion is not specified.
 3. PODs have stable network identifier (predictable, ordered names instead of random hash). This includes PVC as well, the Nth POD will use Nth PVC.
    The headless `Service` is required (must be added manually)
 4. Updated in order (hi -> low), regardless of `podManagementPolicy` setting by default.
@@ -26,7 +26,7 @@ Don't use if 3. is not required
      parameter (default = 0). Only PODs with ID greater than or equal `partition` will be updated, the rest will not, even when manually deleted.
 
 Mind:
-https://github.com/kubernetes/kubernetes/issues/82612 (change cause message doesn't work for `StatefulSet`)
+https://github.com/kubernetes/kubernetes/issues/82612 (change cause message doesn't work for `StatefulSet`)  
 https://github.com/kubernetes/kubernetes/issues/67250 (cannot `rollout undo statefulset` from broken `StatefulSet` replica)
 
 # DaemonSet
@@ -64,11 +64,11 @@ just remember to set `.spec.completions` to 1 and `.spec.parallelism` > 0
 3. By default runs only one POD
 
 # Usage
-For interaction with selected controller kind the `kubectl rollout` command is used.
-The `.spec.template` must be changed in order to trigger update, otherwise the same deployment revision is used
+For interaction with selected controller kind the `kubectl rollout` command is used.  
+The `.spec.template` must be changed in order to trigger update, otherwise the same deployment `revision` is used
 
 | Information | Command |
 |-|-| 
 |Status | `kubectl rollout status <kind, e.g.: deployment, statefulset> <name>` |  
-|History (The `CHANGE-CAUSE` is copied from annotation `kubernetes.io/change-cause`), more details can be obtained using `--revision`|`kubectl rollout history deployment <name> [--revision=N]`|
-|Rollback|`kubectl rollout undo deployment <name>`|
+|History (The `CHANGE-CAUSE` is copied from annotation `kubernetes.io/change-cause`), more details can be obtained using `--revision`|`kubectl rollout history <kind e.g. deployment> <name> [--revision=N]`|
+|Rollback|`kubectl rollout undo <kind e.g. deployment> <name>`|
