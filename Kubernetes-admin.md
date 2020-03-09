@@ -20,7 +20,7 @@ PODs definition may contain some data that affects `kube-scheduler`:
 It is possible to write custom scheduler 
 
 ## kube-controller-manager
-Master only component. Controllers execute routine tasks to synchronize desired state with observed state.
+Master only component. Controllers execute routine tasks to synchronize desired state (typically called `spec`) with observed state.
 Notable mentions:
  - Node Controller - monitors Node lifecycle, responds when the Node goes down
  - [Replication Controller](Kubernetes-Controllers) - manages `*-controller`s, e.g., `deployment-controller`
