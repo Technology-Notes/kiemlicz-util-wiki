@@ -291,6 +291,14 @@ Used exclusively by `salt-run` command. They are pure _Salt Master_ Modules, des
 [salt/cache](https://github.com/saltstack/salt/tree/develop/salt/cache)
 Custom: `salt://_cache`
 
+## Netapi Modules
+[salt/netapi](https://github.com/saltstack/salt/tree/develop/salt/netapi)
+Modules that expose Salt API, require configuration to enable
+
+### Python client API
+This is not the part of Salt's `netapi`, but a library for interaction with Salt  
+Same that is used by Salt commands
+
 # Integration Modules
 TODO
 # Utility Modules
