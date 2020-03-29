@@ -29,6 +29,7 @@
    * [VM](vm)
      * [KVM](KVM)
      * [Virtualbox](Virtualbox)
+     * [VFIO](VFIO)
    * [Lightweight VM](Containerization)
      * [Docker](Docker)
      * [LXC](LXC)
