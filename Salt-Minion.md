@@ -1,7 +1,13 @@
 Agent daemon that runs on the remote (managed) node.    
 Receives commands from the _Salt Master_ and responds with the results, can operate autonomously as well.
   
-Runs directly on top of the OS (Windows, Linux, Mac), requires python (2.7 or 3.5).  
+Runs directly on top of the OS (Windows, Linux, Mac), requires python (2.7 or 3.5).
+
+Identified by ID which is equal to hostname by default. Override in settings:
+```
+id: desired_id
+```
+If during the minion lifetime the hostname changes and there is no `id` setting in the config the minion ID is not updated 
 
 ## Operation
  1. upon **first** minion start the ID is generated using following [procedure](https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough.html#minion-id-generation)

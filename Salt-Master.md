@@ -3,6 +3,9 @@ Provides the states and the pillar data.
 States are send and rendered on minions, pillars are send and cached on minions.  
 In order to match states and pillar data that should be send to given minions the [targeting](https://docs.saltstack.com/en/latest/topics/targeting/) is used. 
 
+Similarly, to _Salt Minion_ the _Salt Master_ also has ID, which is equal to hostname with `_master` suffix.
+It is also possible to override this setting in the master config: `id` 
+
 ## Targeting and Top file
 Targeting is specifying which minions should execute given state as well as contain given pillar data.
 
