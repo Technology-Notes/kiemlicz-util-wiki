@@ -57,7 +57,7 @@ If no _path_ is given then repo name is used.
 ## Cloning
 By default submodules are not cloned. In order to clone repository that contains submodules:
 
-1. `git clone <repo url>`
+1. `git clone --depth 1 <repo url>`
 2. `git submodule init`
 3. `git submodule update`
 
